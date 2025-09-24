@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.h                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/24 18:06:28 by jmagand          ###   ########.fr       */
+/*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
+/*   Updated: 2025/09/24 19:13:33 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE_H
-# define CUBE_H
+#include <stdio.h>
+#include "cube.h"
+#include "libft.h"
 
-
-
-#endif
+int main(int ac, char **av)
+{
+    (void)ac;
+    (void)av;
+    
+    printf("Salut\n");
+    return (0);
+}
