@@ -73,7 +73,7 @@ clean:
 fclean: clean
 	@$(MAKE) -C lib/libft fclean
 	@rm -f $(NAME)
-	@echo "$(GREEN)$(BOLD)\n🗑️  Full clean-up completed:$(RESET)"
+	@echo "$(GREEN)$(BOLD)\n🗑️ Full clean-up completed:$(RESET)"
 	@echo "$(CYAN)    └─ Executable removed: ./$(NAME)\n$(RESET)"
 
 re : fclean all
