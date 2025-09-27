@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 21:05:01 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/27 22:15:20 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/27 23:43:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ bool	print_error(int err)
 	else if (err == -5)
 		ft_putendl_fd("Extension is not '.cub'", 1);
 	else if (err == -6)
+	{
 		ft_putendl_fd("File not found", 1);
+		exit(1);
+	}
 	return (false);
 }
 
@@ -44,6 +47,7 @@ static t_file	*init_file_struct(char *filename, char *ext, t_file *file)
 		file->filename = filename;
 		file->ext = ext;
 		file->map = NULL;
+		file->fd = -1;
 	}
 	return (file);
 }
@@ -94,7 +98,5 @@ bool	check_input(char *input, t_file **file)
 	else
 		return (print_error(-1));
 	*file = init_file_struct(filename, ext, *file);
-	free(filename);
-	free(ext);
 	return (true);
 }
