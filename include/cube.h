@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/27 22:26:14 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/28 00:10:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ typedef struct s_file
 {
 	char	*filename;
 	char	*ext;
-    char    *map;
-    int     fd;
+	char	*map;
+	int		fd;
 }			t_file;
 
 /* input */
 bool		print_error(int err);
 bool		check_input(char *input, t_file **file);
+void		check_map(char *input, t_file *file);
+
+/* free_file */
+t_file		*init_file_struct(char *filename, char *ext, t_file *file);
+void		free_file(t_file *file);
 
 #endif

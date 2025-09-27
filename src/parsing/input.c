@@ -6,13 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 21:05:01 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/27 23:43:50 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/28 00:07:52 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include <stdbool.h>
+#include <fcntl.h>
 
 bool	print_error(int err)
 {
@@ -20,36 +21,48 @@ bool	print_error(int err)
 		ft_putendl_fd("Usage: ./cub3D [FILE].cub", 1);
 	else if (err == -2)
 		ft_putendl_fd("Need only one argument", 1);
-	else if (err == -3)
-		ft_putendl_fd("Filename is empty", 1);
-	else if (err == -4)
+	else if (err == -3 || err == -4 | err == -5 || err == -6)
 	{
-		ft_putendl_fd("Malloc failed", 2);
-		exit(1);
-	}
-	else if (err == -5)
-		ft_putendl_fd("Extension is not '.cub'", 1);
-	else if (err == -6)
-	{
-		ft_putendl_fd("File not found", 1);
+		if (err == -3)
+			ft_putendl_fd("Filename is empty", 1);
+		else if (err == -4)
+			ft_putendl_fd("Malloc failed", 2);
+		else if (err == -5)
+			ft_putendl_fd("Extension is not '.cub'", 1);
+		else if (err == -6)
+			ft_putendl_fd("File not found", 1);
 		exit(1);
 	}
 	return (false);
 }
 
-static t_file	*init_file_struct(char *filename, char *ext, t_file *file)
+void	check_map(char *input, t_file *file)
 {
-	file = ft_calloc(1, sizeof(t_file));
-	if (!file)
+	char	*map;
+	int		fd;
+
+	map = ft_strjoin("src/maps/", input);
+	if (!map)
 		print_error(-4);
-	else
+	fd = open(map, O_RDONLY);
+	if (fd < 0)
 	{
-		file->filename = filename;
-		file->ext = ext;
-		file->map = NULL;
-		file->fd = -1;
+		free(map);
+		free_file(file);
+		print_error(-6);
 	}
-	return (file);
+	if (file)
+	{
+		file->map = ft_strdup(map);
+		if (!file->map)
+		{
+			free(map);
+			free_file(file);
+			print_error(-4);
+		}
+		file->fd = fd;
+	}
+	free(map);
 }
 
 static void	check_extension(char *file, char *ext)
@@ -61,16 +74,6 @@ static void	check_extension(char *file, char *ext)
 		if (ext)
 			free(ext);
 		print_error(-5);
-		exit(0);
-	}
-}
-
-static void	check_filename(char *filename)
-{
-	if (!filename)
-	{
-		print_error(-3);
-		exit(0);
 	}
 }
 
@@ -86,7 +89,8 @@ bool	check_input(char *input, t_file **file)
 		filename = ft_strndup(input, dot - input);
 		if (!filename && input[0] != '.')
 			print_error(-4);
-		check_filename(filename);
+		else if (!filename)
+			print_error(-3);
 		ext = ft_strdup(dot + 1);
 		if (!ext)
 		{
