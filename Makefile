@@ -1,37 +1,37 @@
 #------------------------------------------------#
-#					LIBFT						#
+#					LIBFT						 #
 #------------------------------------------------#
 LIBFT_DIR = lib/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
 #------------------------------------------------#
-# MLX #
+#					MLX							 #
 #------------------------------------------------#
 MLX_DIR = lib/minilibx-linux/
 MLX_NAME = $(MLX_DIR)libmlx.a
 MLX_FLAGS = -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 
 #------------------------------------------------#
-# FILES #
+#					FILES						 #
 #------------------------------------------------#
 NAME = cub3D
 SRC_FILES = main parsing/input
 
 #------------------------------------------------#
-# DIRECTORY #
+#					DIRECTORY					 #
 #------------------------------------------------#
 OBJ_DIR = .build/
 SRC_DIR = src/
 
 #------------------------------------------------#
-# PATHS #
+#					PATHS						 #
 #------------------------------------------------#
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 DEP = $(OBJ:.o=.d)
 
 #------------------------------------------------#
-# FLAGS #
+#					FLAGS						 #
 #------------------------------------------------#
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -39,13 +39,14 @@ CPPFLAGS = -MMD -MP -Iinclude -I$(LIBFT_DIR)
 MAKEFLAGS += --no-print-directory
 
 #------------------------------------------------#
-# FUNCTION TO CREATE DIRS #
+#			FUNCTION TO CREATE DIRS 			 #
 #------------------------------------------------#
 define create_dir
 	$(shell mkdir -p $(dir $(1)))
 endef
+
 #------------------------------------------------#
-# RULES #
+#					RULES						 #
 #------------------------------------------------#
 all: makelibft $(NAME)
 
@@ -84,7 +85,7 @@ re : fclean all
 .PHONY : clean fclean re name makelibft
 
 #------------------------------------------------#
-# COLORS #
+#					COLORS						 #
 #------------------------------------------------#
 GREEN = \033[0;32m
 YELLOW = \033[1;33m
