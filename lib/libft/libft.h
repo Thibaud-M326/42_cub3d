@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:20:19 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/06/16 21:44:11 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/09/27 19:51:00 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+/* GNL */
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+# ifndef FD_MAX
+#  define FD_MAX 1024
+# endif
 
 typedef struct s_list
 {
@@ -78,5 +86,10 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+/* GNL */
+char				*ft_strjoin_gnl(char *s1, char *s2, size_t len);
+void				*ft_memmove_gnl(void *dest, const void *src, size_t n);
+char				*get_next_line(int fd);
 
 #endif
