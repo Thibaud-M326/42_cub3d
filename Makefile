@@ -15,7 +15,7 @@ MLX_FLAGS 		= -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 #					FILES						 #
 #------------------------------------------------#
 NAME 			= cub3D
-SRC_FILES 		= main
+SRC_FILES 		= main init
 
 vpath %.c src src/parsing src/render
 
@@ -36,7 +36,7 @@ DEP 			= $(OBJ:.o=.d)
 #------------------------------------------------#
 CC 				= cc
 CFLAGS 			= -Wall -Werror -Wextra
-CPPFLAGS 		= -MMD -MP -Iinclude -I$(LIBFT_DIR)
+CPPFLAGS 		= -MMD -MP -Iinclude -I$(LIBFT_DIR) -I$(MLX_DIR)
 MAKEFLAGS		+= --no-print-directory
 
 #------------------------------------------------#
@@ -47,9 +47,13 @@ all: makelibft $(NAME)
 $(NAME): $(OBJ) | $(OBJ_DIR)
 	@make -C $(MLX_DIR)
 	@echo "\n$(MAGENTA)$(BOLD)💻 Compiling executable...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJ) -L $(LIBFT_DIR) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) \
+	    -L $(LIBFT_DIR) $(LIBFT) \
+	    -L $(MLX_DIR) -lmlx -lX11 -lXext -lm -lrt -ldl \
+	    -o $(NAME)
 	@echo "$(GREEN)$(BOLD)\n✅ Compilation successfull!$(RESET)"
 	@echo "$(CYAN)    └─ Ready to run: ./$(NAME)\n$(RESET)"
+
 
 $(OBJ_DIR)%.o: %.c Makefile | $(OBJ_DIR)
 	@echo "  → Compiling $(YELLOW)$<$(RESET)"
