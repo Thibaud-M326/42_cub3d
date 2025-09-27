@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/24 19:13:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/27 21:58:54 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #include "cube.h"
 #include "libft.h"
 
-int main(int ac, char **av)
+int	main(void)
 {
-    (void)ac;
-    (void)av;
-    
-    printf("Salut\n");
-    return (0);
+	t_mlx_data	mlx_data;
+	t_mlx_img	mlx_img;
+
+	printf("Salut\n");
+	if (mlx_start(&mlx_data, &mlx_img) == 1)
+	return (0);
+	return (0);
 }

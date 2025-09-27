@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "cube.h": "c"
+        "*.tidal": "haskell",
+        "cube.h": "c",
+        "mlx_opengl.h": "c"
     }
 }
