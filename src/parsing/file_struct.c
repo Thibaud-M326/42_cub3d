@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:06:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/28 00:09:14 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/28 23:26:46 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,15 @@ void	free_file(t_file *file)
 		if (file->map)
 			free(file->map);
 		if (file->fd > 0)
-			close(file->fd); // TODO: check this
+			close(file->fd); // TODO: check if close need protect
 		free(file);
 	}
+}
+
+void	free_and_exit(t_file *file, int err)
+{
+	free_file(file);
+	if (err)
+		exit(1);
+	exit(0);
 }

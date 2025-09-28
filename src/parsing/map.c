@@ -6,11 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:00:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/28 00:04:11 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/28 23:29:43 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include "libft.h"
+#include <fcntl.h>
+#include <stdio.h>
 
 /*
 
@@ -76,3 +79,63 @@ must exit properly and return "Error\n" followed by an explicit error message
 of your choice. 
 
 */
+
+static void get_map(t_file *file)
+{
+	char	*dst;
+	int		rows;
+    
+	rows = 0;
+    dst = get_next_line(file->fd);
+    while (dst)
+    {
+        /* ft_putstr_fd(dst, 1); */
+        free(dst);
+		rows++;
+        dst = get_next_line(file->fd);
+    }
+	if (rows < 11)
+	{
+		ft_putendl_fd("Error:\nInvalid map", 2);
+		free_and_exit(file, 1);
+	}
+}
+
+static int  open_map(t_file *file)
+{
+    int		fd;
+
+    fd = open(file->map, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Error:", 2);
+		ft_putstr_fd(file->filename, 2);
+		ft_putendl_fd(".cub not found", 2);
+		free_and_exit(file, 1);
+	}
+	return (fd);
+}	
+
+void	check_map_file(char *input, t_file *file)
+{
+	char	*map_path;
+
+	map_path = ft_strjoin("src/maps/", input);
+	if (!map_path)
+	{
+		ft_putendl_fd("Error:\nMalloc failed\n", 2);
+		free_and_exit(file, 1);
+	}
+	file->map = ft_strdup(map_path);
+	free(map_path);
+	if (!file->map)
+	{
+		ft_putendl_fd("Error:\nMalloc failed", 2);
+		free_and_exit(file, 1);
+	}
+	file->fd = open_map(file);
+    get_map(file);
+
+	/* map ok */
+	free_file(file);
+}
