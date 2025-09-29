@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:00:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/28 23:29:43 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/29 20:04:23 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,43 +80,43 @@ of your choice.
 
 */
 
-static void get_map(t_file *file)
+static void	get_map(t_data *data)
 {
 	char	*dst;
 	int		rows;
-    
+
 	rows = 0;
-    dst = get_next_line(file->fd);
-    while (dst)
-    {
-        /* ft_putstr_fd(dst, 1); */
-        free(dst);
+	dst = get_next_line(data->file->fd);
+	while (dst)
+	{
+		ft_putstr_fd(dst, 1);
+		free(dst);
 		rows++;
-        dst = get_next_line(file->fd);
-    }
-	if (rows < 11)
+		dst = get_next_line(data->file->fd);
+	}
+	if (rows < 9)
 	{
 		ft_putendl_fd("Error:\nInvalid map", 2);
-		free_and_exit(file, 1);
+		free_and_exit(data, 1);
 	}
 }
 
-static int  open_map(t_file *file)
+static int	open_map(t_data *data)
 {
-    int		fd;
+	int	fd;
 
-    fd = open(file->map, O_RDONLY);
+	fd = open(data->file->map, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_putendl_fd("Error:", 2);
-		ft_putstr_fd(file->filename, 2);
+		ft_putstr_fd(data->file->filename, 2);
 		ft_putendl_fd(".cub not found", 2);
-		free_and_exit(file, 1);
+		free_and_exit(data, 1);
 	}
 	return (fd);
-}	
+}
 
-void	check_map_file(char *input, t_file *file)
+void	check_map_file(char *input, t_data *data)
 {
 	char	*map_path;
 
@@ -124,18 +124,18 @@ void	check_map_file(char *input, t_file *file)
 	if (!map_path)
 	{
 		ft_putendl_fd("Error:\nMalloc failed\n", 2);
-		free_and_exit(file, 1);
+		free_and_exit(data, 1);
 	}
-	file->map = ft_strdup(map_path);
+	data->file->map = ft_strdup(map_path);
 	free(map_path);
-	if (!file->map)
+	if (!data->file->map)
 	{
 		ft_putendl_fd("Error:\nMalloc failed", 2);
-		free_and_exit(file, 1);
+		free_and_exit(data, 1);
 	}
-	file->fd = open_map(file);
-    get_map(file);
-
+	data->file->fd = open_map(data);
+	get_map(data);
 	/* map ok */
-	free_file(file);
+    free_and_exit(data, 1);
+	free_file(data->file);
 }

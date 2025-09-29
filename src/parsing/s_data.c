@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   s_data.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 20:06:36 by jmagand          ###   ########.fr       */
+/*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
+/*   Updated: 2025/09/29 20:07:41 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include <stdio.h>
+#include <stddef.h>
 
-int	main(int ac, char **av)
+t_data	*init_data_struct(void)
 {
 	t_data	*data;
 
-	data = NULL;
-	if (ac == 1)
-		print_error(data, -1);
-	if (ac != 2)
-		print_error(data, -2);
-	data = init_data_struct();
-	if (!check_input(av[1], data))
-		return (0);
-	else
-	{
-		check_map_file(av[1], data);
+	data = ft_calloc(1, sizeof(t_data));
+	if (!data)
+		print_error(data, -5);
+	data->file = NULL;
+	return (data);
+}
 
+void	free_and_exit(t_data *data, int err)
+{
+	if (data)
+	{
+		if (data->file)
+			free_file(data->file);
+		free(data);
+		if (err)
+			exit(1);
 	}
-	return (0);
+	exit(0);
 }
