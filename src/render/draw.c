@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 19:58:57 by thmaitre         ###   ########.fr       */
+/*   Created: 2025/09/29 19:51:35 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/09/29 19:52:07 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "cube.h"
-#include "libft.h"
-#include "mlx.h"
 
-int	main(void)
+void	put_one_pixel(t_mlx_img *mlx_img, int x, int y, int color)
 {
-	t_mlx_data	mlx_data;
-	t_mlx_img	mlx_img;
+	int	offset;
 
-	if (!mlx_start(&mlx_data, &mlx_img))
-		return (0);
-	render(&mlx_data);
-	mlx_loop(mlx_data.mlx_ptr);
-	return (0);
+	offset = (mlx_img->size_line * y) + (x * (mlx_img->bits_per_pixel / 8));
+	*((unsigned int *)(offset + mlx_img->img_data)) = color;
+}
+
+int	mix_color(int red, int green, int blue)
+{
+	int	color;
+
+	color = (red << 16) | (green << 8) | blue;
+	return (color);
 }

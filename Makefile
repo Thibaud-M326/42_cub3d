@@ -15,7 +15,7 @@ MLX_FLAGS 		= -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 #					FILES						 #
 #------------------------------------------------#
 NAME 			= cub3D
-SRC_FILES 		= main init
+SRC_FILES 		= main init render draw
 
 vpath %.c src src/parsing src/render
 
@@ -28,14 +28,14 @@ OBJ_DIR 		= .build/
 #					PATHS						 #
 #------------------------------------------------#
 SRC				= $(addsuffix .c, $(SRC_FILES))
-OBJ 			= $(OBJ_DIR)$(SRC:.c=.o)
+OBJ 			= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 DEP 			= $(OBJ:.o=.d)
 
 #------------------------------------------------#
 #					FLAGS						 #
 #------------------------------------------------#
 CC 				= cc
-CFLAGS 			= -Wall -Werror -Wextra
+CFLAGS 			= -g3 -Wall -Werror -Wextra
 CPPFLAGS 		= -MMD -MP -Iinclude -I$(LIBFT_DIR) -I$(MLX_DIR)
 MAKEFLAGS		+= --no-print-directory
 

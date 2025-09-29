@@ -2,6 +2,7 @@
     "files.associations": {
         "*.tidal": "haskell",
         "cube.h": "c",
-        "mlx_opengl.h": "c"
+        "mlx_opengl.h": "c",
+        "libft.h": "c"
     }
 }
