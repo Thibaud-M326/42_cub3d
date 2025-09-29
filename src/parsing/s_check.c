@@ -1,25 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   s_check.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 21:07:33 by jmagand          ###   ########.fr       */
+/*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
+/*   Updated: 2025/09/29 22:07:54 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
-#include "libft.h"
-#include <stdio.h>
-
-int	main(int ac, char **av)
-{
-	t_data	*data;
-
-	data = init_data_struct();
-	parse_input(ac, av, data);
-
-	return (0);
-}

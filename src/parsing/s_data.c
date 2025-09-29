@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 20:07:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/29 21:56:34 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,35 @@ t_data	*init_data_struct(void)
 
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
-		print_error(data, -5);
+		free_and_exit(data, MALLOC, 1);
 	data->file = NULL;
+	data->textures = NULL;
+	data->map = NULL;
 	return (data);
 }
 
-void	free_and_exit(t_data *data, int err)
+static char	*get_error_message(t_msg msg)
 {
+	static char	*messages[7];
+
+	if (messages[USAGE] == NULL)
+	{
+		messages[USAGE] = USAGE_MSG;
+		messages[AC_NBR] = AC_NBR_MSG;
+		messages[EMPTY_FILENAME] = EMPTY_FILENAME_MSG;
+		messages[EMPTY_EXT] = EMPTY_EXT_MSG;
+		messages[MALLOC] = MALLOC_MSG;
+		messages[BAD_EXT] = BAD_EXT_MSG;
+		messages[BAD_MAP] = BAD_MAP_MSG;
+	}
+	if (msg >= USAGE && msg <= BAD_MAP)
+		return (messages[msg]);
+	return ("Error:\nUnknown error");
+}
+
+void	free_and_exit(t_data *data, t_msg msg, int err)
+{
+	ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
 	if (data)
 	{
 		if (data->file)

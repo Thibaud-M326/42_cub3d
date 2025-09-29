@@ -6,46 +6,23 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 21:05:01 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 20:21:43 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/29 21:31:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include <stdbool.h>
 
-void	print_error(t_data *data, int err)
+static void	get_filename(t_data *data, char *input, char *dot)
 {
-	if (err == -1 || err == -2 || err == -3 || err == -4)
-	{
-		if (err == -1)
-			ft_putendl_fd("Usage: ./cub3D [FILE].cub", 1);
-		else if (err == -2)
-			ft_putendl_fd("Need only one argument", 1);
-		else if (err == -3)
-			ft_putendl_fd("Empty filename", 1);
-		else if (err == -4)
-			ft_putendl_fd("Empty extension", 1);
-		free_and_exit(data, 0);
-	}
-	else if (err == -5)
-		ft_putendl_fd("Error:\nMalloc failed", 2);
-	free_and_exit(data, 1);
+	data->file->filename = ft_strndup(input, dot - input);
+	if (!data->file->filename && input[0] != '.')
+		free_and_exit(data, MALLOC, 1);
+	else if (!data->file->filename)
+		free_and_exit(data, EMPTY_FILENAME, 0);
 }
 
-static char	*get_filename(t_data *data, char *input, char *dot)
-{
-	char	*filename;
-
-	filename = ft_strndup(input, dot - input);
-	if (!filename && input[0] != '.')
-		print_error(data, -5);
-	else if (!filename)
-		print_error(data, -3);
-	return (filename);
-}
-
-bool	check_input(char *input, t_data *data)
+static void	check_input(char *input, t_data *data)
 {
 	char	*dot;
 
@@ -53,17 +30,23 @@ bool	check_input(char *input, t_data *data)
 	dot = ft_strrchr(input, '.');
 	if (dot)
 	{
-		data->file->filename = get_filename(data, input, dot);
+		get_filename(data, input, dot);
 		data->file->ext = ft_strdup(dot + 1);
 		if (!data->file->ext)
-			print_error(data, -4);
+			free_and_exit(data, EMPTY_EXT, 0);
 		if (ft_strcmp(data->file->ext, "cub"))
-		{
-			ft_putendl_fd("Extension is not '.cub'", 1);
-			free_and_exit(data, 0);
-		}
+			free_and_exit(data, BAD_EXT, 0);
 	}
 	else
-		print_error(data, -1);
-	return (true);
+		free_and_exit(data, USAGE, 0);
+}
+
+void	parse_input(int ac, char **av, t_data *data)
+{
+	if (ac == 1)
+		free_and_exit(data, USAGE, 0);
+	if (ac != 2)
+		free_and_exit(data, AC_NBR, 0);
+	check_input(av[1], data);
+	check_map_file(av[1], data);
 }
