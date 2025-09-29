@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 21:56:34 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/30 00:11:00 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ t_data	*init_data_struct(void)
 	data->file = NULL;
 	data->textures = NULL;
 	data->map = NULL;
+	data->check = NULL;
 	return (data);
 }
 
 static char	*get_error_message(t_msg msg)
 {
-	static char	*messages[7];
+	static char	*messages[8];
 
 	if (messages[USAGE] == NULL)
 	{
@@ -39,9 +40,10 @@ static char	*get_error_message(t_msg msg)
 		messages[EMPTY_EXT] = EMPTY_EXT_MSG;
 		messages[MALLOC] = MALLOC_MSG;
 		messages[BAD_EXT] = BAD_EXT_MSG;
-		messages[BAD_MAP] = BAD_MAP_MSG;
+		messages[INVALID_MAP] = INVALID_MAP_MSG;
+		messages[MAP_NOT_FOUND] = MAP_NOT_FOUND_MSG;
 	}
-	if (msg >= USAGE && msg <= BAD_MAP)
+	if (msg >= USAGE && msg <= MAP_NOT_FOUND)
 		return (messages[msg]);
 	return ("Error:\nUnknown error");
 }
@@ -53,6 +55,10 @@ void	free_and_exit(t_data *data, t_msg msg, int err)
 	{
 		if (data->file)
 			free_file(data->file);
+		if (data->check)
+			free(data->check);
+		if (data->textures)
+			free_textures(data->textures);
 		free(data);
 		if (err)
 			exit(1);

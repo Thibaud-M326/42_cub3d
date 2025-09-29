@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:00:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 22:07:30 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/30 00:12:30 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ must exit properly and return "Error\n" followed by an explicit error message
 of your choice. 
 
 */
-
 
 /* 
 
@@ -81,6 +80,80 @@ C 225,30,0
 
 */
 
+// static void
+// make && valgrind --leak-check=full --show-leak-kinds=all ./cub3D map1.cub
+
+static char	*get_texture_path(char *line, t_data *data)
+{
+	int		i;
+	char	*tmp;
+	int		len;
+	int		j;
+
+	j = 0;
+	len = (int)ft_strlen(line);
+	i = 2;
+	tmp = ft_calloc(len, sizeof(char));
+	if (!tmp)
+		free_and_exit(data, MALLOC, 1);
+	while (line[i] && line[i] != '\n')
+	{
+		if ((line[i] >= '\t' && line[i] <= '\r') || line[i] == ' ')
+			i++;
+		else
+		{
+			tmp[j] = line[i];
+			j++;
+			i++;
+		}
+	}
+	tmp[j] = '\0';
+	printf("\npath = |%s|\n", tmp);
+	return (tmp);
+}
+
+static void	check_identifier(char *line, t_data *data)
+{
+	int		i;
+	t_check	*check;
+
+	check = data->check;
+	i = 0;
+	while ((line[i] && line[i] >= '\t' && line[i] <= '\r') || line[i] == ' ')
+		i++;
+	if (line[i] == 'N' && line[i + 1] && line[i + 1] == 'O')
+	{
+		data->textures->path_n = get_texture_path(line, data);
+		check->north = true;
+	}
+	else if (line[i] == 'S' && line[i + 1] && line[i + 1] == 'O')
+	{
+		data->textures->path_s = get_texture_path(line, data);
+		check->south = true;
+	}
+	else if (line[i] == 'E' && line[i + 1] && line[i + 1] == 'A')
+	{
+		data->textures->path_e = get_texture_path(line, data);
+		check->east = true;
+	}
+	else if (line[i] == 'W' && line[i + 1] && line[i + 1] == 'E')
+	{
+		data->textures->path_w = get_texture_path(line, data);
+		check->west = true;
+	}
+
+	else if (line[i] == 'F')
+		check->west = true;
+	else if (line[i] == 'C')
+		check->west = true;
+	else if ((!check->north || !check->south || !check->east || !check->west
+				|| !check->floor || !check->ceil) && (line[i] == '1'
+				|| line[i] == '0' || line[i] == 'N' || line[i] == 'S'
+				|| line[i] == 'E' || line[i] == 'W'))
+		data->check->is_map_valid = false;
+	printf("%s\n", line);
+}
+
 static void	get_file_data(t_data *data)
 {
 	char	*line;
@@ -88,17 +161,19 @@ static void	get_file_data(t_data *data)
 
 	rows = 0;
 	line = get_next_line(data->file->fd);
-	while (line)
+	while (line && data->check->is_map_valid)
 	{
-		// work with dest
-        check_line(line);
-		ft_putstr_fd(line, 1);
+		check_identifier(line, data);
 		free(line);
 		rows++;
 		line = get_next_line(data->file->fd);
 	}
+	if (line)
+		free(line);
 	if (rows < 9)
-		free_and_exit(data, BAD_MAP, 1);
+		free_and_exit(data, INVALID_MAP, 1);
+	if (!data->check->is_map_valid)
+		free_and_exit(data, INVALID_MAP, 1);
 }
 
 static int	open_file(t_data *data)
@@ -107,7 +182,7 @@ static int	open_file(t_data *data)
 
 	fd = open(data->file->map, O_RDONLY);
 	if (fd < 0)
-		free_and_exit(data, BAD_MAP, 2);
+		free_and_exit(data, MAP_NOT_FOUND, 1);
 	return (fd);
 }
 
@@ -123,9 +198,9 @@ void	check_map_file(char *input, t_data *data)
 	if (!data->file->map)
 		free_and_exit(data, MALLOC, 1);
 	data->file->fd = open_file(data);
-    init_check_struct(data);
+	data->check = init_check_struct(data);
+	data->textures = init_textures_struct(data);
 	get_file_data(data);
 	/* map ok */
 	free_and_exit(data, -1, 1);
-	free_file(data->file);
 }

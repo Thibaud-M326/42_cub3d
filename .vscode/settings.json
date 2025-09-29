@@ -60,6 +60,7 @@
     "stdio.h": "c",
     "cube.h": "c",
     "libft.h": "c",
-    "fcntl.h": "c"
+    "fcntl.h": "c",
+    "stdbool.h": "c"
   }
 }
