@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/09/29 22:27:37 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/29 22:42:59 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,29 @@ int	player(t_mlx_data *mlx_data)
 	return (0);
 }
 
+typedef struct s_player
+{
+
+} t_player
+
+int	handle_keyboard(int keysym, t_hook_args *hook_args)
+{
+    double		canva_move;
+
+    canva_move = 0.01;
+    if (keysym == XK_Escape)
+		clean_exit(hook_args);
+	else if (keysym == XK_Left)
+        canva_move_left(hook_args, canva_move);
+	else if (keysym == XK_Right)
+        canva_move_right(hook_args, canva_move);
+	else if (keysym == XK_Up)
+        canva_move_up(hook_args, canva_move);
+	else if (keysym == XK_Down)
+        canva_move_down(hook_args, canva_move);
+    return (0);
+}
+
 int	render(t_mlx_data *mlx_data)
 {
 	int		x;
@@ -138,6 +161,8 @@ int	render(t_mlx_data *mlx_data)
 	}
 
 	player(mlx_data);
+
+	mlx_key_hook(mlx_data->win_ptr, &handle_keyboard, hook_args);
 
 	mlx_put_image_to_window(mlx_data->mlx_ptr,
 		mlx_data->win_ptr, mlx_data->mlx_img->img_ptr, 0, 0);
