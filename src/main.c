@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 17:38:04 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 20:05:34 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	main(int ac, char **av)
 
 	data = init_data_struct();
 	parse_input(ac, av, data);
-	render(data->mlx_data);
-	mlx_loop(data->mlx_data->mlx_ptr);
+	// if (!mlx_start(data))
+	// 	free_and_exit(data, MALLOC, 1);
+	// render(data);
+	// mlx_loop(data->mlx_data->mlx_ptr);
 	return (0);
 }

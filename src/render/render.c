@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/09/30 17:01:03 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 20:02:34 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,29 @@ int	**create_map(void)
 	return (map);
 }
 
-int	render_box(t_mlx_data *mlx_data, int mapX, int mapY, int color)
+int	render_box(t_data *data, int mapX, int mapY, int color)
 {
 	int	box_w;
 	int	box_h;
 	int	x;
 	int	y;
 
-	box_w = mlx_data->mlx_img->width / 10;
-	box_h = mlx_data->mlx_img->height / 10;
+	box_w = data->mlx_data->mlx_img->width / 10;
+	box_h = data->mlx_data->mlx_img->height / 10;
 	x = 0;
 	y = 0;
-	while (y < mlx_data->mlx_img->height)
+	while (y < data->mlx_data->mlx_img->height)
 	{
 		x = 0;
-		while (x < mlx_data->mlx_img->width)
+		while (x < data->mlx_data->mlx_img->width)
 		{
 			if (x >= mapX * box_w && x <= mapX * box_w + box_w)
 				if (y >= mapY * box_h && y <= mapY * box_h + box_h)
-					put_one_pixel(mlx_data->mlx_img, x, y, color);
+					put_one_pixel(data, x, y, color);
 			if (x == mapX * box_w)
-				put_one_pixel(mlx_data->mlx_img, x, y, 0xFFFFFF);
+				put_one_pixel(data, x, y, 0xFFFFFF);
 			if (y == mapY * box_h)
-				put_one_pixel(mlx_data->mlx_img, x, y, 0xFFFFFF);
+				put_one_pixel(data, x, y, 0xFFFFFF);
 			x++;
 		}
 		y++;
@@ -96,44 +96,44 @@ int	render_box(t_mlx_data *mlx_data, int mapX, int mapY, int color)
 	return (0);
 }
 
-int	player_start(t_mlx_data *mlx_data, t_player *player)
+int	player_start(t_data *data, t_player *player)
 {
-	put_one_pixel(mlx_data->mlx_img, player->pos_x, player->pos_y, 0xFF0000);
-	put_one_pixel(mlx_data->mlx_img, player->pos_x + 1, player->pos_y + 1, 0xFF0000);
-	put_one_pixel(mlx_data->mlx_img, player->pos_x + 1, player->pos_y, 0xFF0000);
-	put_one_pixel(mlx_data->mlx_img, player->pos_x, player->pos_y + 1, 0xFF0000);
+	put_one_pixel(data, player->pos_x, player->pos_y, 0xFF0000);
+	put_one_pixel(data, player->pos_x + 1, player->pos_y + 1, 0xFF0000);
+	put_one_pixel(data, player->pos_x + 1, player->pos_y, 0xFF0000);
+	put_one_pixel(data, player->pos_x, player->pos_y + 1, 0xFF0000);
 	return (0);
 }
 
-int	handle_keyboard(int keysym, t_hook_args *hook_args)
-{
-	if (keysym == XK_Left)
-	{
+// int	handle_keyboard(int keysym, t_hook_args *hook_args)
+// {
+// 	if (keysym == XK_Left)
+// 	{
+// 		;
+// 	}
+// 	else if (keysym == XK_Right)
+// 	{
+// 		;
+// 	}
+// 	else if (keysym == XK_Up)
+// 	{
+// 		;
+// 	}
+// 	else if (keysym == XK_Down)
+// 	{
+// 		;
+// 	}
+// 	return (0);
+// }
 
-	}
-	else if (keysym == XK_Right)
-	{
-
-	}
-	else if (keysym == XK_Up)
-	{
-
-	}
-	else if (keysym == XK_Down)
-	{
-
-	}
-	return (0);
-}
-
-int	render(t_mlx_data *mlx_data)
+int	render(t_data *data)
 {
 	int			x;
 	int			y;
 	int			**map;
 	int			wall_color;
 	int			floor_color;
-	t_hook_args	hook_args;
+	// t_hook_args	hook_args;
 	t_player	player; 
 
 	x = 0;
@@ -148,9 +148,9 @@ int	render(t_mlx_data *mlx_data)
 		while (x < 10)
 		{
 			if (map[y][x] == 1)
-				render_box(mlx_data, x, y, wall_color);
+				render_box(data, x, y, wall_color);
 			if (map[y][x] == 0)
-				render_box(mlx_data, x, y, floor_color);
+				render_box(data, x, y, floor_color);
 			x++;
 		}
 		y++;
@@ -159,11 +159,11 @@ int	render(t_mlx_data *mlx_data)
 	player.pos_x = 250;
 	player.pos_y = 750;
 
-	player_start(mlx_data, &player);
+	player_start(data, &player);
 
-	mlx_key_hook(mlx_data->win_ptr, &handle_keyboard, &hook_args);
+	// mlx_key_hook(data->mlx_data->win_ptr, &handle_keyboard, &hook_args);
 
-	mlx_put_image_to_window(mlx_data->mlx_ptr,
-		mlx_data->win_ptr, mlx_data->mlx_img->img_ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx_data->mlx_ptr,
+		data->mlx_data->win_ptr, data->mlx_data->mlx_img->img_ptr, 0, 0);
 	return (0);
 }

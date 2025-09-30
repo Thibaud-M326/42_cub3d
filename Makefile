@@ -15,16 +15,16 @@ MLX_FLAGS = -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 #					FILES						 #
 #------------------------------------------------#
 NAME = cub3D
-SRC_FILES = main				\
-			init/mlx.c			\
-			parsing/input		\
-			parsing/map 		\
-			parsing/s_data		\
-			parsing/s_file		\
-			parsing/s_check		\
-			render/draw.c		\
-			render/render.c		\
-			textures/s_textures	\
+SRC_FILES = main					\
+			parsing/input			\
+			parsing/map			\
+			render/draw			\
+			render/render		\
+			structures/s_data		\
+			structures/s_file		\
+			structures/s_check		\
+			structures/s_mlx		\
+			structures/s_textures	\
 
 #------------------------------------------------#
 #					DIRECTORY					 #
@@ -43,8 +43,8 @@ DEP = $(OBJ:.o=.d)
 #					FLAGS						 #
 #------------------------------------------------#
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
-CPPFLAGS = -MMD -MP -Iinclude -I$(LIBFT_DIR)
+CFLAGS = -g3 -Wall -Werror -Wextra
+CPPFLAGS = -MMD -MP -Iinclude -I$(LIBFT_DIR) -I$(MLX_DIR)
 MAKEFLAGS += --no-print-directory
 
 #------------------------------------------------#

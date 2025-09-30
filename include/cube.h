@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 17:26:06 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 19:54:45 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,6 @@ typedef struct s_textures
 	char		*path_s;
 }				t_textures;
 
-typedef struct s_mlx_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_mlx_img	*mlx_img;
-	int			color;
-}	t_mlx_data;
-
 typedef struct s_mlx_img
 {
 	void	*img_ptr;
@@ -101,6 +93,14 @@ typedef struct s_mlx_img
 	int		size_line;
 	int		endian;
 }	t_mlx_img;
+
+typedef struct s_mlx_data
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_mlx_img	*mlx_img;
+	int			color;
+}	t_mlx_data;
 
 typedef struct s_player
 {
@@ -120,7 +120,6 @@ typedef struct s_data
 	t_map		*map;
 	t_check		*check;
 	t_mlx_data	*mlx_data;
-	t_mlx_img	*mlg_img;
 	t_player	*player;
 	t_hook_args	*hook_args;
 }				t_data;
@@ -149,17 +148,17 @@ void			free_textures(t_textures *textures);
 /* map */
 void			check_map_file(char *input, t_data *data);
 
-//src/init.c
-int		mlx_start(t_mlx_data *mlx_data, t_mlx_img *mlx_img);
+//structures/s_mlx
+int		mlx_start(t_data *data);
 
 //src/render/render.c
-int		render(t_mlx_data *data);
+int		render(t_data *data);
 
 //src/render/draw.c
-void	put_one_pixel(t_mlx_img *mlx_img, int x, int y, int color);
+void	put_one_pixel(t_data *data, int x, int y, int color);
 int		mix_color(int red, int green, int blue);
 
 //src/hook/hook.c
-int 	hook();
+// int 	hook();
 
 #endif
