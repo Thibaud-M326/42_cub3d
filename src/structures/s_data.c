@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_data.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 19:50:51 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 23:01:02 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_data	*init_data_struct(void)
 
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
-		free_and_exit(data, MALLOC, 1);
+		free_and_exit(data, msg_custom("Error:\nMalloc failed"), 1);
 	data->file = NULL;
 	data->textures = NULL;
 	data->map = NULL;
@@ -28,32 +28,16 @@ t_data	*init_data_struct(void)
 	data->mlx_data = NULL;
 	data->player = NULL;
 	data->hook_args = NULL;
+	data->msg = init_msg_struct(data);
 	return (data);
-}
-
-static char	*get_error_message(t_msg msg)
-{
-	static char	*messages[8];
-
-	if (messages[USAGE] == NULL)
-	{
-		messages[USAGE] = USAGE_MSG;
-		messages[AC_NBR] = AC_NBR_MSG;
-		messages[EMPTY_FILENAME] = EMPTY_FILENAME_MSG;
-		messages[EMPTY_EXT] = EMPTY_EXT_MSG;
-		messages[MALLOC] = MALLOC_MSG;
-		messages[BAD_EXT] = BAD_EXT_MSG;
-		messages[INVALID_MAP] = INVALID_MAP_MSG;
-		messages[MAP_NOT_FOUND] = MAP_NOT_FOUND_MSG;
-	}
-	if (msg >= USAGE && msg <= MAP_NOT_FOUND)
-		return (messages[msg]);
-	return ("Error:\nUnknown error");
 }
 
 void	free_and_exit(t_data *data, t_msg msg, int err)
 {
-	ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
+	if (err)
+		ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
+	else
+		ft_putendl_fd(get_error_message(msg), STDOUT_FILENO);
 	if (data)
 	{
 		if (data->file)
@@ -62,6 +46,8 @@ void	free_and_exit(t_data *data, t_msg msg, int err)
 			free(data->check);
 		if (data->textures)
 			free_textures(data->textures);
+		if (data->msg)
+			free(data->msg);
 		free(data);
 		if (err)
 			exit(1);

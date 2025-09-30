@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_mlx.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:33:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/09/30 19:57:01 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 22:49:23 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_mlx(t_data *data, int stop)
 		mlx_destroy_display(data->mlx_data->mlx_ptr);
 		free(data->mlx_data->mlx_ptr);
 	}
-	free_and_exit(data, -1, 1);
+	// free_and_exit(data, -1, 1);
 }
 
 int	mlx_start(t_data *data)

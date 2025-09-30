@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:00:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 00:12:30 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/30 22:48:07 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static char	*get_texture_path(char *line, t_data *data)
 	i = 2;
 	tmp = ft_calloc(len, sizeof(char));
 	if (!tmp)
-		free_and_exit(data, MALLOC, 1);
+		free_and_exit(data, msg_predefined(MALLOC), 1);
 	while (line[i] && line[i] != '\n')
 	{
 		if ((line[i] >= '\t' && line[i] <= '\r') || line[i] == ' ')
@@ -171,9 +171,9 @@ static void	get_file_data(t_data *data)
 	if (line)
 		free(line);
 	if (rows < 9)
-		free_and_exit(data, INVALID_MAP, 1);
+		free_and_exit(data, msg_predefined(INVALID_MAP), 0);
 	if (!data->check->is_map_valid)
-		free_and_exit(data, INVALID_MAP, 1);
+		free_and_exit(data, msg_predefined(INVALID_MAP), 0);
 }
 
 static int	open_file(t_data *data)
@@ -182,7 +182,7 @@ static int	open_file(t_data *data)
 
 	fd = open(data->file->map, O_RDONLY);
 	if (fd < 0)
-		free_and_exit(data, MAP_NOT_FOUND, 1);
+		free_and_exit(data, msg_predefined(MAP_NOT_FOUND), 0);
 	return (fd);
 }
 
@@ -192,15 +192,15 @@ void	check_map_file(char *input, t_data *data)
 
 	map_path = ft_strjoin("src/maps/", input);
 	if (!map_path)
-		free_and_exit(data, MALLOC, 1);
+		free_and_exit(data, msg_predefined(MALLOC), 1);
 	data->file->map = ft_strdup(map_path);
 	free(map_path);
 	if (!data->file->map)
-		free_and_exit(data, MALLOC, 1);
+		free_and_exit(data, msg_predefined(MALLOC), 1);
 	data->file->fd = open_file(data);
 	data->check = init_check_struct(data);
 	data->textures = init_textures_struct(data);
 	get_file_data(data);
 	/* map ok */
-	free_and_exit(data, -1, 1);
+	free_and_exit(data, msg_custom("Niceuuuu - map.c\n"), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:59:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 00:05:15 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/30 22:49:41 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_textures	*init_textures_struct(t_data *data)
 
 	textures = ft_calloc(1, sizeof(t_textures));
 	if (!textures)
-		free_and_exit(data, MALLOC, 1);
+		free_and_exit(data, msg_predefined(MALLOC), 1);
 	else
 	{
 		textures->floor_color = 0;
