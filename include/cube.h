@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 19:58:48 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 16:44:28 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ typedef struct s_mlx_data
 	int			color;
 }	t_mlx_data;
 
+typedef struct s_player
+{
+	int			pos_x;
+	int			pos_y;
+}	t_player;
+
+typedef struct s_hook_args
+{
+	t_player	*player;
+}	t_hook_args;
+
 //src/init.c
 int		mlx_start(t_mlx_data *mlx_data, t_mlx_img *mlx_img);
 
@@ -43,5 +54,8 @@ int		render(t_mlx_data *data);
 //src/render/draw.c
 void	put_one_pixel(t_mlx_img *mlx_img, int x, int y, int color);
 int		mix_color(int red, int green, int blue);
+
+//src/hook/hook.c
+int 	hook();
 
 #endif

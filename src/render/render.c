@@ -6,13 +6,14 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/09/29 22:42:59 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:01:03 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "mlx.h"
 #include <stdlib.h>
+#include <X11/keysym.h>
 
 int	**create_map(void)
 {
@@ -22,7 +23,7 @@ int	**create_map(void)
 
 	i = 0;
 	j = 0;
-	map = malloc(sizeof(int*) * 10);
+	map = malloc(sizeof(int *) * 10);
 	if (!map)
 		return (NULL);
 	while (i < 10)
@@ -95,50 +96,45 @@ int	render_box(t_mlx_data *mlx_data, int mapX, int mapY, int color)
 	return (0);
 }
 
-int	player(t_mlx_data *mlx_data)
+int	player_start(t_mlx_data *mlx_data, t_player *player)
 {
-	double	p_pos_x;
-	double	p_pos_y;
-
-	p_pos_x = 250;
-	p_pos_y = 750;
-	put_one_pixel(mlx_data->mlx_img, p_pos_x, p_pos_y, 0xFF0000);
-	put_one_pixel(mlx_data->mlx_img, p_pos_x + 1, p_pos_y + 1, 0xFF0000);
-	put_one_pixel(mlx_data->mlx_img, p_pos_x + 1, p_pos_y, 0xFF0000);
-	put_one_pixel(mlx_data->mlx_img, p_pos_x, p_pos_y + 1, 0xFF0000);
+	put_one_pixel(mlx_data->mlx_img, player->pos_x, player->pos_y, 0xFF0000);
+	put_one_pixel(mlx_data->mlx_img, player->pos_x + 1, player->pos_y + 1, 0xFF0000);
+	put_one_pixel(mlx_data->mlx_img, player->pos_x + 1, player->pos_y, 0xFF0000);
+	put_one_pixel(mlx_data->mlx_img, player->pos_x, player->pos_y + 1, 0xFF0000);
 	return (0);
 }
 
-typedef struct s_player
-{
-
-} t_player
-
 int	handle_keyboard(int keysym, t_hook_args *hook_args)
 {
-    double		canva_move;
+	if (keysym == XK_Left)
+	{
 
-    canva_move = 0.01;
-    if (keysym == XK_Escape)
-		clean_exit(hook_args);
-	else if (keysym == XK_Left)
-        canva_move_left(hook_args, canva_move);
+	}
 	else if (keysym == XK_Right)
-        canva_move_right(hook_args, canva_move);
+	{
+
+	}
 	else if (keysym == XK_Up)
-        canva_move_up(hook_args, canva_move);
+	{
+
+	}
 	else if (keysym == XK_Down)
-        canva_move_down(hook_args, canva_move);
-    return (0);
+	{
+
+	}
+	return (0);
 }
 
 int	render(t_mlx_data *mlx_data)
 {
-	int		x;
-	int		y;
-	int		**map;
-	int		wall_color;
-	int		floor_color;
+	int			x;
+	int			y;
+	int			**map;
+	int			wall_color;
+	int			floor_color;
+	t_hook_args	hook_args;
+	t_player	player; 
 
 	x = 0;
 	y = 0;
@@ -160,9 +156,12 @@ int	render(t_mlx_data *mlx_data)
 		y++;
 	}
 
-	player(mlx_data);
+	player.pos_x = 250;
+	player.pos_y = 750;
 
-	mlx_key_hook(mlx_data->win_ptr, &handle_keyboard, hook_args);
+	player_start(mlx_data, &player);
+
+	mlx_key_hook(mlx_data->win_ptr, &handle_keyboard, &hook_args);
 
 	mlx_put_image_to_window(mlx_data->mlx_ptr,
 		mlx_data->win_ptr, mlx_data->mlx_img->img_ptr, 0, 0);
