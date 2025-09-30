@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 17:49:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:55:29 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ t_data	*init_data_struct(void)
 	data->textures = NULL;
 	data->map = NULL;
 	data->check = NULL;
+	data->mlx_data = ft_calloc(1, sizeof(t_mlx_data));
+	if (!data->mlx_data)
+		free_and_exit(data, MALLOC, 1);
+	data->mlx_data->mlx_img = ft_calloc(1, sizeof(t_mlx_img));
+	if (!data->mlx_data->mlx_img)
+		free_and_exit(data, MALLOC, 1);
 	mlx_start(data->mlx_data, data->mlx_data->mlx_img);
 	return (data);
 }
