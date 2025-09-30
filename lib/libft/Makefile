@@ -6,7 +6,7 @@
 #    By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 22:04:08 by thibaud           #+#    #+#              #
-#    Updated: 2025/09/24 18:16:51 by jmagand          ###   ########.fr        #
+#    Updated: 2025/09/27 20:08:12 by jmagand          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,9 @@ SRCS		:= 					\
 	ft_strtrim.c				\
 	ft_substr.c					\
 	ft_tolower.c				\
-	ft_toupper.c
+	ft_toupper.c				\
+	get_next_line.c				\
+	get_next_line_utils.c
 
 SRCS_BONUS	:=					\
 	ft_lstnew_bonus.c			\
