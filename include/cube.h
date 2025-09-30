@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 22:58:14 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/30 23:56:27 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define BAD_EXT_MSG "Error:\nExtension is not '.cub'"
 # define MAP_NOT_FOUND_MSG "Error:\nMap file not found"
 # define INVALID_MAP_MSG "Error:\nMap file invalid"
+# define DOUBLE_IDENTIFIER_MSG "Error:\nThere is a duplicated identifier"
 
 # define MALLOC_MSG "Error:\nMalloc failed"
 
@@ -47,6 +48,7 @@ typedef enum e_parse
 	BAD_EXT,
 	INVALID_MAP,
 	MAP_NOT_FOUND,
+	DOUBLE_IDENTIFIER,
 	PARSE_MSG_COUNT,
 }				t_parse;
 
@@ -165,8 +167,11 @@ void			free_textures(t_textures *textures);
 /* s_msg */
 t_msg			*init_msg_struct(t_data *data);
 
-/* map */
+/* map_file */
 void			check_map_file(char *input, t_data *data);
+
+/* map_file_utils */
+void			check_identifier(char *line, t_data *data, char id);
 
 //structures/s_mlx
 int				mlx_start(t_data *data);

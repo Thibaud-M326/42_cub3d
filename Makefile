@@ -18,7 +18,8 @@ NAME = cub3D
 SRC_FILES = main					\
 			messages/handle_message	\
 			parsing/input			\
-			parsing/map			\
+			parsing/map_file		\
+			parsing/map_file_utils	\
 			render/draw			\
 			render/render		\
 			structures/s_data		\
