@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:31:37 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/01 18:45:07 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 18:48:50 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	handle_cross(t_data *data)
 {
-	free_and_exit(data, (t_msg)"", 0);
+	free_and_exit(data, "", 0);
 	return (0);
 }
 
