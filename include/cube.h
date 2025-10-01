@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 19:16:28 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:59:59 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,7 @@ typedef struct s_player
 	int			pos_y;
 }				t_player;
 
-typedef struct s_hook_args
-{
-	t_player	*player;
-}				t_hook_args;
+typedef struct s_data t_data;
 
 typedef struct s_data
 {
@@ -140,6 +137,7 @@ typedef struct s_data
 	t_mlx_data	*mlx_data;
 	t_player	*player;
 	t_msg		*msg;
+	int			(*render)(t_data *);
 }				t_data;
 
 /****************************************************************************/
@@ -172,11 +170,20 @@ void			free_textures(t_textures *textures);
 /* s_msg */
 t_msg			*init_msg_struct(t_data *data);
 
+/* s_player */
+int				init_player_struct(t_data *data);
+
 /* map_file */
 void			check_map_file(char *input, t_data *data);
 
 //src/hook/hook.c
 int				deploy_mlx_hook(t_data *data);
+
+//src/hook/player_move.c
+int				player_move_left(t_data *data);
+int				player_move_right(t_data *data);
+int				player_move_up(t_data *data);
+int				player_move_down(t_data *data);
 
 //structures/s_mlx
 int				init_mlx(t_data *data);
@@ -184,7 +191,6 @@ int				free_mlx_data(t_mlx_data *mlx_data);
 
 /* map_file_utils */
 void			check_identifier(char *line, t_data *data, char id);
-
 
 //src/render/render.c
 int				render(t_data *data);

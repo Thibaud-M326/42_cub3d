@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 19:28:48 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:51:08 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	// parse_input(ac, av, data);
 	if (!init_mlx(data))
 		free_and_exit(data, msg_custom("Error:\ninit_mlx failed"), 1);
-	render(data);
+	init_player_struct(data);
 	deploy_mlx_hook(data);
 	return (0);
 }

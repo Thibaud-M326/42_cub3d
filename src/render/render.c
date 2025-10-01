@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/09/30 22:27:55 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:57:21 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,6 @@ int	render(t_data *data)
 	int			**map;
 	int			wall_color;
 	int			floor_color;
-	// t_hook_args	hook_args;
-	t_player	player; 
 
 	x = 0;
 	y = 0;
@@ -156,12 +154,7 @@ int	render(t_data *data)
 		y++;
 	}
 
-	player.pos_x = 250;
-	player.pos_y = 750;
-
-	player_start(data, &player);
-
-	// mlx_key_hook(data->mlx_data->win_ptr, &handle_keyboard, &hook_args);
+	player_start(data, data->player);
 
 	mlx_put_image_to_window(data->mlx_data->mlx_ptr,
 		data->mlx_data->win_ptr, data->mlx_data->mlx_img->img_ptr, 0, 0);
