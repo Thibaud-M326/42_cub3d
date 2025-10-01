@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 15:02:27 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 18:37:21 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_data	*init_data_struct(void)
 	data->check = NULL;
 	data->mlx_data = NULL;
 	data->player = NULL;
-	data->hook_args = NULL;
 	return (data);
 }
 

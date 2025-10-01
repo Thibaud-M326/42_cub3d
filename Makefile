@@ -16,10 +16,11 @@ MLX_FLAGS = -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 #------------------------------------------------#
 NAME = cub3D
 SRC_FILES = main					\
+			hook/hook				\
 			parsing/input			\
-			parsing/map			\
-			render/draw			\
-			render/render		\
+			parsing/map				\
+			render/draw				\
+			render/render			\
 			structures/s_data		\
 			structures/s_file		\
 			structures/s_check		\

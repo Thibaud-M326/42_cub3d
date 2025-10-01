@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 15:07:47 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 18:48:32 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define EMPTY_EXT_MSG "Error:\nExtension is empty"
 # define MALLOC_MSG "Error:\nMalloc failed"
 # define BAD_EXT_MSG "Error:\nExtension is not '.cub'"
-# define MAP_NOT_FOUND_MSG "Error:\nMap file not found"
 # define INVALID_MAP_MSG "Error:\nMap file invalid"
+# define MAP_NOT_FOUND_MSG "Error:\nMap file not found"
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -108,11 +108,6 @@ typedef struct s_player
 	int			pos_y;
 }	t_player;
 
-typedef struct s_hook_args
-{
-	t_player	*player;
-}	t_hook_args;
-
 typedef struct s_data
 {
 	t_file		*file;
@@ -121,7 +116,6 @@ typedef struct s_data
 	t_check		*check;
 	t_mlx_data	*mlx_data;
 	t_player	*player;
-	t_hook_args	*hook_args;
 }				t_data;
 
 /****************************************************************************/
@@ -153,6 +147,9 @@ void			free_textures(t_textures *textures);
 
 /* map */
 void			check_map_file(char *input, t_data *data);
+
+//src/hook/hook.c
+int				deploy_mlx_hook(t_data *data);
 
 //structures/s_mlx
 int				init_mlx(t_data *data);
