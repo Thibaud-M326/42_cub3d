@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_data.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 19:17:37 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:26:33 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,8 @@ t_data	*init_data_struct(void)
 void	free_and_exit_debug(t_data *data, t_msg msg, int err, 
 			const char *file, int line, const char *func)
 {
-	if (err)
-	{
-		ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
-		fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);
-	}	
-	else
-	{
-		ft_putendl_fd(get_error_message(msg), STDOUT_FILENO);
-		fprintf(stdout, "Exit in %s (%s:%d): \n", func, file, line);
-	}
+	ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
+	fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);
 	if (data)
 	{
 		if (data->file)

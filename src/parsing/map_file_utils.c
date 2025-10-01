@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 23:52:00 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 09:06:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/01 20:43:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static char	*get_texture_path(char *line, t_data *data)
 {
 	int		i;
 	char	*tmp;
-	int		len;
+	size_t	len;
 	int		j;
 
 	j = 0;
-	len = (int)ft_strlen(line);
+	len = ft_strlen(line);
 	i = 2;
 	tmp = ft_calloc(len, sizeof(char));
 	if (!tmp)
@@ -74,10 +74,10 @@ static void	set_identifier(t_data *data, char id, char *path)
 		data->textures->path_w = path;
 		data->check->west = true;
 	}
-	else if (id == 'F')
-		data->check->floor = true;
-	else if (id == 'C')
-		data->check->ceil = true;
+	// else if (id == 'F')
+	// 	data->check->floor = true;
+	// else if (id == 'C')
+	// 	data->check->ceil = true;
 }
 
 void	check_identifier(char *line, t_data *data, char id)

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 23:37:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 00:26:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/01 21:39:20 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,34 @@ C 225,30,0
 // make && valgrind --leak-check=full --show-leak-kinds=all ./cub3D map1.cub
 
 #include <stdio.h>
-static bool	is_map_available_char(char c)
+
+// static bool	is_map_available_char(char c)
+// {
+// 	printf("|%c|\n", c);
+// 	if (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
+// 		return (true);
+// 	else
+// 		ft_putendl_fd("Error\nInvalid char in map\n", STDOUT_FILENO);
+// 	return (false);
+// }
+
+static void	is_an_identifier(char *line, int i, t_data *data)
 {
-	printf("|%c|\n", c);
-	if (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || !c)
-		return (true);
-	else
-		ft_putendl_fd("Error\nInvalid char in map\n", STDOUT_FILENO);
-	return (false);
+	if (line[i] == 'F' || line[i] == 'C')
+	{
+		if (line[i] == 'F')
+			data->check->floor = true;
+		else
+			data->check->ceil = true;
+	}
+	else if (line[i] == 'N' && (line[i + 1]) && (line[i + 1]) == 'O')
+		check_identifier(line, data, 'N');
+	else if (line[i] == 'S' && (line[i + 1]) && (line[i + 1]) == 'O')
+		check_identifier(line, data, 'S');
+	else if (line[i] == 'E' && (line[i + 1]) && (line[i + 1]) == 'A')
+		check_identifier(line, data, 'E');
+	else if (line[i] == 'W' && (line[i + 1]) && (line[i + 1]) == 'E')
+		check_identifier(line, data, 'W');
 }
 
 static void	search_identifier(char *line, t_data *data)
@@ -100,24 +120,19 @@ static void	search_identifier(char *line, t_data *data)
 
 	check = data->check;
 	i = 0;
-	while (line[i] == ' ' || line[i] == '\n')
+	while (ft_is_white_space(line[i]))
 		i++;
-	if (line[i] == 'N' && line[i + 1] && line[i + 1] == 'O')
-		check_identifier(line, data, 'N');
-	else if (line[i] == 'S' && line[i + 1] && line[i + 1] == 'O')
-		check_identifier(line, data, 'S');
-	else if (line[i] == 'E' && line[i + 1] && line[i + 1] == 'A')
-		check_identifier(line, data, 'E');
-	else if (line[i] == 'W' && line[i + 1] && line[i + 1] == 'E')
-		check_identifier(line, data, 'W');
-	else if (line[i] == 'F')
-		check->floor = true;
-	else if (line[i] == 'C')
-		check->ceil = true;
-	else if ((!check->north || !check->south || !check->east || !check->west
-			|| !check->floor || !check->ceil)
-			&& !is_map_available_char(line[i]))
-		data->check->is_map_valid = false;
+	if (line[i] == 'F' || line[i] == 'C' || line[i] == 'N' || line[i] == 'S'
+		|| line[i] == 'E' || line[i] == 'W' || line[i] == '\0')
+	{
+		printf("line[%d] = %c\n", i, line[i]);
+		is_an_identifier(line, i, data);
+	}
+	else
+	{
+		free(line);
+		free_and_exit(data, msg_predefined(BAD_CHAR_ID), 0);
+	}
 }
 
 static void	get_file_data(t_data *data)
@@ -131,15 +146,22 @@ static void	get_file_data(t_data *data)
 	{
 		search_identifier(line, data);
 		free(line);
+		// printf("R = %d\n", rows);
 		rows++;
 		line = get_next_line(data->file->fd);
 	}
 	if (line)
 		free(line);
+	if (!data->check->floor || !data->check->ceil || !data->check->north
+		|| !data->check->south || !data->check->east || !data->check->west)
+		data->check->is_map_valid = false;
 	if (rows < 9)
-		free_and_exit(data, msg_predefined(INVALID_MAP), 0);
+		free_and_exit(data, msg_predefined(NOT_ALL_DATA), 0);
 	if (!data->check->is_map_valid)
-		free_and_exit(data, msg_predefined(INVALID_MAP), 0);
+	{
+		printf("R = %d\n", rows);
+		free_and_exit(data, msg_predefined(PLACE_MAP), 0);
+	}
 }
 
 void	check_map_file(char *input, t_data *data)

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 22:39:06 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 23:17:10 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/01 20:51:42 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ char	*get_error_message(t_msg msg)
 		messages[EMPTY_EXT] = EMPTY_EXT_MSG;
 		messages[MALLOC] = MALLOC_MSG;
 		messages[BAD_EXT] = BAD_EXT_MSG;
+		messages[BAD_CHAR_ID] = BAD_CHAR_ID_MSG;
+		messages[NOT_ALL_DATA] = NOT_ALL_DATA_MSG;
 		messages[INVALID_MAP] = INVALID_MAP_MSG;
+		messages[PLACE_MAP] = PLACE_MAP_MSG;
 		messages[MAP_NOT_FOUND] = MAP_NOT_FOUND_MSG;
 		messages[DOUBLE_IDENTIFIER] = DOUBLE_IDENTIFIER_MSG;
 	}

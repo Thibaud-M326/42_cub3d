@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 19:16:28 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 21:33:59 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # define EMPTY_EXT_MSG "Error:\nExtension is empty"
 # define BAD_EXT_MSG "Error:\nExtension is not '.cub'"
 # define INVALID_MAP_MSG "Error:\nMap file invalid"
+
+# define BAD_CHAR_ID_MSG "Error:\nWrong char in file.cub"
+# define NOT_ALL_DATA_MSG "Error:\nToo few lines in file.cub"
+# define PLACE_MAP_MSG "Error:\nNeed all identifiers before map"
 # define MAP_NOT_FOUND_MSG "Error:\nMap file not found"
 # define DOUBLE_IDENTIFIER_MSG "Error:\nThere is a duplicated identifier"
 
@@ -46,7 +50,10 @@ typedef enum e_parse
 	EMPTY_EXT,
 	MALLOC,
 	BAD_EXT,
+	BAD_CHAR_ID,
+	NOT_ALL_DATA,
 	INVALID_MAP,
+	PLACE_MAP,
 	MAP_NOT_FOUND,
 	DOUBLE_IDENTIFIER,
 	PARSE_MSG_COUNT,
