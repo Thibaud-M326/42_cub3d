@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 23:52:00 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 23:56:56 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/01 09:06:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ static void	set_identifier(t_data *data, char id, char *path)
 
 void	check_identifier(char *line, t_data *data, char id)
 {
-	t_check	*check;
 	char	*path;
 
-	check = data->check;
 	check_duplicata(data, id, line);
 	if (id == 'F' || id == 'C')
 		path = NULL;
