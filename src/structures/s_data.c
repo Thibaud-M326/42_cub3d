@@ -6,13 +6,15 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 19:09:59 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:17:37 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include <stddef.h>
+
+	#include <stdio.h>
 
 t_data	*init_data_struct(void)
 {
@@ -36,13 +38,13 @@ void	free_and_exit_debug(t_data *data, t_msg msg, int err,
 {
 	if (err)
 	{
-		fprintf(2, "Exit in %s (%s:%d): \n", func, file, line);
 		ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
+		fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);
 	}	
 	else
 	{
-		fprintf(1, "Exit in %s (%s:%d): \n", func, file, line);
 		ft_putendl_fd(get_error_message(msg), STDOUT_FILENO);
+		fprintf(stdout, "Exit in %s (%s:%d): \n", func, file, line);
 	}
 	if (data)
 	{
