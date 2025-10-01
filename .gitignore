@@ -1,1 +1,84 @@
 minilibx-linux
+cub3D
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dylib
+*.out
+
+# Executables
+*.exe
+a.out
+*.app
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Static and dynamic libraries
+*.lib
+*.dll
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Object files
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Build directories
+build/
+Build/
+bin/
+obj/
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-*
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Valgrind
+vgcore.*
+*.log
+
+# Core dumps
+core
+core.*
+
+# Dependency files
+*.d
+.depend
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Specific executable (uncomment and adapt for your project)
+# my_program
+
+# Tests
+test_output/
+*.test

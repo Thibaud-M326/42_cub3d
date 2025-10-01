@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 19:54:45 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:07:47 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,13 @@ void			free_file(t_file *file);
 
 /* s_data */
 t_data			*init_data_struct(void);
-void			free_and_exit(t_data *data, t_msg msg, int err);
+// void			free_and_exit(t_data *data, t_msg msg, int err);
+
+void	free_and_exit_debug(t_data *data, t_msg msg, int err, 
+						const char *file, int line, const char *func);
+
+#define free_and_exit(data, msg, err) \
+	free_and_exit_debug(data, msg, err, __FILE__, __LINE__, __func__)
 
 /* s_check */
 t_check			*init_check_struct(t_data *data);
@@ -149,16 +155,15 @@ void			free_textures(t_textures *textures);
 void			check_map_file(char *input, t_data *data);
 
 //structures/s_mlx
-int		mlx_start(t_data *data);
+int				init_mlx(t_data *data);
+int				free_mlx_data(t_mlx_data *mlx_data);
+
 
 //src/render/render.c
-int		render(t_data *data);
+int				render(t_data *data);
 
 //src/render/draw.c
-void	put_one_pixel(t_data *data, int x, int y, int color);
-int		mix_color(int red, int green, int blue);
-
-//src/hook/hook.c
-// int 	hook();
+void			put_one_pixel(t_data *data, int x, int y, int color);
+int				mix_color(int red, int green, int blue);
 
 #endif

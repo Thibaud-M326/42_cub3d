@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 19:50:51 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:02:27 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ static char	*get_error_message(t_msg msg)
 	return ("Error:\nUnknown error");
 }
 
-void	free_and_exit(t_data *data, t_msg msg, int err)
+void	free_and_exit_debug(t_data *data, t_msg msg, int err, 
+			const char *file, int line, const char *func)
 {
+	fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);
 	ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
 	if (data)
 	{
@@ -62,6 +64,8 @@ void	free_and_exit(t_data *data, t_msg msg, int err)
 			free(data->check);
 		if (data->textures)
 			free_textures(data->textures);
+		if (data->mlx_data)
+			free_mlx_data(data->mlx_data);
 		free(data);
 		if (err)
 			exit(1);
