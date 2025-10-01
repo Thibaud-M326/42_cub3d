@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 18:48:32 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/01 18:55:33 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,28 @@
 # define AC_NBR_MSG "Error:\nNeed only one argument"
 # define EMPTY_FILENAME_MSG "Error:\nFilename is empty"
 # define EMPTY_EXT_MSG "Error:\nExtension is empty"
-# define MALLOC_MSG "Error:\nMalloc failed"
 # define BAD_EXT_MSG "Error:\nExtension is not '.cub'"
 # define INVALID_MAP_MSG "Error:\nMap file invalid"
 # define MAP_NOT_FOUND_MSG "Error:\nMap file not found"
+# define DOUBLE_IDENTIFIER_MSG "Error:\nThere is a duplicated identifier"
+
+# define MALLOC_MSG "Error:\nMalloc failed"
 
 /****************************************************************************/
 /*                                INCLUDE									*/
 /****************************************************************************/
 # include <stdbool.h>
-	
-	# include <stdio.h> //enlever a la fin du projet
 
 /****************************************************************************/
 /*                                ENUM										*/
 /****************************************************************************/
-typedef enum e_msg
+typedef enum e_msg_type
+{
+	PREDEFINED,
+	CUSTOM,
+}				t_msg_type;
+
+typedef enum e_parse
 {
 	USAGE,
 	AC_NBR,
@@ -42,6 +48,18 @@ typedef enum e_msg
 	BAD_EXT,
 	INVALID_MAP,
 	MAP_NOT_FOUND,
+	DOUBLE_IDENTIFIER,
+	PARSE_MSG_COUNT,
+}				t_parse;
+
+typedef struct s_msg
+{
+	t_msg_type	type;
+	union
+	{
+		t_parse	predefined;
+		char	*custom;
+	} u_type;
 }				t_msg;
 
 /****************************************************************************/
@@ -85,14 +103,14 @@ typedef struct s_textures
 
 typedef struct s_mlx_img
 {
-	void	*img_ptr;
-	char	*img_data;
-	int		width;
-	int		height;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}	t_mlx_img;
+	void		*img_ptr;
+	char		*img_data;
+	int			width;
+	int			height;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+}				t_mlx_img;
 
 typedef struct s_mlx_data
 {
@@ -100,13 +118,18 @@ typedef struct s_mlx_data
 	void		*win_ptr;
 	t_mlx_img	*mlx_img;
 	int			color;
-}	t_mlx_data;
+}				t_mlx_data;
 
 typedef struct s_player
 {
 	int			pos_x;
 	int			pos_y;
-}	t_player;
+}				t_player;
+
+typedef struct s_hook_args
+{
+	t_player	*player;
+}				t_hook_args;
 
 typedef struct s_data
 {
@@ -116,6 +139,7 @@ typedef struct s_data
 	t_check		*check;
 	t_mlx_data	*mlx_data;
 	t_player	*player;
+	t_msg		*msg;
 }				t_data;
 
 /****************************************************************************/
@@ -145,7 +169,10 @@ t_check			*init_check_struct(t_data *data);
 t_textures		*init_textures_struct(t_data *data);
 void			free_textures(t_textures *textures);
 
-/* map */
+/* s_msg */
+t_msg			*init_msg_struct(t_data *data);
+
+/* map_file */
 void			check_map_file(char *input, t_data *data);
 
 //src/hook/hook.c
@@ -155,6 +182,9 @@ int				deploy_mlx_hook(t_data *data);
 int				init_mlx(t_data *data);
 int				free_mlx_data(t_mlx_data *mlx_data);
 
+/* map_file_utils */
+void			check_identifier(char *line, t_data *data, char id);
+
 
 //src/render/render.c
 int				render(t_data *data);
@@ -162,5 +192,10 @@ int				render(t_data *data);
 //src/render/draw.c
 void			put_one_pixel(t_data *data, int x, int y, int color);
 int				mix_color(int red, int green, int blue);
+
+/* messages */
+char			*get_error_message(t_msg msg);
+t_msg			msg_predefined(t_parse msg_type);
+t_msg			msg_custom(char *custom_msg);
 
 #endif

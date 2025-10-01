@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:06:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/29 21:33:56 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/09/30 22:48:42 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_file	*init_file_struct(t_data *data)
 
 	file = ft_calloc(1, sizeof(t_file));
 	if (!file)
-		free_and_exit(data, MALLOC, 1);
+		free_and_exit(data, msg_predefined(MALLOC), 1);
 	else
 	{
 		file->filename = NULL;

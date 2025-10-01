@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/28 00:00:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 00:12:30 by jmagand          ###   ########.fr       */
+/*   Created: 2025/09/30 23:37:37 by jmagand           #+#    #+#             */
+/*   Updated: 2025/10/01 00:26:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include <fcntl.h>
-#include <stdio.h>
 
 /*
 ◦ The map must be composed of only 6 possible characters: 0 for an empty space,
@@ -83,75 +82,42 @@ C 225,30,0
 // static void
 // make && valgrind --leak-check=full --show-leak-kinds=all ./cub3D map1.cub
 
-static char	*get_texture_path(char *line, t_data *data)
+#include <stdio.h>
+static bool	is_map_available_char(char c)
 {
-	int		i;
-	char	*tmp;
-	int		len;
-	int		j;
-
-	j = 0;
-	len = (int)ft_strlen(line);
-	i = 2;
-	tmp = ft_calloc(len, sizeof(char));
-	if (!tmp)
-		free_and_exit(data, MALLOC, 1);
-	while (line[i] && line[i] != '\n')
-	{
-		if ((line[i] >= '\t' && line[i] <= '\r') || line[i] == ' ')
-			i++;
-		else
-		{
-			tmp[j] = line[i];
-			j++;
-			i++;
-		}
-	}
-	tmp[j] = '\0';
-	printf("\npath = |%s|\n", tmp);
-	return (tmp);
+	printf("|%c|\n", c);
+	if (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || !c)
+		return (true);
+	else
+		ft_putendl_fd("Error\nInvalid char in map\n", STDOUT_FILENO);
+	return (false);
 }
 
-static void	check_identifier(char *line, t_data *data)
+static void	search_identifier(char *line, t_data *data)
 {
 	int		i;
 	t_check	*check;
 
 	check = data->check;
 	i = 0;
-	while ((line[i] && line[i] >= '\t' && line[i] <= '\r') || line[i] == ' ')
+	while (line[i] == ' ' || line[i] == '\n')
 		i++;
 	if (line[i] == 'N' && line[i + 1] && line[i + 1] == 'O')
-	{
-		data->textures->path_n = get_texture_path(line, data);
-		check->north = true;
-	}
+		check_identifier(line, data, 'N');
 	else if (line[i] == 'S' && line[i + 1] && line[i + 1] == 'O')
-	{
-		data->textures->path_s = get_texture_path(line, data);
-		check->south = true;
-	}
+		check_identifier(line, data, 'S');
 	else if (line[i] == 'E' && line[i + 1] && line[i + 1] == 'A')
-	{
-		data->textures->path_e = get_texture_path(line, data);
-		check->east = true;
-	}
+		check_identifier(line, data, 'E');
 	else if (line[i] == 'W' && line[i + 1] && line[i + 1] == 'E')
-	{
-		data->textures->path_w = get_texture_path(line, data);
-		check->west = true;
-	}
-
+		check_identifier(line, data, 'W');
 	else if (line[i] == 'F')
-		check->west = true;
+		check->floor = true;
 	else if (line[i] == 'C')
-		check->west = true;
+		check->ceil = true;
 	else if ((!check->north || !check->south || !check->east || !check->west
-				|| !check->floor || !check->ceil) && (line[i] == '1'
-				|| line[i] == '0' || line[i] == 'N' || line[i] == 'S'
-				|| line[i] == 'E' || line[i] == 'W'))
+			|| !check->floor || !check->ceil)
+			&& !is_map_available_char(line[i]))
 		data->check->is_map_valid = false;
-	printf("%s\n", line);
 }
 
 static void	get_file_data(t_data *data)
@@ -163,7 +129,7 @@ static void	get_file_data(t_data *data)
 	line = get_next_line(data->file->fd);
 	while (line && data->check->is_map_valid)
 	{
-		check_identifier(line, data);
+		search_identifier(line, data);
 		free(line);
 		rows++;
 		line = get_next_line(data->file->fd);
@@ -171,36 +137,30 @@ static void	get_file_data(t_data *data)
 	if (line)
 		free(line);
 	if (rows < 9)
-		free_and_exit(data, INVALID_MAP, 1);
+		free_and_exit(data, msg_predefined(INVALID_MAP), 0);
 	if (!data->check->is_map_valid)
-		free_and_exit(data, INVALID_MAP, 1);
-}
-
-static int	open_file(t_data *data)
-{
-	int	fd;
-
-	fd = open(data->file->map, O_RDONLY);
-	if (fd < 0)
-		free_and_exit(data, MAP_NOT_FOUND, 1);
-	return (fd);
+		free_and_exit(data, msg_predefined(INVALID_MAP), 0);
 }
 
 void	check_map_file(char *input, t_data *data)
 {
 	char	*map_path;
+	t_file	*file;
 
+	file = data->file;
 	map_path = ft_strjoin("src/maps/", input);
 	if (!map_path)
-		free_and_exit(data, MALLOC, 1);
-	data->file->map = ft_strdup(map_path);
+		free_and_exit(data, msg_predefined(MALLOC), 1);
+	file->map = ft_strdup(map_path);
 	free(map_path);
-	if (!data->file->map)
-		free_and_exit(data, MALLOC, 1);
-	data->file->fd = open_file(data);
+	if (!file->map)
+		free_and_exit(data, msg_predefined(MALLOC), 1);
+	file->fd = open(file->map, O_RDONLY);
+	if (file->fd < 0)
+		free_and_exit(data, msg_predefined(MAP_NOT_FOUND), 0);
 	data->check = init_check_struct(data);
 	data->textures = init_textures_struct(data);
 	get_file_data(data);
 	/* map ok */
-	free_and_exit(data, -1, 1);
+	free_and_exit(data, msg_custom("Niceuuuu - map_file.c\n"), 0);
 }
