@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/02 16:37:03 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:43:22 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,13 @@ int	player_print(t_data *data, t_player *player)
 
 int	draw_ray(t_data *data)
 {
-	int		ray_length;
 	int		pos_x;
 	int		pos_y;
 	double	dir_x;
 	double	dir_y;
 	double	ray_x;
 	double	ray_y;
+	int		ray_length;
 
 	pos_x = data->player->pos_x;
 	pos_y = data->player->pos_y;
