@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 20:52:11 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/02 16:36:13 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/02 18:10:02 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int player_move_forward(t_data *data)
     t_player *player;
 
     player = data->player;
-    player->pos_x += player->dir_x * 6;
-    player->pos_y += player->dir_y * 6;
+    player->pos_x += player->dir_x * 0.1;
+    player->pos_y += player->dir_y * 0.1;
     return (1);
 }
 
@@ -28,8 +28,8 @@ int player_move_backward(t_data *data)
     t_player *player;
 
     player = data->player;
-    player->pos_x -= player->dir_x * 6;
-    player->pos_y -= player->dir_y * 6;
+    player->pos_x -= player->dir_x * 0.1;
+    player->pos_y -= player->dir_y * 0.1;
     return (1);
 }
 

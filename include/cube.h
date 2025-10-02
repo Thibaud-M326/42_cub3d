@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 16:21:51 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/02 18:13:52 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,27 @@ typedef struct s_mlx_data
 	int			color;
 }				t_mlx_data;
 
+typedef	struct s_ray
+{
+	double		dir_x;
+	double		dir_y;
+	double		ray_length_x;
+	double		ray_length_y;
+	double		ray_unit_step_size_x;
+	double		ray_unit_step_size_y;
+	double		map_check_x;
+	double		map_check_y;
+	int			sign_x;
+	int			sign_y;	
+}				t_ray;
+
 typedef struct s_player
 {
 	double		pos_x;
 	double		pos_y;
 	double		dir_x;
 	double		dir_y;
+	t_ray		ray;
 }				t_player;
 
 typedef struct s_data t_data;
@@ -194,12 +209,15 @@ int				free_mlx_data(t_mlx_data *mlx_data);
 /* map_file_utils */
 void			check_identifier(char *line, t_data *data, char id);
 
-//src/render/render.c
-int				render(t_data *data);
+//src/render/draw_cub2d.c
+int				draw_cub2d(t_data *data);
 
 //src/render/draw.c
 void			put_one_pixel(t_data *data, int x, int y, int color);
 int				mix_color(int red, int green, int blue);
+
+//src/render/render.c
+int				render(t_data *data);
 
 /* messages */
 char			*get_error_message(t_msg msg);
