@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 20:42:44 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/27 19:50:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/01 23:26:44 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ static void	ft_b_zero(void *s)
 	}
 }
 
-static char	*handle_eof(char *line, char *buffer, ssize_t read_bytes)
+static char	*handle_eof(char *line, char *buffer, ssize_t read_bytes, int *err)
 {
-	if (line[0] == '\0' || read_bytes == -1)
+	if (line[0] == '\0' || read_bytes < 0)
 	{
+		if (read_bytes < 0)
+			*err = 1;
 		free(line);
 		ft_b_zero(buffer);
 		return (NULL);
@@ -37,7 +39,7 @@ static char	*handle_eof(char *line, char *buffer, ssize_t read_bytes)
 	return (line);
 }
 
-static ssize_t	set_line(char *buffer, char **line)
+static ssize_t	set_line(char *buffer, char **line, int *err)
 {
 	size_t	i;
 
@@ -48,7 +50,10 @@ static ssize_t	set_line(char *buffer, char **line)
 		i++;
 	*line = ft_strjoin_gnl(*line, buffer, i);
 	if (!*line)
+	{
+		*err = 1;
 		return (-1);
+	}
 	if (buffer[i - 1] == '\n')
 	{
 		ft_memmove_gnl(buffer, buffer + i, ft_strlen(buffer + i) + 1);
@@ -57,18 +62,36 @@ static ssize_t	set_line(char *buffer, char **line)
 	return (0);
 }
 
-char	*get_next_line(int fd)
+static char	*init_line_check_fds(int fd, int *err)
+{
+	char	*line;
+
+	if (fd > FD_MAX || fd < 0 || BUFFER_SIZE <= 0)
+	{
+		*err = 1;
+		return (NULL);
+	}
+	line = malloc(sizeof(char));
+	if (!line)
+	{
+		*err = 1;
+		return (NULL);
+	}
+	return (line);
+}
+
+char	*get_next_line(int fd, int *err)
 {
 	static char	buffer[FD_MAX + 1][BUFFER_SIZE + 1];
 	char		*line;
 	ssize_t		read_bytes;
 
-	line = NULL;
-	if (fd > FD_MAX || fd < 0 || BUFFER_SIZE <= 0)
+	line = init_line_check_fds(fd, err);
+	if (*err)
+	{
+		free(line);
 		return (NULL);
-	line = malloc(sizeof(char));
-	if (!line)
-		return (NULL);
+	}
 	line[0] = '\0';
 	while (1)
 	{
@@ -76,10 +99,10 @@ char	*get_next_line(int fd)
 		{
 			read_bytes = read(fd, buffer[fd], BUFFER_SIZE);
 			if (read_bytes <= 0)
-				return (handle_eof(line, buffer[fd], read_bytes));
+				return (handle_eof(line, buffer[fd], read_bytes, err));
 			buffer[fd][read_bytes] = '\0';
 		}
-		if (set_line(buffer[fd], &line))
+		if (set_line(buffer[fd], &line, err))
 			return (line);
 		ft_b_zero(buffer[fd]);
 	}

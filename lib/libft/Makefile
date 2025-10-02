@@ -6,7 +6,7 @@
 #    By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 22:04:08 by thibaud           #+#    #+#              #
-#    Updated: 2025/09/27 20:08:12 by jmagand          ###   ########.fr        #
+#    Updated: 2025/10/01 22:50:40 by jmagand          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ OBJS		:= $(SRCS:%.c=%.o)
 OBJS_BONUS	:= $(SRCS_BONUS:%.c=%.o)
 
 CC			:= cc
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror -g3
 AR			:= ar
 ARFLAGS 	:= -r -c -s
 

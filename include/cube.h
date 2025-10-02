@@ -6,27 +6,27 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 21:33:59 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 01:58:49 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# define USAGE_MSG "Error:\nUsage: ./cub3D [FILE].cub"
-# define AC_NBR_MSG "Error:\nNeed only one argument"
-# define EMPTY_FILENAME_MSG "Error:\nFilename is empty"
-# define EMPTY_EXT_MSG "Error:\nExtension is empty"
-# define BAD_EXT_MSG "Error:\nExtension is not '.cub'"
-# define INVALID_MAP_MSG "Error:\nMap file invalid"
+# define USAGE_MSG "Usage: ./cub3D [FILE].cub"
+# define AC_NBR_MSG "Need only one argument"
+# define EMPTY_FILENAME_MSG "Filename is empty"
+# define EMPTY_EXT_MSG "Extension is empty"
+# define BAD_EXT_MSG "Extension is not '.cub'"
+# define INVALID_MAP_MSG "Map file invalid"
 
-# define BAD_CHAR_ID_MSG "Error:\nWrong char in file.cub"
-# define NOT_ALL_DATA_MSG "Error:\nToo few lines in file.cub"
-# define PLACE_MAP_MSG "Error:\nNeed all identifiers before map"
-# define MAP_NOT_FOUND_MSG "Error:\nMap file not found"
-# define DOUBLE_IDENTIFIER_MSG "Error:\nThere is a duplicated identifier"
+# define BAD_CHAR_ID_MSG "Invalid character in file"
+# define PLACE_MAP_MSG "Map content found before all identifiers were set"
+# define MAP_NOT_FOUND_MSG "Map file not found"
+# define DOUBLE_IDENTIFIER_MSG "There is a duplicated identifier"
+# define INVALID_IDENTIFIER_MSG "Invalid identifier in file"
 
-# define MALLOC_MSG "Error:\nMalloc failed"
+# define MALLOC_MSG "Malloc failed"
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -51,10 +51,10 @@ typedef enum e_parse
 	MALLOC,
 	BAD_EXT,
 	BAD_CHAR_ID,
-	NOT_ALL_DATA,
 	INVALID_MAP,
 	PLACE_MAP,
 	MAP_NOT_FOUND,
+	INVALID_IDENTIFIER,
 	DOUBLE_IDENTIFIER,
 	PARSE_MSG_COUNT,
 }				t_parse;
@@ -88,7 +88,7 @@ typedef struct s_check
 	bool		south;
 	bool		floor;
 	bool		ceil;
-	bool		is_map_valid;
+	bool		are_identifiers_valid;
 }				t_check;
 
 typedef struct s_map
@@ -163,10 +163,10 @@ void			free_file(t_file *file);
 t_data			*init_data_struct(void);
 // void			free_and_exit(t_data *data, t_msg msg, int err);
 
-void	free_and_exit_debug(t_data *data, t_msg msg, int err, 
-						const char *file, int line, const char *func);
+void			free_and_exit_debug(t_data *data, t_msg msg, int err,
+					const char *file, int line, const char *func);
 
-#define free_and_exit(data, msg, err) \
+# define free_and_exit(data, msg, err) \
 	free_and_exit_debug(data, msg, err, __FILE__, __LINE__, __func__)
 
 /* s_check */
@@ -182,6 +182,14 @@ t_msg			*init_msg_struct(t_data *data);
 /* map_file */
 void			check_map_file(char *input, t_data *data);
 
+/* map_file_error */
+void			check_error_in_file(char *line, t_data *data);
+
+/* parsing/utils */
+bool			are_all_identifiers_true(t_data *data);
+bool			is_available_char_identifier(char c);
+bool			is_available_char_map(char c);
+
 //src/hook/hook.c
 int				deploy_mlx_hook(t_data *data);
 
@@ -191,7 +199,6 @@ int				free_mlx_data(t_mlx_data *mlx_data);
 
 /* map_file_utils */
 void			check_identifier(char *line, t_data *data, char id);
-
 
 //src/render/render.c
 int				render(t_data *data);

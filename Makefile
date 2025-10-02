@@ -19,8 +19,10 @@ SRC_FILES = main					\
 			hook/hook				\
 			messages/handle_message	\
 			parsing/input			\
-			parsing/map_file		\
+			parsing/utils			\
+			parsing/map_file_error	\
 			parsing/map_file_utils	\
+			parsing/map_file		\
 			render/draw			\
 			render/render		\
 			structures/s_data		\
@@ -63,7 +65,7 @@ endef
 #------------------------------------------------#
 all: makelibft $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(MLX_NAME) $(OBJ)
 	@make -C $(MLX_DIR)
 	@echo "\n$(MAGENTA)$(BOLD)💻 Compiling executable...$(RESET)"
 	@$(CC) $(CFLAGS) $(OBJ) -L $(LIBFT_DIR) $(LIBFT) $(MLX_FLAGS) -o $(NAME)

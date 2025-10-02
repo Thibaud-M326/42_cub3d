@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 23:37:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 21:39:20 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 02:04:55 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,33 +84,28 @@ C 225,30,0
 
 #include <stdio.h>
 
-// static bool	is_map_available_char(char c)
-// {
-// 	printf("|%c|\n", c);
-// 	if (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
-// 		return (true);
-// 	else
-// 		ft_putendl_fd("Error\nInvalid char in map\n", STDOUT_FILENO);
-// 	return (false);
-// }
-
-static void	is_an_identifier(char *line, int i, t_data *data)
+static void	check_map(char *line, char c, t_data *data)
 {
-	if (line[i] == 'F' || line[i] == 'C')
+	if (is_available_char_map(c))
 	{
-		if (line[i] == 'F')
-			data->check->floor = true;
+		if (are_all_identifiers_true(data))
+			data->check->are_identifiers_valid = true;
 		else
-			data->check->ceil = true;
+		{
+			free(line);
+			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
+		}
 	}
-	else if (line[i] == 'N' && (line[i + 1]) && (line[i + 1]) == 'O')
-		check_identifier(line, data, 'N');
-	else if (line[i] == 'S' && (line[i + 1]) && (line[i + 1]) == 'O')
-		check_identifier(line, data, 'S');
-	else if (line[i] == 'E' && (line[i + 1]) && (line[i + 1]) == 'A')
-		check_identifier(line, data, 'E');
-	else if (line[i] == 'W' && (line[i + 1]) && (line[i + 1]) == 'E')
-		check_identifier(line, data, 'W');
+	else
+	{
+		free(line);
+		free_and_exit(data, msg_predefined(BAD_CHAR_ID), 0);
+	}
+}
+
+static bool	is_valid_identifier(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'F' || c == 'C');
 }
 
 static void	search_identifier(char *line, t_data *data)
@@ -122,46 +117,57 @@ static void	search_identifier(char *line, t_data *data)
 	i = 0;
 	while (ft_is_white_space(line[i]))
 		i++;
-	if (line[i] == 'F' || line[i] == 'C' || line[i] == 'N' || line[i] == 'S'
-		|| line[i] == 'E' || line[i] == 'W' || line[i] == '\0')
+	if (!line[i])
+		return ;
+	if (!is_valid_identifier(line[i]) && !check->are_identifiers_valid)
 	{
-		printf("line[%d] = %c\n", i, line[i]);
-		is_an_identifier(line, i, data);
+		if (is_available_char_map(line[i]))
+		{
+			free(line);
+			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
+		}
 	}
+	if (line[i] == 'N' && (line[i + 1]) && (line[i + 1]) == 'O')
+		check_identifier(line, data, 'N');
+	else if (line[i] == 'S' && (line[i + 1]) && (line[i + 1]) == 'O')
+		check_identifier(line, data, 'S');
+	else if (line[i] == 'E' && (line[i + 1]) && (line[i + 1]) == 'A')
+		check_identifier(line, data, 'E');
+	else if (line[i] == 'W' && (line[i + 1]) && (line[i + 1]) == 'E')
+		check_identifier(line, data, 'W');
+	else if (line[i] == 'F')
+		check->floor = true;
+	else if (line[i] == 'C')
+		check->ceil = true;
 	else
-	{
-		free(line);
-		free_and_exit(data, msg_predefined(BAD_CHAR_ID), 0);
-	}
+		check_map(line, line[i], data);
 }
 
 static void	get_file_data(t_data *data)
 {
 	char	*line;
-	int		rows;
+	int		err;
 
-	rows = 0;
-	line = get_next_line(data->file->fd);
-	while (line && data->check->is_map_valid)
+	err = 0;
+	line = get_next_line(data->file->fd, &err);
+	if (err)
 	{
+		free(line);
+		free_and_exit(data, msg_custom("Gnl failed"), 1);
+	}
+	while (line && data->check->are_identifiers_valid)
+	{
+		printf("%s\n", line);
 		search_identifier(line, data);
 		free(line);
-		// printf("R = %d\n", rows);
-		rows++;
-		line = get_next_line(data->file->fd);
+		line = get_next_line(data->file->fd, &err);
+		if (err)
+		{
+			free(line);
+			free_and_exit(data, msg_custom("Gnl failed"), 1);
+		}
 	}
-	if (line)
-		free(line);
-	if (!data->check->floor || !data->check->ceil || !data->check->north
-		|| !data->check->south || !data->check->east || !data->check->west)
-		data->check->is_map_valid = false;
-	if (rows < 9)
-		free_and_exit(data, msg_predefined(NOT_ALL_DATA), 0);
-	if (!data->check->is_map_valid)
-	{
-		printf("R = %d\n", rows);
-		free_and_exit(data, msg_predefined(PLACE_MAP), 0);
-	}
+	check_error_in_file(line, data);
 }
 
 void	check_map_file(char *input, t_data *data)

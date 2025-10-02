@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_check.c                                          :+:      :+:    :+:   */
+/*   map_file_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 01:57:09 by jmagand          ###   ########.fr       */
+/*   Created: 2025/10/01 23:48:50 by jmagand           #+#    #+#             */
+/*   Updated: 2025/10/02 01:57:01 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "libft.h"
-#include <stddef.h>
+#include <stdlib.h>
 
-t_check	*init_check_struct(t_data *data)
+void	check_error_in_file(char *line, t_data *data)
 {
-	t_check	*check;
-
-	check = ft_calloc(1, sizeof(t_check));
-	if (!check)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
-	else
-	{
-		check->north = false;
-		check->west = false;
-		check->east = false;
-		check->south = false;
-		check->floor = false;
-		check->ceil = false;
-		check->are_identifiers_valid = true;
-	}
-	return (check);
+	if (line)
+		free(line);
+	if (!data->check->floor || !data->check->ceil || !data->check->north
+		|| !data->check->south || !data->check->east || !data->check->west)
+		data->check->are_identifiers_valid = false;
+	if (!data->check->are_identifiers_valid)
+		free_and_exit(data, msg_predefined(PLACE_MAP), 0);
 }

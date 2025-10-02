@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:20:19 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/09/27 19:51:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/01 22:14:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 /* GNL */
 char				*ft_strjoin_gnl(char *s1, char *s2, size_t len);
 void				*ft_memmove_gnl(void *dest, const void *src, size_t n);
-char				*get_next_line(int fd);
+char				*get_next_line(int fd, int *err);
 
 #endif

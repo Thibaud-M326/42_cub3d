@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 20:26:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 01:16:46 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_data	*init_data_struct(void)
 
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
-		free_and_exit(data, msg_custom("Error:\nMalloc failed"), 1);
+		free_and_exit(data, msg_custom("Malloc failed"), 1);
 	data->file = NULL;
 	data->textures = NULL;
 	data->map = NULL;
@@ -36,6 +36,7 @@ t_data	*init_data_struct(void)
 void	free_and_exit_debug(t_data *data, t_msg msg, int err, 
 			const char *file, int line, const char *func)
 {
+	ft_putendl_fd("Error:", STDERR_FILENO);
 	ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
 	fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);
 	if (data)
