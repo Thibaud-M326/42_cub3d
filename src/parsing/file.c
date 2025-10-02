@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_file.c                                         :+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 23:37:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 02:04:55 by jmagand          ###   ########.fr       */
+/*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
+/*   Updated: 2025/10/02 20:10:54 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include <fcntl.h>
 
 /*
 ◦ The map must be composed of only 6 possible characters: 0 for an empty space,
@@ -84,108 +83,85 @@ C 225,30,0
 
 #include <stdio.h>
 
-static void	check_map(char *line, char c, t_data *data)
+static void	check_map(int i, t_data *data)
 {
-	if (is_available_char_map(c))
+	if (is_available_char_map(data->file->line[i]))
 	{
 		if (are_all_identifiers_true(data))
 			data->check->are_identifiers_valid = true;
 		else
-		{
-			free(line);
 			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
-		}
 	}
 	else
-	{
-		free(line);
 		free_and_exit(data, msg_predefined(BAD_CHAR_ID), 0);
-	}
 }
 
 static bool	is_valid_identifier(char c)
 {
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'F' || c == 'C');
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'F'
+		|| c == 'C');
 }
 
-static void	search_identifier(char *line, t_data *data)
+static void	search_identifier(t_data *data)
 {
 	int		i;
 	t_check	*check;
+	t_file	*f;
 
 	check = data->check;
+	f = data->file;
 	i = 0;
-	while (ft_is_white_space(line[i]))
+	while (ft_is_white_space(f->line[i]))
 		i++;
-	if (!line[i])
+	if (!f->line[i])
 		return ;
-	if (!is_valid_identifier(line[i]) && !check->are_identifiers_valid)
+	if (!is_valid_identifier(f->line[i]) && !check->are_identifiers_valid)
 	{
-		if (is_available_char_map(line[i]))
-		{
-			free(line);
+		if (is_available_char_map(f->line[i]))
 			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
-		}
 	}
-	if (line[i] == 'N' && (line[i + 1]) && (line[i + 1]) == 'O')
-		check_identifier(line, data, 'N');
-	else if (line[i] == 'S' && (line[i + 1]) && (line[i + 1]) == 'O')
-		check_identifier(line, data, 'S');
-	else if (line[i] == 'E' && (line[i + 1]) && (line[i + 1]) == 'A')
-		check_identifier(line, data, 'E');
-	else if (line[i] == 'W' && (line[i + 1]) && (line[i + 1]) == 'E')
-		check_identifier(line, data, 'W');
-	else if (line[i] == 'F')
+	if (f->line[i] == 'N' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
+		check_identifier(data, 'N');
+	else if (f->line[i] == 'S' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
+		check_identifier(data, 'S');
+	else if (f->line[i] == 'E' && (f->line[i + 1]) && (f->line[i + 1]) == 'A')
+		check_identifier(data, 'E');
+	else if (f->line[i] == 'W' && (f->line[i + 1]) && (f->line[i + 1]) == 'E')
+		check_identifier(data, 'W');
+	else if (f->line[i] == 'F')
 		check->floor = true;
-	else if (line[i] == 'C')
+	else if (f->line[i] == 'C')
 		check->ceil = true;
 	else
-		check_map(line, line[i], data);
+		check_map(i, data);
 }
 
 static void	get_file_data(t_data *data)
 {
-	char	*line;
-	int		err;
+	int	err;
 
 	err = 0;
-	line = get_next_line(data->file->fd, &err);
+	data->file->line = get_next_line(data->file->fd, &err);
 	if (err)
 	{
-		free(line);
+		free(data->file->line);
 		free_and_exit(data, msg_custom("Gnl failed"), 1);
 	}
-	while (line && data->check->are_identifiers_valid)
+	while (data->file->line && data->check->are_identifiers_valid)
 	{
-		printf("%s\n", line);
-		search_identifier(line, data);
-		free(line);
-		line = get_next_line(data->file->fd, &err);
+		printf("%s", data->file->line);
+		search_identifier(data);
+		free(data->file->line);
+		data->file->line = get_next_line(data->file->fd, &err);
 		if (err)
-		{
-			free(line);
 			free_and_exit(data, msg_custom("Gnl failed"), 1);
-		}
 	}
-	check_error_in_file(line, data);
+	check_error_in_file(data);
 }
 
-void	check_map_file(char *input, t_data *data)
+void	check_file(char *input, t_data *data)
 {
-	char	*map_path;
-	t_file	*file;
-
-	file = data->file;
-	map_path = ft_strjoin("src/maps/", input);
-	if (!map_path)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
-	file->map = ft_strdup(map_path);
-	free(map_path);
-	if (!file->map)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
-	file->fd = open(file->map, O_RDONLY);
-	if (file->fd < 0)
-		free_and_exit(data, msg_predefined(MAP_NOT_FOUND), 0);
+	check_path_file(input, data);
 	data->check = init_check_struct(data);
 	data->textures = init_textures_struct(data);
 	get_file_data(data);

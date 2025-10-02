@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:06:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 22:49:07 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 20:01:42 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_file	*init_file_struct(t_data *data)
 		free_and_exit(data, msg_predefined(MALLOC), 1);
 	else
 	{
+		file->line = NULL;
 		file->filename = NULL;
 		file->ext = NULL;
 		file->map = NULL;
@@ -35,6 +36,8 @@ void	free_file(t_file *file)
 {
 	if (file)
 	{
+		if (file->line)
+			free(file->line);
 		if (file->ext)
 			free(file->ext);
 		if (file->filename)

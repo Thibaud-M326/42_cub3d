@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 21:05:01 by jmagand           #+#    #+#             */
-/*   Updated: 2025/09/30 22:46:09 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 17:48:42 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	parse_input(int ac, char **av, t_data *data)
 	if (ac != 2)
 		free_and_exit(data, msg_predefined(USAGE), 0);
 	check_input(av[1], data);
-	check_map_file(av[1], data);
+	check_file(av[1], data);
 }

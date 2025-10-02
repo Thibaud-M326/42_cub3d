@@ -6,15 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 01:16:46 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 17:35:00 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include <stddef.h>
-
-	#include <stdio.h>
 
 t_data	*init_data_struct(void)
 {
@@ -31,29 +29,4 @@ t_data	*init_data_struct(void)
 	data->player = NULL;
 	data->msg = init_msg_struct(data);
 	return (data);
-}
-
-void	free_and_exit_debug(t_data *data, t_msg msg, int err, 
-			const char *file, int line, const char *func)
-{
-	ft_putendl_fd("Error:", STDERR_FILENO);
-	ft_putendl_fd(get_error_message(msg), STDERR_FILENO);
-	fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);
-	if (data)
-	{
-		if (data->file)
-			free_file(data->file);
-		if (data->check)
-			free(data->check);
-		if (data->textures)
-			free_textures(data->textures);
-		if (data->mlx_data)
-			free_mlx_data(data->mlx_data);
-		if (data->msg)
-			free(data->msg);
-		free(data);
-		if (err)
-			exit(1);
-	}
-	exit(0);
 }

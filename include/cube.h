@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 01:58:49 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 20:44:32 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_msg
 /****************************************************************************/
 typedef struct s_file
 {
+	char		*line;
 	char		*filename;
 	char		*ext;
 	char		*map;
@@ -82,6 +83,7 @@ typedef struct s_file
 
 typedef struct s_check
 {
+	char		*path;
 	bool		north;
 	bool		west;
 	bool		east;
@@ -152,53 +154,41 @@ typedef struct s_data
 /****************************************************************************/
 /*                                FUNCTIONS									*/
 /****************************************************************************/
-/* input */
-void			parse_input(int ac, char **av, t_data *data);
-
-/* s_file */
-t_file			*init_file_struct(t_data *data);
-void			free_file(t_file *file);
-
-/* s_data */
-t_data			*init_data_struct(void);
-// void			free_and_exit(t_data *data, t_msg msg, int err);
-
+/* exit/free_exit */
 void			free_and_exit_debug(t_data *data, t_msg msg, int err,
 					const char *file, int line, const char *func);
 
 # define free_and_exit(data, msg, err) \
 	free_and_exit_debug(data, msg, err, __FILE__, __LINE__, __func__)
 
-/* s_check */
-t_check			*init_check_struct(t_data *data);
+/* exit/handle_message */
+char			*get_error_message(t_msg msg);
+t_msg			msg_predefined(t_parse msg_type);
+t_msg			msg_custom(char *custom_msg);
 
-/* s_textures */
-t_textures		*init_textures_struct(t_data *data);
-void			free_textures(t_textures *textures);
+//src/hook/hook.c
+int				deploy_mlx_hook(t_data *data);
 
-/* s_msg */
-t_msg			*init_msg_struct(t_data *data);
+/* parsing/input */
+void			parse_input(int ac, char **av, t_data *data);
 
-/* map_file */
-void			check_map_file(char *input, t_data *data);
+/* parsing/file_check */
+void			check_error_in_file(t_data *data);
+void			check_duplicate(t_data *data, char id);
+void			check_identifier(t_data *data, char id);
+void			check_path_file(char *input, t_data *data);
 
-/* map_file_error */
-void			check_error_in_file(char *line, t_data *data);
+/* parsing/file_check_utils */
+void			get_texture_path(t_data *data);
+void			set_identifier(t_data *data, char id, char *path);
+
+/* parsing/file */
+void			check_file(char *input, t_data *data);
 
 /* parsing/utils */
 bool			are_all_identifiers_true(t_data *data);
 bool			is_available_char_identifier(char c);
 bool			is_available_char_map(char c);
-
-//src/hook/hook.c
-int				deploy_mlx_hook(t_data *data);
-
-//structures/s_mlx
-int				init_mlx(t_data *data);
-int				free_mlx_data(t_mlx_data *mlx_data);
-
-/* map_file_utils */
-void			check_identifier(char *line, t_data *data, char id);
 
 //src/render/render.c
 int				render(t_data *data);
@@ -207,9 +197,26 @@ int				render(t_data *data);
 void			put_one_pixel(t_data *data, int x, int y, int color);
 int				mix_color(int red, int green, int blue);
 
-/* messages */
-char			*get_error_message(t_msg msg);
-t_msg			msg_predefined(t_parse msg_type);
-t_msg			msg_custom(char *custom_msg);
+/* structures/s_check */
+t_check			*init_check_struct(t_data *data);
+void			free_check(t_check *check);
+
+/* structures/s_data */
+t_data			*init_data_struct(void);
+
+/* structures/s_file */
+t_file			*init_file_struct(t_data *data);
+void			free_file(t_file *file);
+
+//structures/s_mlx
+int				init_mlx(t_data *data);
+int				free_mlx_data(t_mlx_data *mlx_data);
+
+/* structures/s_msg */
+t_msg			*init_msg_struct(t_data *data);
+
+/* structures/s_textures */
+t_textures		*init_textures_struct(t_data *data);
+void			free_textures(t_textures *textures);
 
 #endif

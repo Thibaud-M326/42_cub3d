@@ -1,58 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_file_utils.c                                   :+:      :+:    :+:   */
+/*   file_check_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 23:52:00 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 23:48:38 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 20:44:22 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 
-static void	check_duplicata(t_data *data, char id, char *line)
-{
-	if ((id == 'N' && data->check->north) || (id == 'S' && data->check->south)
-		|| (id == 'E' && data->check->east) || (id == 'W' && data->check->west)
-		|| (id == 'F' && data->check->floor) || (id == 'C'
-			&& data->check->ceil))
-	{
-		free(line);
-		free_and_exit(data, msg_predefined(DOUBLE_IDENTIFIER), 0);
-	}
-}
-
-static char	*get_texture_path(char *line, t_data *data)
+void	get_texture_path(t_data *data)
 {
 	int		i;
-	char	*tmp;
 	size_t	len;
 	int		j;
 
 	j = 0;
-	len = ft_strlen(line);
+	len = ft_strlen(data->file->line);
 	i = 2;
-	tmp = ft_calloc(len, sizeof(char));
-	if (!tmp)
-	{
-		free(line);
+	data->check->path = ft_calloc(len, sizeof(char));
+	if (!data->check->path)
 		free_and_exit(data, msg_predefined(MALLOC), 1);
-	}
-	while (line[i] && line[i] != '\n')
+	while (data->file->line[i] && data->file->line[i] != '\n')
 	{
-		if (line[i] == ' ')
+		if (data->file->line[i] == ' ')
 			i++;
 		else
-			tmp[j++] = line[i++];
+			data->check->path [j++] = data->file->line[i++];
 	}
-	tmp[j] = '\0';
-	return (tmp);
+	data->check->path [j] = '\0';
 }
 
-static void	set_identifier(t_data *data, char id, char *path)
+void	set_identifier(t_data *data, char id, char *path)
 {
 	if (id == 'N')
 	{
@@ -74,20 +57,4 @@ static void	set_identifier(t_data *data, char id, char *path)
 		data->textures->path_w = path;
 		data->check->west = true;
 	}
-	// else if (id == 'F')
-	// 	data->check->floor = true;
-	// else if (id == 'C')
-	// 	data->check->ceil = true;
-}
-
-void	check_identifier(char *line, t_data *data, char id)
-{
-	char	*path;
-
-	check_duplicata(data, id, line);
-	if (id == 'F' || id == 'C')
-		path = NULL;
-	else
-		path = get_texture_path(line, data);
-	set_identifier(data, id, path);
 }

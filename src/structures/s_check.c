@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 01:57:09 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 20:43:18 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_check	*init_check_struct(t_data *data)
 		free_and_exit(data, msg_predefined(MALLOC), 1);
 	else
 	{
+		check->path = NULL;
 		check->north = false;
 		check->west = false;
 		check->east = false;
@@ -32,4 +33,15 @@ t_check	*init_check_struct(t_data *data)
 		check->are_identifiers_valid = true;
 	}
 	return (check);
+}
+
+void	free_check(t_check *check)
+{
+	if (check)
+	{
+		if (check->path)
+			free(check->path);
+		free(check);
+		check = NULL;
+	}
 }
