@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 20:10:54 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 22:47:46 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,33 +93,24 @@ static void	check_map(int i, t_data *data)
 			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
 	}
 	else
-		free_and_exit(data, msg_predefined(BAD_CHAR_ID), 0);
-}
-
-static bool	is_valid_identifier(char c)
-{
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'F'
-		|| c == 'C');
+		free_and_exit(data, msg_predefined(INVALID_IDENTIFIER), 0);
 }
 
 static void	search_identifier(t_data *data)
 {
 	int		i;
-	t_check	*check;
 	t_file	*f;
 
-	check = data->check;
 	f = data->file;
 	i = 0;
 	while (ft_is_white_space(f->line[i]))
 		i++;
 	if (!f->line[i])
 		return ;
-	if (!is_valid_identifier(f->line[i]) && !check->are_identifiers_valid)
-	{
+	if (!is_available_char_identifier(f->line[i])
+		&& !data->check->are_identifiers_valid)
 		if (is_available_char_map(f->line[i]))
 			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
-	}
 	if (f->line[i] == 'N' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
 		check_identifier(data, 'N');
 	else if (f->line[i] == 'S' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
@@ -129,14 +120,14 @@ static void	search_identifier(t_data *data)
 	else if (f->line[i] == 'W' && (f->line[i + 1]) && (f->line[i + 1]) == 'E')
 		check_identifier(data, 'W');
 	else if (f->line[i] == 'F')
-		check->floor = true;
+		check_identifier(data, 'F');
 	else if (f->line[i] == 'C')
-		check->ceil = true;
+		check_identifier(data, 'C');
 	else
 		check_map(i, data);
 }
 
-static void	get_file_data(t_data *data)
+static void	get_file_data_gnl(t_data *data)
 {
 	int	err;
 
@@ -164,7 +155,7 @@ void	check_file(char *input, t_data *data)
 	check_path_file(input, data);
 	data->check = init_check_struct(data);
 	data->textures = init_textures_struct(data);
-	get_file_data(data);
+	get_file_data_gnl(data);
 	/* map ok */
 	free_and_exit(data, msg_custom("Niceuuuu - map_file.c\n"), 0);
 }

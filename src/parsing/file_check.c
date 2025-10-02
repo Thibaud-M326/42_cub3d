@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:45:14 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 20:53:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 23:05:11 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,23 +89,84 @@ static char	*check_texture_ext(t_data *data)
 		}
 	}
 	else
-		free_and_exit(data, msg_custom("Empty texture extension"), 0);
+		free_and_exit(data, msg_custom("Empty texture filename"), 0);
 	free(filename);
 	return (texture_ext);
 }
 
+// static char	*check_color(t_data *data, int id)
+// {
+// 	int		count;
+// 	int		i;
+// 	char	*color;
+
+// 	i = 0;
+// 	count = 0;
+// 	color = ft_calloc(1, sizeof(char));
+// 	if (!color)
+// 		return (NULL);
+// 	if (id == 'C')
+// 	{
+// 		while (data->check->color)
+// 		{
+// 			if (data->check->color[i] == ',')
+// 				count++;
+// 			i++;
+// 		}
+// 		if (count != 3)
+// 		{
+// 			free_and_exit(data,
+// 					msg_custom("Color format: [0-255],[0-255],[0-255]"), 0);
+// 		}
+// 	}
+// 	return (color);
+// }
+
+#include <stdio.h>
+
+static char	*get_color(t_data *data)
+{
+	int		i;
+	char	*tmp;
+	size_t	len;
+	int		j;
+
+	j = 0;
+	len = ft_strlen(data->file->line);
+	i = 1;
+	tmp = ft_calloc(len, sizeof(char));
+	if (!tmp)
+		free_and_exit(data, msg_predefined(MALLOC), 1);
+	while (data->file->line[i] && data->file->line[i] != '\n')
+	{
+		if (ft_is_white_space(data->file->line[i]))
+			i++;
+		else
+			tmp[j++] = data->file->line[i++];
+	}
+	tmp[j] = '\0';
+	return (tmp);
+}
+
 void	check_identifier(t_data *data, char id)
 {
-	char *res;
+	char	*res;
 
 	res = NULL;
 	check_duplicate(data, id);
 	if (id == 'N' || id == 'S' || id == 'E' || id == 'W')
 	{
-		get_texture_path(data);
-		res = check_texture_ext(data);
 		if (data->check->path)
 			free(data->check->path);
+		data->check->path = get_texture_path(data);
+		res = check_texture_ext(data);
+	}
+	else if (id == 'F' || id == 'C')
+	{
+		if (data->check->color)
+			free(data->check->color);
+		data->check->color = get_color(data);
+		// res = check_color(data, id);
 	}
 	set_identifier(data, id, res);
 }

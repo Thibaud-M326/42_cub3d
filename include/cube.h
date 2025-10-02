@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 20:44:32 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/02 22:48:28 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define BAD_EXT_MSG "Extension is not '.cub'"
 # define INVALID_MAP_MSG "Map file invalid"
 
-# define BAD_CHAR_ID_MSG "Invalid character in file"
 # define PLACE_MAP_MSG "Map content found before all identifiers were set"
 # define MAP_NOT_FOUND_MSG "Map file not found"
 # define DOUBLE_IDENTIFIER_MSG "There is a duplicated identifier"
@@ -50,7 +49,6 @@ typedef enum e_parse
 	EMPTY_EXT,
 	MALLOC,
 	BAD_EXT,
-	BAD_CHAR_ID,
 	INVALID_MAP,
 	PLACE_MAP,
 	MAP_NOT_FOUND,
@@ -83,6 +81,7 @@ typedef struct s_file
 
 typedef struct s_check
 {
+	char		*color;
 	char		*path;
 	bool		north;
 	bool		west;
@@ -179,7 +178,7 @@ void			check_identifier(t_data *data, char id);
 void			check_path_file(char *input, t_data *data);
 
 /* parsing/file_check_utils */
-void			get_texture_path(t_data *data);
+char			*get_texture_path(t_data *data);
 void			set_identifier(t_data *data, char id, char *path);
 
 /* parsing/file */
