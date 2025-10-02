@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 20:59:59 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:21:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,10 @@ typedef struct s_mlx_data
 
 typedef struct s_player
 {
-	int			pos_x;
-	int			pos_y;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
 }				t_player;
 
 typedef struct s_data t_data;
@@ -180,10 +182,10 @@ void			check_map_file(char *input, t_data *data);
 int				deploy_mlx_hook(t_data *data);
 
 //src/hook/player_move.c
-int				player_move_left(t_data *data);
-int				player_move_right(t_data *data);
-int				player_move_up(t_data *data);
-int				player_move_down(t_data *data);
+int				player_move_forward(t_data *data);
+int				player_move_backward(t_data *data);
+int				player_turn_left(t_data *data);
+int				player_turn_right(t_data *data);
 
 //structures/s_mlx
 int				init_mlx(t_data *data);

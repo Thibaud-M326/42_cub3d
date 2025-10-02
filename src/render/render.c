@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/01 20:57:21 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:37:03 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	render_box(t_data *data, int mapX, int mapY, int color)
 	return (0);
 }
 
-int	player_start(t_data *data, t_player *player)
+int	player_print(t_data *data, t_player *player)
 {
 	put_one_pixel(data, player->pos_x, player->pos_y, 0xFF0000);
 	put_one_pixel(data, player->pos_x + 1, player->pos_y + 1, 0xFF0000);
@@ -105,26 +105,32 @@ int	player_start(t_data *data, t_player *player)
 	return (0);
 }
 
-// int	handle_keyboard(int keysym, t_hook_args *hook_args)
-// {
-// 	if (keysym == XK_Left)
-// 	{
-// 		;
-// 	}
-// 	else if (keysym == XK_Right)
-// 	{
-// 		;
-// 	}
-// 	else if (keysym == XK_Up)
-// 	{
-// 		;
-// 	}
-// 	else if (keysym == XK_Down)
-// 	{
-// 		;
-// 	}
-// 	return (0);
-// }
+int	draw_ray(t_data *data)
+{
+	int		ray_length;
+	int		pos_x;
+	int		pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	ray_x;
+	double	ray_y;
+
+	pos_x = data->player->pos_x;
+	pos_y = data->player->pos_y;
+	dir_x = data->player->dir_x;
+	dir_y = data->player->dir_y;
+	ray_x = 0;
+	ray_y = 0;
+	ray_length = 200;
+	while (ray_length)
+	{
+		put_one_pixel(data, pos_x + ray_x, pos_y + ray_y, 0x00FF00);
+		ray_x += dir_x;
+		ray_y += dir_y;
+		ray_length--;
+	}
+	return (1);
+}
 
 int	render(t_data *data)
 {
@@ -154,7 +160,8 @@ int	render(t_data *data)
 		y++;
 	}
 
-	player_start(data, data->player);
+	player_print(data, data->player);
+	draw_ray(data);
 
 	mlx_put_image_to_window(data->mlx_data->mlx_ptr,
 		data->mlx_data->win_ptr, data->mlx_data->mlx_img->img_ptr, 0, 0);

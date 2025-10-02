@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:31:37 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/01 20:58:22 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:21:14 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	handle_keyboard(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		free_and_exit(data, msg_custom(""), 0);
-	else if (keysym == XK_Left)
-		player_move_left(data);
-	else if (keysym == XK_Right)
-		player_move_right(data);
 	else if (keysym == XK_Up)
-		player_move_up(data);
+		player_move_forward(data);
 	else if (keysym == XK_Down)
-		player_move_down(data);
+		player_move_backward(data);
+	else if (keysym == XK_Left)
+		player_turn_left(data);
+	else if (keysym == XK_Right)
+		player_turn_right(data);
 	return (0);
 }
 

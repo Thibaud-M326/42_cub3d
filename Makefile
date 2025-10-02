@@ -68,7 +68,7 @@ all: makelibft $(NAME)
 $(NAME): $(OBJ)
 	@make -C $(MLX_DIR)
 	@echo "\n$(MAGENTA)$(BOLD)💻 Compiling executable...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJ) -L $(LIBFT_DIR) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -L $(LIBFT_DIR) $(LIBFT) $(MLX_FLAGS) -o $(NAME) -lm
 	@echo "$(GREEN)$(BOLD)\n✅ Compilation successfull!$(RESET)"
 	@echo "$(CYAN) └─ Ready to run: ./$(NAME)\n$(RESET)"
 
