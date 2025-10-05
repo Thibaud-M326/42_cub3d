@@ -6,23 +6,29 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 22:42:17 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 22:53:07 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 
-static void	check_duplicate(t_data *data, char id)
+static void	set_color(t_data *data, char id)
 {
-	t_check	*c;
-
-	c = data->check;
-	if ((id == 'N' && c->north) || (id == 'S' && c->south) || (id == 'E'
-			&& c->east) || (id == 'W' && c->west))
-		free_and_exit(data, msg_predefined(DOUBLE_ID_TXT), 0);
-	if ((id == 'F' && c->floor) || (id == 'C' && c->ceil))
-		free_and_exit(data, msg_predefined(DOUBLE_ID_COLOR), 0);
+	if (id == 'F')
+	{
+		data->textures->floor_color = mix_color(
+			ft_atoi(data->check->color),
+			ft_atoi(ft_strchr(data->check->color, ',') + 1),
+			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+	}
+	else if (id == 'C')
+	{
+		data->textures->ceil_color = mix_color(
+			ft_atoi(data->check->color),
+			ft_atoi(ft_strchr(data->check->color, ',') + 1),
+			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+	}
 }
 
 static void	set_identifier(t_data *data, char id, char *path)
@@ -47,13 +53,14 @@ static void	set_identifier(t_data *data, char id, char *path)
 		data->textures->path_w = path;
 		data->check->west = true;
 	}
-    if (id == 'F')
+	set_color(data, id);
+	if (id == 'F')
 		data->check->floor = true;
 	else if (id == 'C')
 		data->check->ceil = true;
 }
 
-static void	check_identifier(t_data *data, char id)
+void	check_identifier(t_data *data, char id)
 {
 	char	*path;
 
@@ -73,14 +80,6 @@ static void	check_identifier(t_data *data, char id)
 		check_color_int(data);
 	}
 	set_identifier(data, id, path);
-}
-
-static void	check_color_identifiers(t_data *data, int *i)
-{
-	if (data->file->line[*i] == 'F')
-		check_identifier(data, 'F');
-	else if (data->file->line[*i] == 'C')
-		check_identifier(data, 'C');
 }
 
 void	search_identifier(t_data *data)

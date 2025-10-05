@@ -23,6 +23,7 @@ SRC_FILES = main						\
 			parsing/file_utils			\
 			parsing/file				\
 			parsing/identifiers			\
+			parsing/identifiers_utils	\
 			parsing/input				\
 			parsing/map					\
 			parsing/textures			\

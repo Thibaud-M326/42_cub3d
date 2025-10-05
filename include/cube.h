@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 22:27:05 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 22:53:17 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,12 @@ void			check_error_in_file(t_data *data);
 void			check_file(char *input, t_data *data);
 
 /* parsing/identifiers */
+void			check_identifier(t_data *data, char id);
 void			search_identifier(t_data *data);
+
+/* parsing/identifiers */
+void			check_duplicate(t_data *data, char id);
+void			check_color_identifiers(t_data *data, int *i);
 
 /* parsing/input */
 void			parse_input(int ac, char **av, t_data *data);
