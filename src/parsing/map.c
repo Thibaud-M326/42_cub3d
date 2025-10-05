@@ -6,11 +6,17 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 20:57:06 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 00:02:22 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include "libft.h"
+
+// static void	clean(t_data *data)
+// {
+// 	(void)data;
+// }
 
 void	check_map(int i, t_data *data)
 {

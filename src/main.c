@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 21:33:47 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 00:00:23 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@
 static void	print_textures(t_data *data)
 {
 	#include <stdio.h>
-	printf("NORTH: %s\n", data->textures->path_n);
+	printf("\nNORTH: %s\n", data->textures->path_n);
 	printf("SOUTH: %s\n", data->textures->path_s);
 	printf("WEST: %s\n", data->textures->path_w);
-	printf("EAST: %s\n", data->textures->path_e);
-	printf("FLOOR COLOR: %d\n", data->textures->floor_color);
-	printf("CEIL COLOR: %d\n", data->textures->ceil_color);
+	printf("EAST: %s\n\n", data->textures->path_e);
+	printf("FLOOR: %d\n", data->textures->floor_color);
+	printf("CEIL: %d\n\n", data->textures->ceil_color);
 	free_and_exit(data, msg_custom("Program is runnin\n"), 42);
 }
 

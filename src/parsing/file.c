@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 21:32:38 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 00:15:56 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ an error.
 map and are up to you to handle. You must be able to parse any kind of map,
 as long as it respects the rules of the map.
 
-◦ If any misconfiguration of any kind is encountered in the file, the program
-must exit properly and return "Error\n" followed by an explicit error message
-of your choice. 
-
-*/
-
-/* 
-
 ◦ Except for the map content, each type of element can be separated by one or
 more empty lines.
 
@@ -43,39 +35,6 @@ element can be set in any order in the file.
 ◦ Except for the map, each type of information from an element can be separated
 by one or more spaces. 
 
-◦ Except for the map, each element must begin with its type identifier (composed
-by one or two characters),
-followed by its specific information in a strict order:
-
-∗ North texture:
-NO ./path_to_the_north_texture
-· identifier: NO
-· path to the north texture
-
-∗ South texture:
-SO ./path_to_the_south_texture
-· identifier: SO
-· path to the south texture
-
-∗ West texture:
-WE ./path_to_the_west_texture
-· identifier: WE
-· path to the west texture
-
-∗ East texture:
-EA ./path_to_the_east_texture
-· identifier: EA
-· path to the east texture
-
-∗ Floor color:
-F 220,100,0
-· identifier: F
-· R,G,B colors in range [0,255]: 0, 255, 255
-
-∗ Ceiling color:
-C 225,30,0
-· identifier: C
-· R,G,B colors in range [0,255]: 0, 255, 255
 
 */
 
@@ -95,15 +54,23 @@ static void	get_file_data_gnl(t_data *data)
 		free(data->file->line);
 		free_and_exit(data, msg_custom("Gnl failed"), 1);
 	}
-	while (data->file->line && data->check->are_identifiers_valid)
+	while (data->file->line && !data->check->are_identifiers_valid)
 	{
-		printf("%s", data->file->line);
 		search_identifier(data);
 		free(data->file->line);
 		data->file->line = get_next_line(data->file->fd, &err);
 		if (err)
 			free_and_exit(data, msg_custom("Gnl failed"), 1);
 	}
+	// while (data->file->line && data->check->are_identifiers_valid)
+	// {
+	// 	printf("YO = %s", data->file->line);
+	// 	free(data->file->line);
+	// 	data->file->line = get_next_line(data->file->fd, &err);
+	// 	if (err)
+	// 		free_and_exit(data, msg_custom("Gnl failed"), 1);
+	// 	// copy_map(data);
+	// }
 	check_error_in_file(data);
 }
 

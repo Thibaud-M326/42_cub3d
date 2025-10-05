@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 21:52:35 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 00:12:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_check	*init_check_struct(t_data *data)
 		check->south = false;
 		check->floor = false;
 		check->ceil = false;
-		check->are_identifiers_valid = true;
+		check->are_identifiers_valid = false;
 	}
 	return (check);
 }

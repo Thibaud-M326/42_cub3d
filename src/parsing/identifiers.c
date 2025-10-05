@@ -6,30 +6,12 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 22:53:07 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 00:13:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-
-static void	set_color(t_data *data, char id)
-{
-	if (id == 'F')
-	{
-		data->textures->floor_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
-	}
-	else if (id == 'C')
-	{
-		data->textures->ceil_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
-	}
-}
 
 static void	set_identifier(t_data *data, char id, char *path)
 {
@@ -94,7 +76,7 @@ void	search_identifier(t_data *data)
 	if (!f->line[i])
 		return ;
 	if (!is_available_char_identifier(f->line[i])
-		&& !data->check->are_identifiers_valid)
+		&& data->check->are_identifiers_valid)
 		if (is_available_char_map(f->line[i]))
 			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
 	if (f->line[i] == 'N' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')

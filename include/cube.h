@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 22:53:17 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 23:52:43 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ t_msg			msg_custom(char *custom_msg);
 int				deploy_mlx_hook(t_data *data);
 
 /* parsing/color */
+void			set_color(t_data *data, char id);
 void			check_color_int(t_data *data);
 void			check_color_format(t_data *data);
 char			*get_color(t_data *data);

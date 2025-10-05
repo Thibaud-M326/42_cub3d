@@ -6,12 +6,30 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 22:41:23 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 23:52:27 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+
+void	set_color(t_data *data, char id)
+{
+	if (id == 'F')
+	{
+		data->textures->floor_color = mix_color(
+			ft_atoi(data->check->color),
+			ft_atoi(ft_strchr(data->check->color, ',') + 1),
+			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+	}
+	else if (id == 'C')
+	{
+		data->textures->ceil_color = mix_color(
+			ft_atoi(data->check->color),
+			ft_atoi(ft_strchr(data->check->color, ',') + 1),
+			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+	}
+}
 
 static int	ft_atoi_rgb(t_data *data, char *str, int *idx)
 {
@@ -29,12 +47,12 @@ static int	ft_atoi_rgb(t_data *data, char *str, int *idx)
 		(*idx)++;
 	while (str[*idx] >= '0' && str[*idx] <= '9')
 	{
-		nb = nb * 10 + (str[*idx] - 48);
+		nb = nb * 10 + (str[*idx] - '0');
 		(*idx)++;
 	}
 	if (nb < 0 || nb > 255)
 		free_and_exit(data,
-			msg_custom("Color: Value must be between [0-255]"), 0);
+			msg_custom("Color: Values must be between [0-255]"), 0);
 	return (nb);
 }
 
