@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 22:09:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 21:52:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_check	*init_check_struct(t_data *data)
 	{
 		check->color = NULL;
 		check->path = NULL;
+		check->ext = NULL;
 		check->north = false;
 		check->west = false;
 		check->east = false;
@@ -40,6 +41,8 @@ void	free_check(t_check *check)
 {
 	if (check)
 	{
+		if (check->ext)
+			free(check->ext);
 		if (check->path)
 			free(check->path);
 		if (check->color)

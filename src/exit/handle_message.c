@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 22:39:06 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 22:48:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 21:05:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ char	*get_error_message(t_msg msg)
 		messages[PLACE_MAP] = PLACE_MAP_MSG;
 		messages[MAP_NOT_FOUND] = MAP_NOT_FOUND_MSG;
 		messages[INVALID_IDENTIFIER] = INVALID_IDENTIFIER_MSG;
-		messages[DOUBLE_IDENTIFIER] = DOUBLE_IDENTIFIER_MSG;
+		messages[DOUBLE_ID_TXT] = DOUBLE_ID_TXT_MSG;
+		messages[DOUBLE_ID_COLOR] = DOUBLE_ID_COLOR_MSG;
 	}
-	if (msg.type == PREDEFINED && msg.u_type.predefined >= USAGE
+	if (msg.u_type.predefined == PREDEFINED && msg.u_type.predefined >= USAGE
 		&& msg.u_type.predefined < PARSE_MSG_COUNT)
 		return (messages[msg.u_type.predefined]);
 	else if (msg.type == CUSTOM)

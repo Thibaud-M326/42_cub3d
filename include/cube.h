@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 22:48:28 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 22:27:05 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 # define PLACE_MAP_MSG "Map content found before all identifiers were set"
 # define MAP_NOT_FOUND_MSG "Map file not found"
-# define DOUBLE_IDENTIFIER_MSG "There is a duplicated identifier"
+# define DOUBLE_ID_TXT_MSG "There is a duplicated identifier (NO, SO, EA, WE)"
+# define DOUBLE_ID_COLOR_MSG "There is a duplicated identifier (F, C)"
 # define INVALID_IDENTIFIER_MSG "Invalid identifier in file"
 
 # define MALLOC_MSG "Malloc failed"
@@ -53,7 +54,8 @@ typedef enum e_parse
 	PLACE_MAP,
 	MAP_NOT_FOUND,
 	INVALID_IDENTIFIER,
-	DOUBLE_IDENTIFIER,
+	DOUBLE_ID_TXT,
+	DOUBLE_ID_COLOR,
 	PARSE_MSG_COUNT,
 }				t_parse;
 
@@ -83,6 +85,7 @@ typedef struct s_check
 {
 	char		*color;
 	char		*path;
+	char		*ext;
 	bool		north;
 	bool		west;
 	bool		east;
@@ -107,6 +110,7 @@ typedef struct s_textures
 	char		*path_e;
 	char		*path_w;
 	char		*path_s;
+	char		*extension;
 }				t_textures;
 
 typedef struct s_mlx_img
@@ -168,21 +172,29 @@ t_msg			msg_custom(char *custom_msg);
 //src/hook/hook.c
 int				deploy_mlx_hook(t_data *data);
 
-/* parsing/input */
-void			parse_input(int ac, char **av, t_data *data);
+/* parsing/color */
+void			check_color_int(t_data *data);
+void			check_color_format(t_data *data);
+char			*get_color(t_data *data);
 
-/* parsing/file_check */
+/* parsing/file_utils */
 void			check_error_in_file(t_data *data);
-void			check_duplicate(t_data *data, char id);
-void			check_identifier(t_data *data, char id);
-void			check_path_file(char *input, t_data *data);
-
-/* parsing/file_check_utils */
-char			*get_texture_path(t_data *data);
-void			set_identifier(t_data *data, char id, char *path);
 
 /* parsing/file */
 void			check_file(char *input, t_data *data);
+
+/* parsing/identifiers */
+void			search_identifier(t_data *data);
+
+/* parsing/input */
+void			parse_input(int ac, char **av, t_data *data);
+
+/* parsing/map */
+void			check_map(int i, t_data *data);
+
+/* parsing/textures */
+void			check_texture_ext(t_data *data, char *path);
+char			*get_texture_path(t_data *data);
 
 /* parsing/utils */
 bool			are_all_identifiers_true(t_data *data);

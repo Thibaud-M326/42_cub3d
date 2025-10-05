@@ -19,11 +19,14 @@ SRC_FILES = main						\
 			hook/hook					\
 			exit/handle_message			\
 			exit/free_exit				\
-			parsing/input				\
-			parsing/utils				\
-			parsing/file_check			\
-			parsing/file_check_utils	\
+			parsing/color				\
+			parsing/file_utils			\
 			parsing/file				\
+			parsing/identifiers			\
+			parsing/input				\
+			parsing/map					\
+			parsing/textures			\
+			parsing/utils				\
 			render/draw					\
 			render/render				\
 			structures/s_data			\

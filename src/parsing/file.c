@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 22:47:46 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/05 21:32:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include <fcntl.h>
 
 /*
 ◦ The map must be composed of only 6 possible characters: 0 for an empty space,
@@ -83,50 +84,6 @@ C 225,30,0
 
 #include <stdio.h>
 
-static void	check_map(int i, t_data *data)
-{
-	if (is_available_char_map(data->file->line[i]))
-	{
-		if (are_all_identifiers_true(data))
-			data->check->are_identifiers_valid = true;
-		else
-			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
-	}
-	else
-		free_and_exit(data, msg_predefined(INVALID_IDENTIFIER), 0);
-}
-
-static void	search_identifier(t_data *data)
-{
-	int		i;
-	t_file	*f;
-
-	f = data->file;
-	i = 0;
-	while (ft_is_white_space(f->line[i]))
-		i++;
-	if (!f->line[i])
-		return ;
-	if (!is_available_char_identifier(f->line[i])
-		&& !data->check->are_identifiers_valid)
-		if (is_available_char_map(f->line[i]))
-			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
-	if (f->line[i] == 'N' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
-		check_identifier(data, 'N');
-	else if (f->line[i] == 'S' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
-		check_identifier(data, 'S');
-	else if (f->line[i] == 'E' && (f->line[i + 1]) && (f->line[i + 1]) == 'A')
-		check_identifier(data, 'E');
-	else if (f->line[i] == 'W' && (f->line[i + 1]) && (f->line[i + 1]) == 'E')
-		check_identifier(data, 'W');
-	else if (f->line[i] == 'F')
-		check_identifier(data, 'F');
-	else if (f->line[i] == 'C')
-		check_identifier(data, 'C');
-	else
-		check_map(i, data);
-}
-
 static void	get_file_data_gnl(t_data *data)
 {
 	int	err;
@@ -150,12 +107,32 @@ static void	get_file_data_gnl(t_data *data)
 	check_error_in_file(data);
 }
 
+static void	get_path_file(char *input, t_data *data)
+{
+	t_file	*file;
+	char	*map_path;
+
+	file = data->file;
+	/* invalid maps*/
+	map_path = ft_strjoin("assets/maps/invalid_maps/", input);
+	/* valid maps */
+	// map_path = ft_strjoin("assets/maps/", input);
+	if (!map_path)
+		free_and_exit(data, msg_predefined(MALLOC), 1);
+	file->map = ft_strdup(map_path);
+	free(map_path);
+	if (!file->map)
+		free_and_exit(data, msg_predefined(MALLOC), 1);
+	file->fd = open(file->map, O_RDONLY);
+	if (file->fd < 0)
+		free_and_exit(data, msg_predefined(MAP_NOT_FOUND), 0);
+}
+
 void	check_file(char *input, t_data *data)
 {
-	check_path_file(input, data);
+	get_path_file(input, data);
 	data->check = init_check_struct(data);
 	data->textures = init_textures_struct(data);
 	get_file_data_gnl(data);
-	/* map ok */
-	free_and_exit(data, msg_custom("Niceuuuu - map_file.c\n"), 0);
+	/* ALL identifiers ✅ */
 }
