@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 00:13:31 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 18:36:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	check_identifier(t_data *data, char id)
 		check_color_int(data);
 	}
 	set_identifier(data, id, path);
+	if (are_all_identifiers_true(data))
+		data->check->are_identifiers_valid = true;
 }
 
 void	search_identifier(t_data *data)
@@ -78,7 +80,7 @@ void	search_identifier(t_data *data)
 	if (!is_available_char_identifier(f->line[i])
 		&& data->check->are_identifiers_valid)
 		if (is_available_char_map(f->line[i]))
-			free_and_exit(data, msg_predefined(PLACE_MAP), 0);
+			free_and_exit(data, PLACE_MAP, 0);
 	if (f->line[i] == 'N' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
 		check_identifier(data, 'N');
 	else if (f->line[i] == 'S' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')

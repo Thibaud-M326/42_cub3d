@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 00:12:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 18:29:09 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_check	*init_check_struct(t_data *data)
 
 	check = ft_calloc(1, sizeof(t_check));
 	if (!check)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
+		free_and_exit(data, MALLOC, 1);
 	else
 	{
 		check->color = NULL;

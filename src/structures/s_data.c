@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 17:35:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 18:37:51 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ t_data	*init_data_struct(void)
 
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
-		free_and_exit(data, msg_custom("Malloc failed"), 1);
+		free_and_exit(data, "Malloc failed", 1);
 	data->file = NULL;
 	data->textures = NULL;
 	data->map = NULL;
 	data->check = NULL;
 	data->mlx_data = NULL;
 	data->player = NULL;
-	data->msg = init_msg_struct(data);
 	return (data);
 }

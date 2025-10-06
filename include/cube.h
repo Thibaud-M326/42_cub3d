@@ -6,68 +6,48 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 23:52:43 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 19:05:46 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# define USAGE_MSG "Usage: ./cub3D [FILE].cub"
-# define AC_NBR_MSG "Need only one argument"
-# define EMPTY_FILENAME_MSG "Filename is empty"
-# define EMPTY_EXT_MSG "Extension is empty"
-# define BAD_EXT_MSG "Extension is not '.cub'"
-# define INVALID_MAP_MSG "Map file invalid"
+/* GLOBAL */
+# define GNL "A problem occured with GNL"
+# define MALLOC "Malloc failed"
 
-# define PLACE_MAP_MSG "Map content found before all identifiers were set"
-# define MAP_NOT_FOUND_MSG "Map file not found"
-# define DOUBLE_ID_TXT_MSG "There is a duplicated identifier (NO, SO, EA, WE)"
-# define DOUBLE_ID_COLOR_MSG "There is a duplicated identifier (F, C)"
-# define INVALID_IDENTIFIER_MSG "Invalid identifier in file"
+/* INPUT */
+# define USAGE "Usage: ./cub3D [FILE].cub"
+# define AC_NBR "Need only one argument"
+# define FILE_EMPTY_FILENAME "Filename is empty"
+# define FILE_EMPTY_EXT "Extension is empty"
+# define FILE_WRONG_EXT "Extension is not '.cub'"
+# define FILE_NOT_FOUND "Map file not found"
 
-# define MALLOC_MSG "Malloc failed"
+/* IDENTIFIERS */
+# define ID_INVALID "Identifier: Invalid identifier in file"
+# define ID_TXT_DOUBLE "Identifier: There is a duplicate [NO, SO, EA, WE]"
+# define ID_COLOR_DOUBLE "Identifier: There is a duplicate [F, C]"
+
+/* COLORS */
+# define COLOR_FORMAT "Color: Format must be [0-255],[0-255],[0-255]"
+# define COLOR_VALUE_RANGE "Color: Values must be between [0-255]"
+# define COLOR_INVALID_CHAR "Color: Characters must be [0-9] ','"
+# define COLOR_COMA "Color: Invalid coma number [R,G,B]"
+
+/* TEXTURES */
+# define MISSING_TXT "Texture: Missing extension [.xpm]"
+# define WRONG_EXT_TXT "Texture: Extension is not [xpm]"
+# define MISSING_FILENAME_TXT "Texture: Missing filename [].xpm"
+
+/* MAP */
+# define PLACE_MAP "Map: Content found before all identifiers were set"
 
 /****************************************************************************/
 /*                                INCLUDE									*/
 /****************************************************************************/
 # include <stdbool.h>
-
-/****************************************************************************/
-/*                                ENUM										*/
-/****************************************************************************/
-typedef enum e_msg_type
-{
-	PREDEFINED,
-	CUSTOM,
-}				t_msg_type;
-
-typedef enum e_parse
-{
-	USAGE,
-	AC_NBR,
-	EMPTY_FILENAME,
-	EMPTY_EXT,
-	MALLOC,
-	BAD_EXT,
-	INVALID_MAP,
-	PLACE_MAP,
-	MAP_NOT_FOUND,
-	INVALID_IDENTIFIER,
-	DOUBLE_ID_TXT,
-	DOUBLE_ID_COLOR,
-	PARSE_MSG_COUNT,
-}				t_parse;
-
-typedef struct s_msg
-{
-	t_msg_type	type;
-	union
-	{
-		t_parse	predefined;
-		char	*custom;
-	} u_type;
-}				t_msg;
 
 /****************************************************************************/
 /*                                STRUCT									*/
@@ -97,7 +77,7 @@ typedef struct s_check
 
 typedef struct s_map
 {
-	char		**map;
+	int			**map;
 	int			map_h;
 	int			map_w;
 }				t_map;
@@ -151,23 +131,17 @@ typedef struct s_data
 	t_check		*check;
 	t_mlx_data	*mlx_data;
 	t_player	*player;
-	t_msg		*msg;
 }				t_data;
 
 /****************************************************************************/
 /*                                FUNCTIONS									*/
 /****************************************************************************/
 /* exit/free_exit */
-void			free_and_exit_debug(t_data *data, t_msg msg, int err,
+void			free_and_exit_debug(t_data *data, char *msg, int err,
 					const char *file, int line, const char *func);
 
 # define free_and_exit(data, msg, err) \
 	free_and_exit_debug(data, msg, err, __FILE__, __LINE__, __func__)
-
-/* exit/handle_message */
-char			*get_error_message(t_msg msg);
-t_msg			msg_predefined(t_parse msg_type);
-t_msg			msg_custom(char *custom_msg);
 
 //src/hook/hook.c
 int				deploy_mlx_hook(t_data *data);
@@ -228,9 +202,6 @@ void			free_file(t_file *file);
 //structures/s_mlx
 int				init_mlx(t_data *data);
 int				free_mlx_data(t_mlx_data *mlx_data);
-
-/* structures/s_msg */
-t_msg			*init_msg_struct(t_data *data);
 
 /* structures/s_textures */
 t_textures		*init_textures_struct(t_data *data);

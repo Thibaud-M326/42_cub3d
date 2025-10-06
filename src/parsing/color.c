@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/05 23:52:27 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 18:56:37 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	set_color(t_data *data, char id)
 	if (id == 'F')
 	{
 		data->textures->floor_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+				ft_atoi(data->check->color),
+				ft_atoi(ft_strchr(data->check->color, ',') + 1),
+				ft_atoi(ft_strrchr(data->check->color, ',') + 1));
 	}
 	else if (id == 'C')
 	{
 		data->textures->ceil_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+				ft_atoi(data->check->color),
+				ft_atoi(ft_strchr(data->check->color, ',') + 1),
+				ft_atoi(ft_strrchr(data->check->color, ',') + 1));
 	}
 }
 
@@ -41,8 +41,7 @@ static int	ft_atoi_rgb(t_data *data, char *str, int *idx)
 	i = 0;
 	len = ft_strlen(data->check->color);
 	if (!len)
-		free_and_exit(data,
-			msg_custom("Color: Format must be [0-255],[0-255],[0-255]"), 0);
+		free_and_exit(data, COLOR_FORMAT, 0);
 	while ((str[*idx] >= '\t' && str[*idx] <= '\r') || str[*idx] == ' ')
 		(*idx)++;
 	while (str[*idx] >= '0' && str[*idx] <= '9')
@@ -51,8 +50,7 @@ static int	ft_atoi_rgb(t_data *data, char *str, int *idx)
 		(*idx)++;
 	}
 	if (nb < 0 || nb > 255)
-		free_and_exit(data,
-			msg_custom("Color: Values must be between [0-255]"), 0);
+		free_and_exit(data, COLOR_VALUE_RANGE, 0);
 	return (nb);
 }
 
@@ -85,14 +83,13 @@ void	check_color_format(t_data *data)
 	count = 0;
 	color = ft_calloc(1, sizeof(char));
 	if (!color)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
+		free_and_exit(data, MALLOC, 1);
 	while (data->check->color[i])
 	{
 		if (!ft_isdigit(data->check->color[i]) && data->check->color[i] != ',')
 		{
 			free(color);
-			free_and_exit(data,
-				msg_custom("Color: Characters must be [0-9] ','"), 0);
+			free_and_exit(data, COLOR_INVALID_CHAR, 0);
 		}
 		if (data->check->color[i] == ',')
 			count++;
@@ -100,8 +97,7 @@ void	check_color_format(t_data *data)
 	}
 	free(color);
 	if (count != 2)
-		free_and_exit(data, msg_custom("Color: Invalid coma number [R,G,B]"),
-			0);
+		free_and_exit(data, COLOR_COMA, 0);
 }
 
 char	*get_color(t_data *data)
@@ -116,7 +112,7 @@ char	*get_color(t_data *data)
 	i = 1;
 	tmp = ft_calloc(len, sizeof(char));
 	if (!tmp)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
+		free_and_exit(data, MALLOC, 1);
 	while (data->file->line[i])
 	{
 		if (ft_is_white_space(data->file->line[i]))

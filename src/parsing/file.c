@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 00:15:56 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 19:05:41 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	get_file_data_gnl(t_data *data)
 	if (err)
 	{
 		free(data->file->line);
-		free_and_exit(data, msg_custom("Gnl failed"), 1);
+		free_and_exit(data, GNL, 1);
 	}
 	while (data->file->line && !data->check->are_identifiers_valid)
 	{
@@ -60,15 +60,14 @@ static void	get_file_data_gnl(t_data *data)
 		free(data->file->line);
 		data->file->line = get_next_line(data->file->fd, &err);
 		if (err)
-			free_and_exit(data, msg_custom("Gnl failed"), 1);
+			free_and_exit(data, GNL, 1);
 	}
 	// while (data->file->line && data->check->are_identifiers_valid)
 	// {
-	// 	printf("YO = %s", data->file->line);
 	// 	free(data->file->line);
 	// 	data->file->line = get_next_line(data->file->fd, &err);
 	// 	if (err)
-	// 		free_and_exit(data, msg_custom("Gnl failed"), 1);
+	// 		free_and_exit(data, GNL, 1);
 	// 	// copy_map(data);
 	// }
 	check_error_in_file(data);
@@ -85,14 +84,14 @@ static void	get_path_file(char *input, t_data *data)
 	/* valid maps */
 	// map_path = ft_strjoin("assets/maps/", input);
 	if (!map_path)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
+		free_and_exit(data, MALLOC, 1);
 	file->map = ft_strdup(map_path);
 	free(map_path);
 	if (!file->map)
-		free_and_exit(data, msg_predefined(MALLOC), 1);
+		free_and_exit(data, MALLOC, 1);
 	file->fd = open(file->map, O_RDONLY);
 	if (file->fd < 0)
-		free_and_exit(data, msg_predefined(MAP_NOT_FOUND), 0);
+		free_and_exit(data, FILE_NOT_FOUND, 0);
 }
 
 void	check_file(char *input, t_data *data)
