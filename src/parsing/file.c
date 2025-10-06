@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 19:05:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 20:25:43 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,17 @@ static void	get_file_data_gnl(t_data *data)
 	}
 	while (data->file->line && !data->check->are_identifiers_valid)
 	{
+		#include <stdio.h>
+		printf("|%s|", data->file->line);
 		search_identifier(data);
+		if (data->check->are_identifiers_valid)
+			// TODO: COPY LINE
 		free(data->file->line);
 		data->file->line = get_next_line(data->file->fd, &err);
 		if (err)
 			free_and_exit(data, GNL, 1);
 	}
-	// while (data->file->line && data->check->are_identifiers_valid)
-	// {
-	// 	free(data->file->line);
-	// 	data->file->line = get_next_line(data->file->fd, &err);
-	// 	if (err)
-	// 		free_and_exit(data, GNL, 1);
-	// 	// copy_map(data);
-	// }
-	check_error_in_file(data);
+	// printf("|%s|", data->file->line);
 }
 
 static void	get_path_file(char *input, t_data *data)

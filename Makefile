@@ -19,7 +19,6 @@ SRC_FILES = main						\
 			hook/hook					\
 			exit/free_exit				\
 			parsing/color				\
-			parsing/file_utils			\
 			parsing/file				\
 			parsing/identifiers			\
 			parsing/identifiers_utils	\

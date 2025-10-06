@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 18:36:04 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 20:29:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	check_identifier(t_data *data, char id)
 		check_color_int(data);
 	}
 	set_identifier(data, id, path);
-	if (are_all_identifiers_true(data))
-		data->check->are_identifiers_valid = true;
 }
 
 void	search_identifier(t_data *data)
