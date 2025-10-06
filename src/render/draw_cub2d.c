@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:12:12 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/02 18:19:44 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:57:38 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,25 @@ int	render_box(t_data *data, int mapX, int mapY, int color)
 	return (0);
 }
 
-int free_map(int **map)
+//fonction temporaire pendant cub2d
+//a remplacer par le parsing
+int free_map(t_map *map)
 {
-    int y;
-
-    y = 0;
-	while (y < 10)
+	int	y;
+	
+	y = 0;
+	printf("bonjour\n");
+	while (y < map->map_h)
 	{
-		free(map[y]);
+		free(map->map[y]);
+		map->map[y] = NULL;
 		y++;
 	}
+	free(map->map);
+	map->map = NULL;
 	free(map);
-    return (1);
+	map = NULL;
+	return (1);
 }
 
 int draw_cub2d(t_data *data)
@@ -119,6 +126,14 @@ int draw_cub2d(t_data *data)
 	x = 0;
 	y = 0;
 	map = create_map();
+
+	data->map = malloc(sizeof(t_map));
+	if (!data->map)
+		return (0);
+
+	data->map->map = map;
+	data->map->map_w = 10;
+	data->map->map_h = 10;
 	wall_color = mix_color(42, 44, 101);
 	floor_color = mix_color(5, 3, 2);
 	while (y < 10)
@@ -134,6 +149,6 @@ int draw_cub2d(t_data *data)
 		}
 		y++;
 	}
-    free_map(map);
+    // free_map(data->map);
     return (1);
 }

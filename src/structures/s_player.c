@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 19:55:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/02 17:54:39 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:49:17 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,11 @@ int init_player_struct(t_data *data)
     data->player->ray.dir_x = data->player->dir_x;
     data->player->ray.dir_y = data->player->dir_y;
     return (1);
+}
+
+void    free_player(t_player *player)
+{
+    if (player)
+        free(player);
+    return ;
 }

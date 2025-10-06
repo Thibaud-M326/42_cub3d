@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/02 18:13:52 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:55:01 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 /*                                INCLUDE									*/
 /****************************************************************************/
 # include <stdbool.h>
+
+	#include <stdio.h>
 
 /****************************************************************************/
 /*                                ENUM										*/
@@ -86,7 +88,7 @@ typedef struct s_check
 
 typedef struct s_map
 {
-	char		**map;
+	int			**map;
 	int			map_h;
 	int			map_w;
 }				t_map;
@@ -124,10 +126,10 @@ typedef	struct s_ray
 {
 	double		dir_x;
 	double		dir_y;
-	double		ray_length_x;
-	double		ray_length_y;
-	double		ray_unit_step_size_x;
-	double		ray_unit_step_size_y;
+	double		length_x;
+	double		length_y;
+	double		unit_length_x;
+	double		unit_length_y;
 	double		map_check_x;
 	double		map_check_y;
 	int			sign_x;
@@ -140,6 +142,8 @@ typedef struct s_player
 	double		pos_y;
 	double		dir_x;
 	double		dir_y;
+	double		offset_pos_x;
+	double		offset_pos_y;
 	t_ray		ray;
 }				t_player;
 
@@ -206,11 +210,15 @@ int				player_turn_right(t_data *data);
 int				init_mlx(t_data *data);
 int				free_mlx_data(t_mlx_data *mlx_data);
 
+//structures/s_player
+void			free_player(t_player *player);
+
 /* map_file_utils */
 void			check_identifier(char *line, t_data *data, char id);
 
 //src/render/draw_cub2d.c
 int				draw_cub2d(t_data *data);
+int				free_map(t_map *map);
 
 //src/render/draw.c
 void			put_one_pixel(t_data *data, int x, int y, int color);

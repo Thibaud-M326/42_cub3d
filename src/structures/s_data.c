@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/01 19:51:25 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:48:47 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ void	free_and_exit_debug(t_data *data, t_msg msg, int err,
 			free(data->check);
 		if (data->textures)
 			free_textures(data->textures);
+		if (data->map)
+			free_map(data->map);
 		if (data->mlx_data)
 			free_mlx_data(data->mlx_data);
+		if (data->player)
+			free_player(data->player);
 		if (data->msg)
 			free(data->msg);
 		free(data);
