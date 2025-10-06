@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 15:55:01 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:55:48 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef	struct s_ray
 	double		map_check_y;
 	int			sign_x;
 	int			sign_y;	
+	double		distance;
 }				t_ray;
 
 typedef struct s_player

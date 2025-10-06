@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:12:12 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/06 15:57:38 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 18:21:36 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int free_map(t_map *map)
 	int	y;
 	
 	y = 0;
-	printf("bonjour\n");
 	while (y < map->map_h)
 	{
 		free(map->map[y]);

@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 15:50:33 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 18:19:43 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(void)
 		free_and_exit(data, msg_custom("Error:\ninit_mlx failed"), 1);
 	init_player_struct(data);
 	deploy_mlx_hook(data);
-	free_and_exit(data, msg_custom("Error:\nquit at end"), 1);
 	return (0);
 }
 

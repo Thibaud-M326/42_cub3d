@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/02 22:01:43 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:06:26 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,36 +49,6 @@ int	ray_sign(t_data *data)
 	return (1);
 }
 
-int	player_offset_pos(t_data *data)
-{
-	t_player	*player;	
-
-	player = data->player;
-	player->offset_pos_x = player->pos_x - player->ray.map_check_x;
-	player->offset_pos_y = player->pos_y - player->ray.map_check_y;
-	// printf("player->offset_pos_x : %f\n", player->offset_pos_x);
-	// printf("player->offset_pos_y : %f\n", player->offset_pos_y);
-	return (0);
-}
-
-int	ray_unit_length(t_data *data)
-{
-	t_ray	ray;
-
-	ray = data->player->ray;
-
-	//tant qu'on a un seul ray tout droit
-	ray.dir_x = data->player->dir_x;
-	ray.dir_y = data->player->dir_y;
-	//
-
-	ray.unit_length_x = sqrt(1 + (ray.dir_y / ray.dir_x) * (ray.dir_y / ray.dir_x));
-	ray.unit_length_y = sqrt(1 + (ray.dir_x / ray.dir_y) * (ray.dir_x / ray.dir_y));
-	// printf("ray.unit_length_x : %f\n", ray.unit_length_x);
-	// printf("ray.unit_length_y : %f\n", ray.unit_length_y);
-	return (1);
-}
-
 int	player_map_pos(t_data *data)
 {
 	t_player	*player;
@@ -87,116 +57,138 @@ int	player_map_pos(t_data *data)
 
 	player->ray.map_check_x = floor(player->pos_x);
 	player->ray.map_check_y = floor(player->pos_y);
-	// printf("player->map_pos_x : %f\n", player->map_pos_x);
-	// printf("player->map_pos_y : %f\n", player->map_pos_y);
 	return (1);
+}
+
+int	ray_unit_length(t_data *data)
+{
+	t_ray	*ray;
+
+	ray = &data->player->ray;
+
+	ray->unit_length_x = sqrt(1 + (ray->dir_y / ray->dir_x) * (ray->dir_y / ray->dir_x));
+	ray->unit_length_y = sqrt(1 + (ray->dir_x / ray->dir_y) * (ray->dir_x / ray->dir_y));
+	return (1);
+}
+
+int	player_offset_pos(t_data *data)
+{
+	t_player	*player;	
+
+	player = data->player;
+	player->offset_pos_x = player->pos_x - player->ray.map_check_x;
+	player->offset_pos_y = player->pos_y - player->ray.map_check_y;
+	return (0);
 }
 
 int	first_side_ray_dist(t_data *data)
 {
-	t_ray	ray;
+	t_ray	*ray;
 
-	ray = data->player->ray;
+	ray = &data->player->ray;
 
-	//tant qu'on a un seul ray tout droit
-	ray.dir_x = data->player->dir_x;
-	ray.dir_y = data->player->dir_y;
-	//
-
-	if (ray.dir_x < 0)
-		ray.length_x = data->player->offset_pos_x * ray.unit_length_x;
+	if (ray->dir_x < 0)
+		ray->length_x = data->player->offset_pos_x * ray->unit_length_x;
 	else
-		ray.length_x = (1 - data->player->offset_pos_x) * ray.unit_length_x;
-	if (ray.dir_y < 0)
-		ray.length_y = data->player->offset_pos_y * ray.unit_length_y;
+		ray->length_x = (1 - data->player->offset_pos_x) * ray->unit_length_x;
+	if (ray->dir_y < 0)
+		ray->length_y = data->player->offset_pos_y * ray->unit_length_y;
 	else
-		ray.length_y = (1 - data->player->offset_pos_y) * ray.unit_length_y;
+		ray->length_y = (1 - data->player->offset_pos_y) * ray->unit_length_y;
 	return (1);
 }
 
-// if (rayLength.x < rayLength.y) {
-	// mapCheck.x += step.x
-	// rayLength.x += rayUnitStepSize.x
-// } else {
-	// mapCheck.y += step.y
-	// rayLength.y += rayUnitStepSize.y
-// }
+int	draw_ray(t_data *data)
+{
+	t_ray		*ray;
+	t_player	*player;
+	int			pixel_distance;
+	int			pixel_x;
+	int			pixel_y;
 
-//on va prendre la position 
+	ray = &data->player->ray;
+	player = data->player;
+	pixel_distance = ray->distance * 100;
+	pixel_x = 0;
+	pixel_y = 0;
+
+	printf("ray.distance : %f\n", ray->distance);
+	printf("pixel_distance : %d\n", pixel_distance);
+	printf("player->pos_x :%f\n", player->pos_x);
+	printf("player->pos_y :%f\n", player->pos_y);
+
+	while (pixel_distance)	
+	{
+		put_one_pixel(data, (int)(player->pos_x * 100 + pixel_x) , (int)(player->pos_y * 100 + pixel_y) ,0x0000FF);
+		pixel_x += player->dir_x;
+		pixel_y += player->dir_y;
+		pixel_distance--;
+	}
+	return (1);
+}
+
+int	compute_ray_distance(t_data *data)
+{
+	t_ray	*ray;
+
+	ray = &data->player->ray;
+	if (ray->length_x < ray->length_y)
+		data->player->ray.distance = ray->length_x - ray->unit_length_x;
+	else
+		data->player->ray.distance = ray->length_y - ray->unit_length_y;
+	return (1);
+}
+
 int	hit_wall(t_data *data)
 {
 	int		**map;
-	t_ray	ray;
+	t_ray	*ray;
 
 	map = data->map->map;
-	ray = data->player->ray;
-	if (map[(int)ray.map_check_y][(int)ray.map_check_x] == 1)
-		return (0);
-	else
+	ray = &data->player->ray;
+	if (map[(int)ray->map_check_y][(int)ray->map_check_x] == 1)
 		return (1);
-}
-
-//je veut dessiner le rayon
-//je dois additioner les deux longueur ray.length x et y 
-//partie de la position du joueur et dessiner point par point le trait du rayon
-//
-int	draw_ray(t_data *data)
-{
-	t_player	*player;
-	t_ray		ray;
-	double		total_ray_length;
-	double		ray_pixel_x;
-	double		ray_pixel_y;
-
-	player = data->player;
-	ray = player->ray;
-	total_ray_length = ray.length_x + ray.length_y;
-
-	//tant qu'on a un seul ray tout droit
-	ray.dir_x = data->player->dir_x;
-	ray.dir_y = data->player->dir_y;
-	//
-
-	ray_pixel_x = player->pos_x + ray.dir_x + 100;
-	ray_pixel_y = player->pos_y + ray.dir_y + 100;
-	while (total_ray_length)
-	{
-		put_one_pixel(data, ray_pixel_x, ray_pixel_y, 0x00FF00);
-		ray_pixel_x += ray.dir_x;
-		ray_pixel_y += ray.dir_y;
-		total_ray_length--;
-	}
-	return (1);
+	else
+		return (0);
 }
 
 int	hit_wall_ray_dist(t_data *data)
 {
-	t_ray	ray;
+	t_ray	*ray;
 
-	ray = data->player->ray;
+	ray = &data->player->ray;
 	while (!hit_wall(data))
 	{
-		if (ray.length_x < ray.length_y)		
+		if (ray->length_x < ray->length_y)		
 		{
-			ray.map_check_x += ray.sign_x;
-			ray.length_x += ray.unit_length_x;
+			ray->map_check_x += ray->sign_x;
+			ray->length_x += ray->unit_length_x;
 		}
 		else
 		{
-			ray.map_check_y += ray.sign_y;
-			ray.length_y += ray.unit_length_y;
+			ray->map_check_y += ray->sign_y;
+			ray->length_y += ray->unit_length_y;
 		}
 	}
+	compute_ray_distance(data);
 	draw_ray(data);
 	return(1);
 }
 
 int	raycasting(t_data *data)
-{
+{	
+	//tant qu'on a un seul ray droit devant le joueur
+	//on devra ensuite faire un tableau de ray
+	data->player->ray.dir_x = data->player->dir_x;
+	data->player->ray.dir_y = data->player->dir_y;
+	//
+
 	ray_sign(data);
 	player_map_pos(data);
 	ray_unit_length(data);
 	player_offset_pos(data);
+	first_side_ray_dist(data);
+	hit_wall_ray_dist(data);
 
 	return (1);
 }
