@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 20:25:43 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 22:07:52 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,24 @@ by one or more spaces.
 
 #include <stdio.h>
 
-static void	get_file_data_gnl(t_data *data)
+static void	get_map_gnl(t_data *data)
+{
+	int	err;
+	// int	**map;
+
+	err = 0;
+	while (data->file->line)
+	{
+		printf("%s", data->file->line);
+		check_map_line(data);
+		free(data->file->line);
+		data->file->line = get_next_line(data->file->fd, &err);
+		if (err)
+			free_and_exit(data, GNL, 1);
+	}
+}
+
+static void	get_identifiers_gnl(t_data *data)
 {
 	int	err;
 
@@ -56,17 +73,14 @@ static void	get_file_data_gnl(t_data *data)
 	}
 	while (data->file->line && !data->check->are_identifiers_valid)
 	{
-		#include <stdio.h>
-		printf("|%s|", data->file->line);
 		search_identifier(data);
 		if (data->check->are_identifiers_valid)
-			// TODO: COPY LINE
+			break ;
 		free(data->file->line);
 		data->file->line = get_next_line(data->file->fd, &err);
 		if (err)
 			free_and_exit(data, GNL, 1);
 	}
-	// printf("|%s|", data->file->line);
 }
 
 static void	get_path_file(char *input, t_data *data)
@@ -95,6 +109,7 @@ void	check_file(char *input, t_data *data)
 	get_path_file(input, data);
 	data->check = init_check_struct(data);
 	data->textures = init_textures_struct(data);
-	get_file_data_gnl(data);
+	get_identifiers_gnl(data);
+	get_map_gnl(data);
 	/* ALL identifiers ✅ */
 }

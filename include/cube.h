@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 19:05:46 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 22:37:44 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # define FILE_EMPTY_FILENAME "Filename is empty"
 # define FILE_EMPTY_EXT "Extension is empty"
 # define FILE_WRONG_EXT "Extension is not '.cub'"
-# define FILE_NOT_FOUND "Map file not found"
+# define FILE_NOT_FOUND "File not found"
 
 /* IDENTIFIERS */
-# define ID_INVALID "Identifier: Invalid identifier in file"
+# define ID_INVALID "Identifier: Invalid identifier found in file"
 # define ID_TXT_DOUBLE "Identifier: There is a duplicate [NO, SO, EA, WE]"
 # define ID_COLOR_DOUBLE "Identifier: There is a duplicate [F, C]"
 
@@ -34,15 +34,18 @@
 # define COLOR_FORMAT "Color: Format must be [0-255],[0-255],[0-255]"
 # define COLOR_VALUE_RANGE "Color: Values must be between [0-255]"
 # define COLOR_INVALID_CHAR "Color: Characters must be [0-9] ','"
-# define COLOR_COMA "Color: Invalid coma number [R,G,B]"
+# define COLOR_COMA "Color: Invalid coma number: \"R,G,B"
 
 /* TEXTURES */
-# define MISSING_TXT "Texture: Missing extension [.xpm]"
-# define WRONG_EXT_TXT "Texture: Extension is not [xpm]"
-# define MISSING_FILENAME_TXT "Texture: Missing filename [].xpm"
+# define MISSING_EXT_TXT "Texture: Missing extension \".xpm"
+# define WRONG_EXT_TXT "Texture: Extension is not \"xpm"
+# define MISSING_FILENAME_TXT "Texture: Missing filename \"\".xpm"
+# define WRONG_PATH_TXT "Texture: File not found"
 
 /* MAP */
 # define PLACE_MAP "Map: Content found before all identifiers were set"
+# define MAP_WRONG_CHAR "Map: Invalid character found"
+# define MAP_EMPTY_LINE "Map: Empty line found"
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -153,24 +156,29 @@ void			check_color_format(t_data *data);
 char			*get_color(t_data *data);
 
 /* parsing/file_utils */
+void			is_identifier_texture(t_data *data, char id, char *path);
 void			check_error_in_file(t_data *data);
 
 /* parsing/file */
 void			check_file(char *input, t_data *data);
 
+
+/* parsing/identifiers_utils */
+void			open_xpm(t_data *data, char *path);
+void			is_identifier_texture(t_data *data, char id, char *path);
+void			check_duplicate(t_data *data, char id);
+void			check_color_identifiers(t_data *data, int *i);
+
 /* parsing/identifiers */
 void			check_identifier(t_data *data, char id);
 void			search_identifier(t_data *data);
-
-/* parsing/identifiers */
-void			check_duplicate(t_data *data, char id);
-void			check_color_identifiers(t_data *data, int *i);
 
 /* parsing/input */
 void			parse_input(int ac, char **av, t_data *data);
 
 /* parsing/map */
-void			check_map(int i, t_data *data);
+void			check_map_line(t_data *data);
+void			check_map_order(int i, t_data *data);
 
 /* parsing/textures */
 void			check_texture_ext(t_data *data, char *path);

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 20:29:16 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 22:38:18 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,7 @@
 
 static void	set_identifier(t_data *data, char id, char *path)
 {
-	if (id == 'N')
-	{
-		data->textures->path_n = path;
-		data->check->north = true;
-	}
-	else if (id == 'S')
-	{
-		data->textures->path_s = path;
-		data->check->south = true;
-	}
-	else if (id == 'E')
-	{
-		data->textures->path_e = path;
-		data->check->east = true;
-	}
-	else if (id == 'W')
-	{
-		data->textures->path_w = path;
-		data->check->west = true;
-	}
+	is_identifier_texture(data, id, path);
 	set_color(data, id);
 	if (id == 'F')
 		data->check->floor = true;
@@ -52,6 +33,7 @@ void	check_identifier(t_data *data, char id)
 	{
 		path = get_texture_path(data);
 		check_texture_ext(data, path);
+		// open_xpm(data, path);
 	}
 	else if (id == 'F' || id == 'C')
 	{
@@ -75,7 +57,7 @@ void	search_identifier(t_data *data)
 		i++;
 	if (!f->line[i])
 		return ;
-	if (!is_available_char_identifier(f->line[i])
+	if (!is_available_char_identifier(f->line[i + 1])
 		&& data->check->are_identifiers_valid)
 		if (is_available_char_map(f->line[i]))
 			free_and_exit(data, PLACE_MAP, 0);
@@ -90,5 +72,5 @@ void	search_identifier(t_data *data)
 	else if (f->line[i] == 'F' || f->line[i] == 'C')
 		check_color_identifiers(data, &i);
 	else
-		check_map(i, data);
+		check_map_order(i, data);
 }

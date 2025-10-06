@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:35:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 18:56:13 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 21:26:36 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
 		int line, const char *func)
 {
-	if (err != 42)
+	if (err != 42) // TDO: DEGAGE
 		ft_putendl_fd("Error:", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
 	fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);

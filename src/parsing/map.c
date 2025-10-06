@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 20:09:17 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/06 22:38:42 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,39 @@
 // 	(void)data;
 // }
 
-void	check_map(int i, t_data *data)
+// static int	atoi(t_data *data, char *str, int *idx)
+// {
+// 	int		nb;
+// 	int		i;
+// 	size_t	len;
+
+// 	nb = 0;
+// 	i = 0;
+// 	while ((str[*idx] >= '\t' && str[*idx] <= '\r') || str[*idx] == ' ')
+// 		(*idx)++;
+// 	while (str[*idx] >= '0' && str[*idx] <= '9')
+// 	{
+// 		nb = nb * 10 + (str[*idx] - '0');
+// 		(*idx)++;
+// 	}
+// 	return (nb);
+// }
+
+void	check_map_line(t_data *data)
+{
+	int		i;
+	size_t	len;
+
+	len = ft_strlen(data->file->line);
+	i = 0;
+	while (data->file->line[i + 1])
+	{
+		if (!is_available_char_map(data->file->line[i++]))
+			free_and_exit(data, MAP_WRONG_CHAR, 0);
+	}
+}
+
+void	check_map_order(int i, t_data *data)
 {
 	int	j;
 
