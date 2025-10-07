@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 13:41:47 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/07 19:09:10 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,26 @@ void	print_textures(t_data *data)
 	printf("MAP: %s\n\n", data->file->map);
 }
 
+void	print_map(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (data->map)
+	{
+		printf("\nmap.width = %d\nmap.height = %d\n\n", data->map->width,
+				data->map->height);
+		data->map->map = data->check->map;
+		// i = 0;
+		// while (data->check->map[i])
+		// 	printf("ok %s\n", data->map->map[i++]);
+	}
+}
+
 void	print_free(t_data *data)
 {
 	// print_textures(data);
+	print_map(data);
 	free_and_exit(data, "Program is runnin\n", 42);
 }
 

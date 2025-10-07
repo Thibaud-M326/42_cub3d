@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 00:01:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 22:08:36 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/07 21:56:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ bool	are_all_identifiers_true(t_data *data)
 bool	is_available_char_identifier(char c)
 {
 	return (c == 'F' || c == 'C' || c == 'N' || c == 'S' || c == 'E'
-		|| c == 'W');
+		|| c == 'W' || c == '\0');
 }
 
 bool	is_available_char_map(char c)
 {
-	return (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E'
-		|| c == 'W');
+	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E'
+		|| c == 'W' || c == '\n');
 }

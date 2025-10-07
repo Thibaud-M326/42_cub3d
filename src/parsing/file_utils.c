@@ -1,0 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 19:01:24 by jmagand           #+#    #+#             */
+/*   Updated: 2025/10/07 19:03:14 by jmagand          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube.h"
+#include "libft.h"
+#include <fcntl.h>
+
+int	count_lines(t_data *data)
+{
+	int	height;
+
+	height = 0;
+	while (data->map->map[height])
+		height++;
+	return (height);
+}
+
+void	err_handler(t_data *data)
+{
+	t_check	*c;
+
+	c = data->check;
+	if (c->north || c->south || c->east || c->west || c->ceil || c->floor)
+		free_and_exit(data, ID_MISSING, 0);
+	else
+		free_and_exit(data, FILE_EMPTY_FILE, 0);
+}
+
+void	get_path_file(char *input, t_data *data)
+{
+	t_file	*file;
+	char	*map_path;
+
+	file = data->file;
+	/* invalid maps*/
+	map_path = ft_strjoin("assets/maps/invalid_maps/", input);
+	/* valid maps */
+	// map_path = ft_strjoin("assets/maps/", input);
+	if (!map_path)
+		free_and_exit(data, MALLOC, 1);
+	file->map = ft_strdup(map_path);
+	free(map_path);
+	if (!file->map)
+		free_and_exit(data, MALLOC, 1);
+	file->fd = open(file->map, O_RDONLY);
+	if (file->fd < 0)
+		free_and_exit(data, FILE_NOT_FOUND, 0);
+}

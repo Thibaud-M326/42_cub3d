@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 13:32:57 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/07 19:06:23 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ typedef struct s_check
 	char		*color;
 	char		*path;
 	char		*ext;
+	char		*map_str;
+	char		**map;
+	int			width;
 	bool		north;
 	bool		west;
 	bool		east;
@@ -79,13 +82,14 @@ typedef struct s_check
 	bool		floor;
 	bool		ceil;
 	bool		are_identifiers_valid;
+	bool		got_nl;
 }				t_check;
 
 typedef struct s_map
 {
-	int			**map;
-	int			map_h;
-	int			map_w;
+	char		**map;
+	int			height;
+	int			width;
 }				t_map;
 
 typedef struct s_textures
@@ -142,6 +146,9 @@ typedef struct s_data
 /****************************************************************************/
 /*                                FUNCTIONS									*/
 /****************************************************************************/
+/* exit/utils */
+void			free_strs(char **strs);
+
 /* exit/free_exit */
 void			free_and_exit_debug(t_data *data, char *msg, int err,
 					const char *file, int line, const char *func);
@@ -159,12 +166,15 @@ void			check_color_format(t_data *data);
 char			*get_color(t_data *data);
 
 /* parsing/file_utils */
-void			is_identifier_texture(t_data *data, char id, char *path);
-void			check_error_in_file(t_data *data);
+int				count_lines(t_data *data);
+void			err_handler(t_data *data);
+void			get_path_file(char *input, t_data *data);
 
 /* parsing/file */
 void			check_file(char *input, t_data *data);
 
+/* parsing/flood_fill */
+void			flood_fill(t_data *data);
 
 /* parsing/identifiers_utils */
 void			open_xpm(t_data *data, char *path);
@@ -209,6 +219,10 @@ t_data			*init_data_struct(void);
 /* structures/s_file */
 t_file			*init_file_struct(t_data *data);
 void			free_file(t_file *file);
+
+/* structures/s_map */
+t_map			*init_map_struct(t_data *data);
+void			free_map(t_map *map);
 
 //structures/s_mlx
 int				init_mlx(t_data *data);

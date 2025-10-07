@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_data.c                                           :+:      :+:    :+:   */
+/*   s_map.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 16:53:58 by jmagand          ###   ########.fr       */
+/*   Created: 2025/10/07 15:48:50 by jmagand           #+#    #+#             */
+/*   Updated: 2025/10/07 18:18:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include <stddef.h>
 
-t_data	*init_data_struct(void)
+t_map	*init_map_struct(t_data *data)
 {
-	t_data	*data;
+	t_map	*map;
 
-	data = ft_calloc(1, sizeof(t_data)); // TODO CHECK NULL
-	if (!data)
-		free_and_exit(data, "Malloc failed", 1);
-	data->file = NULL;
-	data->textures = NULL;
-	data->map = NULL;
-	data->check = NULL;
-	data->mlx_data = NULL;
-	data->player = NULL;
-	return (data);
+	map = ft_calloc(1, sizeof(t_map));
+	if (!map)
+		free_and_exit(data, MALLOC, 1);
+	map->map = NULL;
+	map->height = 0;
+	map->width = 0;
+	return (map);
 }

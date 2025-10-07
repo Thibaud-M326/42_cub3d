@@ -18,8 +18,11 @@ NAME = cub3D
 SRC_FILES = main						\
 			hook/hook					\
 			exit/free_exit				\
+			exit/utils					\
 			parsing/color				\
+			parsing/file_utils			\
 			parsing/file				\
+			parsing/flood_fill			\
 			parsing/identifiers			\
 			parsing/identifiers_utils	\
 			parsing/input				\
@@ -31,6 +34,7 @@ SRC_FILES = main						\
 			structures/s_data			\
 			structures/s_file			\
 			structures/s_check			\
+			structures/s_map			\
 			structures/s_mlx			\
 			structures/s_textures		\
 
