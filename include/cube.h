@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 16:32:49 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:36:43 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,8 +225,12 @@ int				free_map(t_map *map);
 void			put_one_pixel(t_data *data, int x, int y, int color);
 int				mix_color(int red, int green, int blue);
 
-//src/render/render.c
+//src/render/cub2d/render_cub2d.c
+// int				render_cub2d(t_data *data);
 int				render(t_data *data);
+
+//src/render/render_cub3d.c
+int				render_cub3d(t_data *data);
 
 /* messages */
 char			*get_error_message(t_msg msg);

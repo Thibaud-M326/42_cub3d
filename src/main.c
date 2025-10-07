@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 18:19:43 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:35:33 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(void)
 {
 	t_data	*data;
 
+	printf("bonjour\n");
 	data = init_data_struct();
 	// parse_input(ac, av, data);
 	if (!init_mlx(data))

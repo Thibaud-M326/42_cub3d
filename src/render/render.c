@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/07 16:32:49 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:48:33 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int	draw_ray(t_data *data)
 		py = (int)((player->pos_y + ray->dir_y * ray->distance * t) * 100);
 		
 		if (px >= 0 && px < 1000 && py >= 0 && py < 1000)
-			put_one_pixel(data, px, py, 0x0000FF);
+			put_one_pixel(data, px, py, 0x00FF00);
 		
 		i++;
 	}
@@ -141,9 +141,15 @@ int	compute_ray_distance(t_data *data)
 
 	ray = &data->player->ray;
 	if (ray->length_x < ray->length_y)
-		data->player->ray.distance = ray->length_x;
+	{
+		data->player->ray.distance = ray->length_x - ray->unit_length_x;
+		ray->map_check_x -= ray->step_x;
+	}
 	else
-		data->player->ray.distance = ray->length_y;
+	{
+		data->player->ray.distance = ray->length_y - ray->unit_length_y;
+		ray->map_check_y -= ray->step_y;
+	}
 	return (1);
 }
 
@@ -168,6 +174,7 @@ int	hit_wall_ray_dist(t_data *data)
 	t_ray	*ray;
 
 	ray = &data->player->ray;
+	
 	while (!hit_wall(data))
 	{
 		if (ray->length_x < ray->length_y)		
