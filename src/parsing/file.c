@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 22:07:52 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/07 13:32:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,30 @@ by one or more spaces.
 static void	get_map_gnl(t_data *data)
 {
 	int	err;
-	// int	**map;
 
+	// int	**map;
 	err = 0;
+	printf("%s", data->file->line);
 	while (data->file->line)
 	{
-		printf("%s", data->file->line);
 		check_map_line(data);
 		free(data->file->line);
 		data->file->line = get_next_line(data->file->fd, &err);
+		printf("%s", data->file->line);
 		if (err)
 			free_and_exit(data, GNL, 1);
 	}
+}
+
+static void	handle_error(t_data *data)
+{
+	t_check	*c;
+
+	c = data->check;
+	if (c->north || c->south || c->east || c->west || c->ceil || c->floor)
+		free_and_exit(data, ID_MISSING, 0);
+	else
+		free_and_exit(data, FILE_EMPTY_FILE, 0);
 }
 
 static void	get_identifiers_gnl(t_data *data)
@@ -81,6 +93,8 @@ static void	get_identifiers_gnl(t_data *data)
 		if (err)
 			free_and_exit(data, GNL, 1);
 	}
+	if (!are_all_identifiers_true(data))
+		handle_error(data);
 }
 
 static void	get_path_file(char *input, t_data *data)

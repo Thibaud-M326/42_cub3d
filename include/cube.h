@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 22:37:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/07 13:32:57 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@
 # define FILE_WRONG_EXT "Extension is not '.cub'"
 # define FILE_NOT_FOUND "File not found"
 
+# define FILE_EMPTY_FILE "File: Empty file"
+
 /* IDENTIFIERS */
 # define ID_INVALID "Identifier: Invalid identifier found in file"
 # define ID_TXT_DOUBLE "Identifier: There is a duplicate [NO, SO, EA, WE]"
 # define ID_COLOR_DOUBLE "Identifier: There is a duplicate [F, C]"
+# define ID_MISSING "Identifier: Atleast one identifier isn't set"
 
 /* COLORS */
 # define COLOR_FORMAT "Color: Format must be [0-255],[0-255],[0-255]"
