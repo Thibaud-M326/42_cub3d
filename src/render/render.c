@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/07 16:32:49 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:42:10 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,9 @@ int	compute_ray_distance(t_data *data)
 
 	ray = &data->player->ray;
 	if (ray->length_x < ray->length_y)
-		data->player->ray.distance = ray->length_x;
+		data->player->ray.distance = ray->length_x - ray->unit_length_x;
 	else
-		data->player->ray.distance = ray->length_y;
+		data->player->ray.distance = ray->length_y - ray->unit_length_y;
 	return (1);
 }
 
