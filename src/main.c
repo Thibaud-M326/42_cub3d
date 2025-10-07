@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 21:39:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/07 13:41:47 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_textures(t_data *data)
 	printf("MAP: %s\n\n", data->file->map);
 }
 
-static void	print(t_data *data)
+void	print_free(t_data *data)
 {
 	// print_textures(data);
 	free_and_exit(data, "Program is runnin\n", 42);
@@ -51,7 +51,7 @@ int	main(int ac, char **av)
 
 	data = init_data_struct();
 	parse_input(ac, av, data);
-	print(data);
+	print_free(data);
 	// if (!init_mlx(data))
 	// 	free_and_exit(data, "init_mlx failed", 1);
 	// render(data);

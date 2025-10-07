@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 13:32:38 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/07 13:46:01 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,18 @@ static void	get_map_gnl(t_data *data)
 
 	// int	**map;
 	err = 0;
-	printf("%s", data->file->line);
 	while (data->file->line)
 	{
+		printf("%s", data->file->line);
 		check_map_line(data);
 		free(data->file->line);
 		data->file->line = get_next_line(data->file->fd, &err);
-		printf("%s", data->file->line);
 		if (err)
 			free_and_exit(data, GNL, 1);
 	}
 }
 
-static void	handle_error(t_data *data)
+static void	err_handler(t_data *data)
 {
 	t_check	*c;
 
@@ -94,7 +93,7 @@ static void	get_identifiers_gnl(t_data *data)
 			free_and_exit(data, GNL, 1);
 	}
 	if (!are_all_identifiers_true(data))
-		handle_error(data);
+		err_handler(data);
 }
 
 static void	get_path_file(char *input, t_data *data)
