@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 17:55:48 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:32:49 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ typedef	struct s_ray
 	double		unit_length_y;
 	double		map_check_x;
 	double		map_check_y;
-	int			sign_x;
-	int			sign_y;	
+	int			step_x;
+	int			step_y;	
 	double		distance;
 }				t_ray;
 
