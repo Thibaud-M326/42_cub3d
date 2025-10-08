@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 20:57:46 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 21:03:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	check_color_int(t_data *data)
 				i++;
 		}
 		else if (data->check->color[i] && data->check->color[i + 1]
-			&& data->check->color[i + 1] == ',')
-				free_and_exit(data, COLOR_FORMAT, 0);
+				&& data->check->color[i + 1] == ',')
+			free_and_exit(data, COLOR_FORMAT, 0);
 		else
 			i++;
 	}

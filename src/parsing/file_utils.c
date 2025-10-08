@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:01:24 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 20:14:06 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 21:07:56 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // void	set_player_pos(t_data *data)
 // {
 // 	data->player->id = data->check->spawn;
-	
+
 // }
 
 int	count_lines(t_data *data)
@@ -47,15 +47,8 @@ void	get_path_file(char *input, t_data *data)
 	char	*map_path;
 
 	file = data->file;
-	/* invalid maps*/
-	// map_path = ft_strjoin("assets/maps/invalid_maps/", input);
 	map_path = input;
-	/* valid maps */
-	// map_path = ft_strjoin("assets/maps/", input);
-	if (!map_path)
-		free_and_exit(data, MALLOC, 1);
 	file->map = ft_strdup(map_path);
-	// free(map_path);
 	if (!file->map)
 		free_and_exit(data, MALLOC, 1);
 	file->fd = open(file->map, O_RDONLY);
