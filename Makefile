@@ -19,10 +19,10 @@ SRC_FILES = main						\
 			hook/hook					\
 			exit/free_exit				\
 			exit/utils					\
+			parsing/check_map			\
 			parsing/color				\
 			parsing/file_utils			\
 			parsing/file				\
-			parsing/flood_fill			\
 			parsing/identifiers			\
 			parsing/identifiers_utils	\
 			parsing/input				\

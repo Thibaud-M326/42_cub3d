@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 19:06:23 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 17:41:12 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 # define PLACE_MAP "Map: Content found before all identifiers were set"
 # define MAP_WRONG_CHAR "Map: Invalid character found"
 # define MAP_EMPTY_LINE "Map: Empty line found"
+# define MAP_DOUBLE_SPAWN "Map: More than 1 spawn found"
+# define MAP_NO_SPAWN "Map: No spawn found"
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -83,6 +85,7 @@ typedef struct s_check
 	bool		ceil;
 	bool		are_identifiers_valid;
 	bool		got_nl;
+	char		spawn;
 }				t_check;
 
 typedef struct s_map
@@ -159,6 +162,9 @@ void			free_and_exit_debug(t_data *data, char *msg, int err,
 //src/hook/hook.c
 int				deploy_mlx_hook(t_data *data);
 
+/* parsing/check_map */
+int				is_map_valid(t_data *data);
+
 /* parsing/color */
 void			set_color(t_data *data, char id);
 void			check_color_int(t_data *data);
@@ -172,9 +178,6 @@ void			get_path_file(char *input, t_data *data);
 
 /* parsing/file */
 void			check_file(char *input, t_data *data);
-
-/* parsing/flood_fill */
-void			flood_fill(t_data *data);
 
 /* parsing/identifiers_utils */
 void			open_xpm(t_data *data, char *path);
@@ -198,6 +201,7 @@ void			check_texture_ext(t_data *data, char *path);
 char			*get_texture_path(t_data *data);
 
 /* parsing/utils */
+void			is_spawn(t_data *data, char c);
 bool			are_all_identifiers_true(t_data *data);
 bool			is_available_char_identifier(char c);
 bool			is_available_char_map(char c);

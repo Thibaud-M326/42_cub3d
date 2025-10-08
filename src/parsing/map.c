@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 21:58:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 17:55:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,12 @@ void	check_map_line(t_data *data)
 		data->check->got_nl = true;
 	while (f->line[i])
 	{
-		if (!is_available_char_map(f->line[i]))
+		while (ft_is_white_space(f->line[i]) && f->line[i + 1])
+			i++;
+		if (f->line[i] == 'N' || f->line[i] == 'S' || f->line[i] == 'E'
+			|| f->line[i] == 'W')
+			is_spawn(data, f->line[i]);
+		if (!is_available_char_map(f->line[i]) && f->line[i] != '\n')
 			free_and_exit(data, MAP_WRONG_CHAR, 0);
 		else if (data->check->got_nl && is_available_char_map(f->line[i]))
 			free_and_exit(data, MAP_EMPTY_LINE, 0);
