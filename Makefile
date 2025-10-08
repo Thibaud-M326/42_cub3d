@@ -36,6 +36,7 @@ SRC_FILES = main						\
 			structures/s_check			\
 			structures/s_map			\
 			structures/s_mlx			\
+			structures/s_player			\
 			structures/s_textures		\
 
 #------------------------------------------------#

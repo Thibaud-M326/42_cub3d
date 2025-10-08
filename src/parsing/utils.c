@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 00:01:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 17:57:02 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 19:46:49 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 void	is_spawn(t_data *data, char c)
 {
-	if (data->check->spawn && (c == 'N' || c == 'S' || c == 'E' || c == 'W'))
+	if (data->player)
 		free_and_exit(data, MAP_DOUBLE_SPAWN, 0);
 	else
 	{
+		data->player = init_player_struct(data);
 		if (c == 'N')
 			data->check->spawn = 'N';
 		else if (c == 'S')
@@ -28,6 +29,11 @@ void	is_spawn(t_data *data, char c)
 		else if (c == 'W')
 			data->check->spawn = 'W';
 	}
+}
+
+bool	is_player_spawn(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
 bool	are_all_identifiers_true(t_data *data)

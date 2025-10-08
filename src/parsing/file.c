@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 17:58:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 20:05:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,4 @@ void	check_file(char *input, t_data *data)
 	data->map->map = data->check->map;
 	data->map->height = count_lines(data);
 	data->map->width = data->check->width;
-	// is_map_valid(data);
 }

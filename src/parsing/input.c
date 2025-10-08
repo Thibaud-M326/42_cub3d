@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 21:05:01 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 19:05:23 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 20:04:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,4 @@ void	parse_input(int ac, char **av, t_data *data)
 			free_and_exit(data, AC_NBR, 0);
 	}
 	check_input(av[1], data);
-	check_file(av[1], data);
 }

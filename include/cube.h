@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 17:41:12 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 20:40:13 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@
 # define COLOR_FORMAT "Color: Format must be [0-255],[0-255],[0-255]"
 # define COLOR_VALUE_RANGE "Color: Values must be between [0-255]"
 # define COLOR_INVALID_CHAR "Color: Characters must be [0-9] ','"
-# define COLOR_COMA "Color: Invalid coma number: \"R,G,B"
+# define COLOR_COMA "Color: Invalid coma number: \"R,G,B\""
 
 /* TEXTURES */
-# define MISSING_EXT_TXT "Texture: Missing extension \".xpm"
-# define WRONG_EXT_TXT "Texture: Extension is not \"xpm"
-# define MISSING_FILENAME_TXT "Texture: Missing filename \"\".xpm"
+# define MISSING_EXT_TXT "Texture: Missing extension \".xpm\""
+# define WRONG_EXT_TXT "Texture: Extension is not \"xpm\""
+# define MISSING_FILENAME_TXT "Texture: Missing filename \".xpm\""
 # define WRONG_PATH_TXT "Texture: File not found"
 
 /* MAP */
@@ -51,6 +51,8 @@
 # define MAP_EMPTY_LINE "Map: Empty line found"
 # define MAP_DOUBLE_SPAWN "Map: More than 1 spawn found"
 # define MAP_NO_SPAWN "Map: No spawn found"
+# define MAP_BORDER "Map: '0' not directly surrounded by '1'"
+# define MAP_PLAYER "Map: Spawn is not closed"
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -129,6 +131,7 @@ typedef struct s_player
 {
 	int			pos_x;
 	int			pos_y;
+	char		id;
 }				t_player;
 
 typedef struct s_hook_args
@@ -202,6 +205,7 @@ char			*get_texture_path(t_data *data);
 
 /* parsing/utils */
 void			is_spawn(t_data *data, char c);
+bool			is_player_spawn(char c);
 bool			are_all_identifiers_true(t_data *data);
 bool			is_available_char_identifier(char c);
 bool			is_available_char_map(char c);
@@ -231,6 +235,9 @@ void			free_map(t_map *map);
 //structures/s_mlx
 int				init_mlx(t_data *data);
 int				free_mlx_data(t_mlx_data *mlx_data);
+
+/* structures/s_player */
+t_player		*init_player_struct(t_data *data);
 
 /* structures/s_textures */
 t_textures		*init_textures_struct(t_data *data);

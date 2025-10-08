@@ -6,29 +6,12 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 17:55:35 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 20:35:58 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-
-/*
-
-◦ The map must be composed of only 6 possible characters: 0 for an empty space,
-1 for a wall, and N,S,E or W for the player’s start position and spawning
-orientation.
-
-◦ The map must be closed/surrounded by walls, if not the program must return
-an error.
-
-◦ The map must be parsed as it looks in the file. Spaces are a valid part of the
-map and are up to you to handle. You must be able to parse any kind of map,
-as long as it respects the rules of the map.
-
-*/
-
-#include <stdio.h>
 
 static bool	is_empty_line(t_data *data)
 {
