@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:37:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 20:39:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 21:58:32 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,26 @@ static void	handle_error(t_data *data, char c)
 		free_and_exit(data, MAP_BORDER, 0);
 	else
 		free_and_exit(data, MAP_PLAYER, 0);
+}
+
+static void	check_border(t_data *data, int y, int x, char c)
+{
+	t_map	*m;
+
+	m = data->map;
+	if (y == 0 || y == m->height - 1)
+		handle_error(data, c);
+	if ((int)ft_strlen(m->map[y - 1]) <= x || m->map[y - 1][x] == ' '
+		|| !m->map[y - 1][x])
+		handle_error(data, c);
+	if ((int)ft_strlen(m->map[y + 1]) <= x || m->map[y + 1][x] == ' '
+		|| !m->map[y + 1][x])
+		handle_error(data, c);
+	if (x == 0 || m->map[y][x - 1] == ' ' || !m->map[y][x - 1])
+		handle_error(data, c);
+	if (x + 1 >= (int)ft_strlen(m->map[y]) || m->map[y][x + 1] == ' '
+		|| !m->map[y][x + 1])
+		handle_error(data, c);
 }
 
 int	is_map_valid(t_data *data)
@@ -40,22 +60,7 @@ int	is_map_valid(t_data *data)
 		{
 			c = m->map[y][x];
 			if (c == '0' || is_player_spawn(c))
-			{
-				if (y == 0 || y == m->height - 1)
-					handle_error(data, c);
-				if ((int)ft_strlen(m->map[y - 1]) <= x || m->map[y
-					- 1][x] == ' ' || !m->map[y - 1][x])
-					handle_error(data, c);
-				if ((int)ft_strlen(m->map[y + 1]) <= x || m->map[y
-					+ 1][x] == ' ' || !m->map[y + 1][x])
-					handle_error(data, c);
-				if (x == 0 || m->map[y][x - 1] == ' ' || !m->map[y][x
-					- 1])
-					handle_error(data, c);
-				if (x + 1 >= line_len || m->map[y][x + 1] == ' ' || !m->map[y][x
-					+ 1])
-					handle_error(data, c);
-			}
+				check_border(data, y, x, c);
 			x++;
 		}
 		y++;

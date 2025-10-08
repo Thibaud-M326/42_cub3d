@@ -6,19 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:01:24 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 21:07:56 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 21:57:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include <fcntl.h>
-
-// void	set_player_pos(t_data *data)
-// {
-// 	data->player->id = data->check->spawn;
-
-// }
 
 int	count_lines(t_data *data)
 {

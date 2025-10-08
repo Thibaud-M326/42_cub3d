@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 20:05:04 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 21:57:05 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	check_file(char *input, t_data *data)
 	data->check = init_check_struct(data);
 	data->textures = init_textures_struct(data);
 	get_identifiers_gnl(data);
-	/* ALL identifiers ✅ */
 	get_map_gnl(data);
 	data->map = init_map_struct(data);
 	data->map->map = data->check->map;

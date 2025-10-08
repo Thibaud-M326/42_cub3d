@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 22:46:43 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 22:36:57 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 22:04:00 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	check_duplicate(t_data *data, char id)
 	t_check	*c;
 
 	c = data->check;
-	if ((id == 'N' && c->north) || (id == 'S' && c->south) ||
-		(id == 'E' && c->east) || (id == 'W' && c->west))
+	if ((id == 'N' && c->north) || (id == 'S' && c->south)
+		|| (id == 'E' && c->east) || (id == 'W' && c->west))
 		free_and_exit(data, ID_TXT_DOUBLE, 0);
 	if ((id == 'F' && c->floor) || (id == 'C' && c->ceil))
 		free_and_exit(data, ID_COLOR_DOUBLE, 0);

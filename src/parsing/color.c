@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 21:03:14 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/08 21:56:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	set_color(t_data *data, char id)
 	if (id == 'F')
 	{
 		data->textures->floor_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+				ft_atoi(data->check->color),
+				ft_atoi(ft_strchr(data->check->color, ',') + 1),
+				ft_atoi(ft_strrchr(data->check->color, ',') + 1));
 	}
 	else if (id == 'C')
 	{
 		data->textures->ceil_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+				ft_atoi(data->check->color),
+				ft_atoi(ft_strchr(data->check->color, ',') + 1),
+				ft_atoi(ft_strrchr(data->check->color, ',') + 1));
 	}
 }
 
@@ -69,7 +69,7 @@ void	check_color_int(t_data *data)
 				i++;
 		}
 		else if (data->check->color[i] && data->check->color[i + 1]
-				&& data->check->color[i + 1] == ',')
+			&& data->check->color[i + 1] == ',')
 			free_and_exit(data, COLOR_FORMAT, 0);
 		else
 			i++;
