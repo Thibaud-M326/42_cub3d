@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/08 20:45:42 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/08 21:57:30 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,27 +86,6 @@ int	player_offset_pos(t_data *data)
 	return (0);
 }
 
-	// if (rayDirX < 0)
-	// {
-	// stepX = -1;
-	// sideDistX = (posX - mapX) * deltaDistX;
-	// }
-	// else
-	// {
-	// stepX = 1;
-	// sideDistX = (mapX + 1.0 - posX) * deltaDistX;
-	// }
-	// if (rayDirY < 0)
-	// {
-	// stepY = -1;
-	// sideDistY = (posY - mapY) * deltaDistY;
-	// }
-	// else
-	// {
-	// stepY = 1;
-	// sideDistY = (mapY + 1.0 - posY) * deltaDistY;
-	// }
-
 int	first_side_ray_dist(t_data *data)
 {
 	t_ray		*ray;
@@ -137,9 +116,6 @@ int	draw_ray(t_data *data)
 	ray = &data->player->ray;
 	player = data->player;
 	steps = (int)(ray->distance * 100);
-	
-	// printf("Drawing ray from (%.1f, %.1f) distance %.3f (%d steps)\n",
-	// 	player->pos_x, player->pos_y, ray->distance, steps);
 	
 	i = 0;
 	while (i <= steps)
@@ -185,7 +161,7 @@ int	hit_wall(t_data *data)
 
 	// printf("map[%d][%d]\n",(int)ray->map_check_y,(int)ray->map_check_x);
 
-	if (map[(int)ray->map_check_y + ray->step_y][(int)ray->map_check_x + ray->step_y] == 1)
+	if (map[(int)ray->map_check_y][(int)ray->map_check_x] == 1)
 		return (1);
 	else
 		return (0);
