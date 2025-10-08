@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/08 21:57:30 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/08 23:53:30 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,10 @@ int	draw_ray(t_data *data)
 	player = data->player;
 	steps = (int)(ray->distance * 100);
 	
+
+	printf("Drawing ray from (%.1f, %.1f) distance %.3f (%d steps)\n",
+		player->pos_x, player->pos_y, ray->distance, steps);
+
 	i = 0;
 	while (i <= steps)
 	{
@@ -140,12 +144,12 @@ int	compute_ray_distance(t_data *data)
 	ray = &data->player->ray;
 	if (ray->length_x < ray->length_y)
 	{
-		data->player->ray.distance = ray->length_x;// - ray->unit_length_x;
+		data->player->ray.distance = ray->length_x;
 		data->player->ray.side = 0;
 	}
 	else
 	{
-		data->player->ray.distance = ray->length_y;// - ray->unit_length_y;
+		data->player->ray.distance = ray->length_y;
 		data->player->ray.side = 1;
 	}
 	return (1);
@@ -159,8 +163,9 @@ int	hit_wall(t_data *data)
 	map = data->map->map;
 	ray = &data->player->ray;
 
-	// printf("map[%d][%d]\n",(int)ray->map_check_y,(int)ray->map_check_x);
+	printf("map[%d][%d]\n",(int)ray->map_check_y,(int)ray->map_check_x);
 
+	// if (map[(int)ray->map_check_y + ray->step_y][(int)ray->map_check_x - ray->step_x] == 1)
 	if (map[(int)ray->map_check_y][(int)ray->map_check_x] == 1)
 		return (1);
 	else
@@ -170,21 +175,22 @@ int	hit_wall(t_data *data)
 int	hit_wall_ray_dist(t_data *data)
 {
 	t_ray	*ray;
+	int		**map;
 
+	map = data->map->map;
 	ray = &data->player->ray;
-
-	while (!hit_wall(data))
+	while (1)
 	{
-		if (ray->length_x <= ray->length_y)		
-		{
+		if (ray->length_x < ray->length_y)
 			ray->map_check_x += ray->step_x;
-			ray->length_x += ray->unit_length_x;
-		}
 		else
-		{
 			ray->map_check_y += ray->step_y;
+		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == 1)
+			break ;
+		if (ray->length_x < ray->length_y)
+			ray->length_x += ray->unit_length_x;
+		else
 			ray->length_y += ray->unit_length_y;
-		}
 	}
 	compute_ray_distance(data);
 	return(1);
@@ -192,26 +198,26 @@ int	hit_wall_ray_dist(t_data *data)
 
 int	raycasting(t_data *data)
 {
-	//tant qu'on a un seul ray droit devant le joueur
-	//on devra ensuite faire un tableau de ray
-	data->player->ray.dir_x = data->player->dir_x;
-	data->player->ray.dir_y = data->player->dir_y;
-	//
+	// //tant qu'on a un seul ray droit devant le joueur
+	// //on devra ensuite faire un tableau de ray
+	// data->player->ray.dir_x = data->player->dir_x;
+	// data->player->ray.dir_y = data->player->dir_y;
+	// //
 
-	// int		x;
-	// double	camera_x;
-	// double	plane_x;	
-	// double	plane_y;
+	int		x;
+	double	camera_x;
+	double	plane_x;	
+	double	plane_y;
 
 
-	// plane_x = -data->player->dir_y * 0.66;
-	// plane_y = data->player->dir_x * 0.66;
-	// x = 0;
-	// while (x < 1000)
-	// {
-		// camera_x = 2 * x / (double)1000 - 1;
-		// data->player->ray.dir_x = data->player->dir_x + plane_x * camera_x;
-		// data->player->ray.dir_y = data->player->dir_y + plane_y * camera_x;
+	plane_x = -data->player->dir_y * 0.66;
+	plane_y = data->player->dir_x * 0.66;
+	x = 0;
+	while (x < 1000)
+	{
+		camera_x = 2 * x / (double)1000 - 1;
+		data->player->ray.dir_x = data->player->dir_x + plane_x * camera_x;
+		data->player->ray.dir_y = data->player->dir_y + plane_y * camera_x;
 			
 		ray_step(data);
 		player_map_pos(data);
@@ -221,9 +227,9 @@ int	raycasting(t_data *data)
 		hit_wall_ray_dist(data);
 		draw_ray(data);
 
-	// 	draw_vertical_line(data, x);
-	// 	x++;
-	// }
+		// draw_vertical_line(data, x);
+		x++;
+	}
 	return (1);
 }
 
