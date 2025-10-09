@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:56:13 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 17:59:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:46:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /* GLOBAL */
 # define GNL "A problem occured with GNL"
 # define MALLOC "Malloc failed"
+# define MLX_FAIL "MLX failed to init"
 
 /* INPUT */
 # define USAGE "Usage: ./cub3D [FILE].cub"

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:32:07 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:58:30 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,31 @@ typedef struct s_mlx_data
 	int			color;
 }				t_mlx_data;
 
+typedef struct s_ray
+{
+	double		dir_x;
+	double		dir_y;
+	double		length_x;
+	double		length_y;
+	double		unit_length_x;
+	double		unit_length_y;
+	double		map_check_x;
+	double		map_check_y;
+	int			step_x;
+	int			step_y;
+	int			side;
+	double		distance;
+}				t_ray;
+
 typedef struct s_player
 {
-	int			pos_x;
-	int			pos_y;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		offset_pos_x;
+	double		offset_pos_y;
+	t_ray		ray;
 	char		id;
 }				t_player;
 
@@ -100,6 +121,7 @@ typedef struct s_data
 	t_check		*check;
 	t_mlx_data	*mlx_data;
 	t_player	*player;
+	int			(*render)(t_data *);
 }				t_data;
 
 /* structures/s_check */
