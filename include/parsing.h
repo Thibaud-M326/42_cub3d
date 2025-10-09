@@ -6,11 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:55:18 by jmagand           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/09 20:04:14 by thmaitre         ###   ########.fr       */
-=======
-/*   Updated: 2025/10/09 20:05:00 by jmagand          ###   ########.fr       */
->>>>>>> origin/parsing110
+/*   Updated: 2025/10/09 20:13:37 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +41,7 @@ void	check_identifier(t_data *data, char id);
 void	search_identifier(t_data *data);
 
 /* parsing/identifiers */
-int             init_player_dir(t_data *data);
+int     init_player_dir(t_data *data);
 
 /* parsing/input */
 void	parse_input(int ac, char **av, t_data *data);
