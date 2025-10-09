@@ -6,40 +6,32 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:30:45 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 20:08:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
 #include "mlx.h"
 #include "parsing.h"
-#include "messages.h"
-#include "messages.h"
 
-// int	main(void)
-// {
-// 	t_data	*data;
-
-// 	data = init_data_struct();
-// 	// parse_input(ac, av, data);
-// 	if (!init_mlx(data))
-// 		free_and_exit(data, "init_mlx failed"), 1);
-// 	render(data);
-// 	deploy_mlx_hook(data);
-// 	return (0);
-// }
+void	print_player(t_data *data)
+{
+#include <stdio.h>
+	printf("\npos_x: %d\n", data->player->pos_x);
+	printf("pos_y: %d\n", data->player->pos_y);
+	printf("id: %c\n", data->player->id);
+}
 
 void	print_textures(t_data *data)
 {
-#include <stdio.h>
 	printf("\nNORTH: %s\n", data->textures->path_n);
 	printf("SOUTH: %s\n", data->textures->path_s);
 	printf("WEST: %s\n", data->textures->path_w);
 	printf("EAST: %s\n\n", data->textures->path_e);
 	printf("FLOOR: %d\n", data->textures->floor_color);
 	printf("CEIL: %d\n\n", data->textures->ceil_color);
-	printf("MAP: %s\n\n", data->file->map);
 }
 
 void	print_map(t_data *data)
@@ -62,6 +54,7 @@ void	print_free(t_data *data)
 {
 	// print_textures(data);
 	print_map(data);
+	print_player(data);
 	free_and_exit(data, "Program is runnin\n", 42);
 }
 

@@ -6,7 +6,7 @@ SO ./assets/textures/walls/leavests.xpm
 WE ./assets/textures/walls/iron.xpm
 
 
-EA ./assets/textures/walls/glass.xpm
+EA ./assets/textures/walls/walkstone.xpm
 
 F 255,255,255
 C 255,0,0

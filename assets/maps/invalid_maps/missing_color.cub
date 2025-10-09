@@ -1,7 +1,7 @@
 NO ./assets/textures/walls/glass.xpm
 SO ./assets/textures/walls/leavests.xpm
 WE ./assets/textures/walls/iron.xpm
-EA ./assets/textures/walls/glass.xpm
+EA ./assets/textures/walls/walkstone.xpm
 
 C 150,150,255
 
