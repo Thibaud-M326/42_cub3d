@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:55:18 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 20:13:37 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:14:02 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	check_color_identifiers(t_data *data, int *i);
 void	check_identifier(t_data *data, char id);
 void	search_identifier(t_data *data);
 
-/* parsing/identifiers */
+/* parsing/init_player_dir */
 int     init_player_dir(t_data *data);
 
 /* parsing/input */
