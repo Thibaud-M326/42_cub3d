@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:49:49 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 19:45:18 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ int		player_turn_right(t_data *data);
 int		init_mlx(t_data *data);
 int		free_mlx_data(t_mlx_data *mlx_data);
 
-//structures/s_player
-void	free_player(t_player *player);
-
 //src/render/draw_floor_ceiling.c
 int		draw_floor_ceiling(t_data *data);
 
@@ -70,9 +67,6 @@ int		render(t_data *data);
 
 //src/render/draw_vertical_line.c
 int		draw_vertical_line(t_data *data, int x);
-
-//src/render/init_cub2d.c
-int		init_cub2d(t_data *data);
 
 //src/render/init_raycasting.c
 int		init_ray(t_data *data);

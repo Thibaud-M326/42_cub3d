@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:56:06 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 17:11:37 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:52:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int draw_floor(t_data *data)
 
     y = 0;
     x = 0;
-    // floor_color = data->textures->floor_color;
     floor_color = 0xC6B5E8;
     while (y < 1000 / 2 + 1000 / 2)
     {

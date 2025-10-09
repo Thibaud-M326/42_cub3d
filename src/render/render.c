@@ -6,11 +6,12 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 18:12:01 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:05:48 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include "parsing.h"
 #include "mlx.h"
 #include <math.h>
 #include <stdlib.h>
@@ -155,34 +156,20 @@ int	compute_ray_distance(t_data *data)
 	return (1);
 }
 
-int	hit_wall(t_data *data)
-{
-	int		**map;
-	t_ray	*ray;
-
-	map = data->map->map;
-	ray = &data->player->ray;
-
-	if (map[(int)ray->map_check_y][(int)ray->map_check_x] == 1)
-		return (1);
-	else
-		return (0);
-}
-
 int	hit_wall_ray_dist(t_data *data)
 {
 	t_ray	*ray;
-	int		**map;
+	char	**map;
 
-	map = data->map->map;
 	ray = &data->player->ray;
+	map = data->map->map;
 	while (1)
 	{
 		if (ray->length_x < ray->length_y)
 		ray->map_check_x += ray->step_x;
 		else
 		ray->map_check_y += ray->step_y;
-		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == 1)
+		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
 			break ;
 		if (ray->length_x < ray->length_y)
 			ray->length_x += ray->unit_length_x;
@@ -195,12 +182,6 @@ int	hit_wall_ray_dist(t_data *data)
 
 int	raycasting(t_data *data)
 {
-	// //tant qu'on a un seul ray droit devant le joueur
-	// //on devra ensuite faire un tableau de ray
-	// data->player->ray.dir_x = data->player->dir_x;
-	// data->player->ray.dir_y = data->player->dir_y;
-	// //
-
 	int		x;
 	double	camera_x;
 	double	plane_x;	
@@ -231,9 +212,10 @@ int	raycasting(t_data *data)
 
 int	render(t_data *data)
 {
-	init_cub2d(data);
+	// init_cub2d(data);
 	// draw_cub2d(data);
 	// player_print(data, data->player);
+	init_player_dir(data);
 	draw_floor_ceiling(data);
 	raycasting(data);
 

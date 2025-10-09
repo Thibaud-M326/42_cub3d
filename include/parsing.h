@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:55:18 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:23:32 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 20:04:14 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void			check_color_identifiers(t_data *data, int *i);
 /* parsing/identifiers */
 void			check_identifier(t_data *data, char id);
 void			search_identifier(t_data *data);
+
+/* parsing/identifiers */
+int             init_player_dir(t_data *data);
 
 /* parsing/input */
 void			parse_input(int ac, char **av, t_data *data);

@@ -27,16 +27,15 @@ SRC_FILES = main						\
 			parsing/file				\
 			parsing/identifiers_utils	\
 			parsing/identifiers			\
+			parsing/init_player_dir		\
 			parsing/input				\
 			parsing/map					\
 			parsing/textures			\
 			parsing/utils				\
 			render/dda_algorythm		\
-			render/draw_cub2d			\
 			render/draw_floor_ceiling	\
 			render/draw_pixel			\
 			render/draw_vertical_line	\
-			render/init_cub2d			\
 			render/init_ray				\
 			render/render				\
 			structures/s_check			\
