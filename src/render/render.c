@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 20:32:09 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 21:54:24 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "parsing.h"
 #include "mlx.h"
+#include "parsing.h"
+#include <X11/keysym.h>
 #include <math.h>
 #include <stdlib.h>
-#include <X11/keysym.h>
 
 int	player_print(t_data *data, t_player *player)
 {
 	double	pixel_x;
 	double	pixel_y;
-	
+
 	pixel_x = player->pos_x * data->mlx_data->mlx_img->width / 10;
 	pixel_y = player->pos_y * data->mlx_data->mlx_img->height / 10;
-
 	put_one_pixel(data, pixel_x, pixel_y, 0xFF0000);
 	put_one_pixel(data, pixel_x + 1, pixel_y + 1, 0xFF0000);
 	put_one_pixel(data, pixel_x + 1, pixel_y, 0xFF0000);
@@ -53,38 +52,38 @@ int	player_map_pos(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-
 	player->ray.map_check_x = floor(player->pos_x);
 	player->ray.map_check_y = floor(player->pos_y);
 	return (1);
 }
 
-int	ray_unit_length(t_data *data)
+void	ray_unit_length(t_data *data)
 {
 	t_ray	*ray;
+	double	abs_x;
+	double	abs_y;
 
+#define RAY_EPSILON 1e-10
+#define RAY_INF 1e30
 	ray = &data->player->ray;
-
-	if (fabs(ray->dir_x) < 1e-10)
-		ray->unit_length_x = 1e30;
+	abs_x = fabs(ray->dir_x);
+	abs_y = fabs(ray->dir_y);
+	if (abs_x < RAY_EPSILON)
+		ray->unit_length_x = RAY_INF;
 	else
-		ray->unit_length_x = fabs(1.0 / ray->dir_x);
-		
-	if (fabs(ray->dir_y) < 1e-10)
-		ray->unit_length_y = 1e30;
+		ray->unit_length_x = 1.0 / abs_x;
+	if (abs_y < RAY_EPSILON)
+		ray->unit_length_y = RAY_INF;
 	else
-		ray->unit_length_y = fabs(1.0 / ray->dir_y);
-	return (1);
+		ray->unit_length_y = 1.0 / abs_y;
 }
 
-int	player_offset_pos(t_data *data)
+void	player_offset_pos(t_data *data)
 {
-	t_player	*player;	
-
-	player = data->player;
-	player->offset_pos_x = player->pos_x - player->ray.map_check_x;
-	player->offset_pos_y = player->pos_y - player->ray.map_check_y;
-	return (0);
+	data->player->offset_pos_x = data->player->pos_x
+		- data->player->ray.map_check_x;
+	data->player->offset_pos_y = data->player->pos_y
+		- data->player->ray.map_check_y;
 }
 
 int	first_side_ray_dist(t_data *data)
@@ -117,7 +116,6 @@ int	first_side_ray_dist(t_data *data)
 // 	ray = &data->player->ray;
 // 	player = data->player;
 // 	steps = (int)(ray->distance * 100);
-	
 
 // 	printf("Drawing ray from (%.1f, %.1f) distance %.3f (%d steps)\n",
 // 		player->pos_x, player->pos_y, ray->distance, steps);
@@ -126,13 +124,13 @@ int	first_side_ray_dist(t_data *data)
 // 	while (i <= steps)
 // 	{
 // 		t = (double)i / steps;
-		
+
 // 		px = (int)((player->pos_x + ray->dir_x * ray->distance * t) * 100);
 // 		py = (int)((player->pos_y + ray->dir_y * ray->distance * t) * 100);
-		
+
 // 		if (px >= 0 && px < 1000 && py >= 0 && py < 1000)
 // 			put_one_pixel(data, px, py, 0x00FF00);
-		
+
 // 		i++;
 // 	}
 // 	return (1);
@@ -166,9 +164,9 @@ int	hit_wall_ray_dist(t_data *data)
 	while (1)
 	{
 		if (ray->length_x < ray->length_y)
-		ray->map_check_x += ray->step_x;
+			ray->map_check_x += ray->step_x;
 		else
-		ray->map_check_y += ray->step_y;
+			ray->map_check_y += ray->step_y;
 		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
 			break ;
 		if (ray->length_x < ray->length_y)
@@ -177,14 +175,14 @@ int	hit_wall_ray_dist(t_data *data)
 			ray->length_y += ray->unit_length_y;
 	}
 	compute_ray_distance(data);
-	return(1);
+	return (1);
 }
 
 int	raycasting(t_data *data)
 {
 	int		x;
 	double	camera_x;
-	double	plane_x;	
+	double	plane_x;
 	double	plane_y;
 
 	plane_x = -data->player->dir_y * 0.66;
@@ -195,7 +193,6 @@ int	raycasting(t_data *data)
 		camera_x = 2 * x / (double)1000 - 1;
 		data->player->ray.dir_x = data->player->dir_x + plane_x * camera_x;
 		data->player->ray.dir_y = data->player->dir_y + plane_y * camera_x;
-
 		ray_step(data);
 		player_map_pos(data);
 		ray_unit_length(data);
@@ -203,7 +200,6 @@ int	raycasting(t_data *data)
 		first_side_ray_dist(data);
 		hit_wall_ray_dist(data);
 		// draw_ray(data);
-
 		draw_vertical_line(data, x);
 		x++;
 	}
@@ -217,8 +213,10 @@ int	render(t_data *data)
 	// player_print(data, data->player);
 	draw_floor_ceiling(data);
 	raycasting(data);
-
 	mlx_put_image_to_window(data->mlx_data->mlx_ptr,
-		data->mlx_data->win_ptr, data->mlx_data->mlx_img->img_ptr, 0, 0);
+							data->mlx_data->win_ptr,
+							data->mlx_data->mlx_img->img_ptr,
+							0,
+							0);
 	return (0);
 }

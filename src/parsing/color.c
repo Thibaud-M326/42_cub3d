@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:24:47 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/10 00:01:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,16 +113,20 @@ char	*get_color(t_data *data)
 
 	j = 0;
 	len = ft_strlen(data->file->line);
-	i = 1;
+	i = 0;
+	while (ft_is_white_space(data->file->line[i]))
+		i++;
 	tmp = ft_calloc(len, sizeof(char));
 	if (!tmp)
 		free_and_exit(data, MALLOC, 1);
-	while (data->file->line[i])
+	i += 1;
+	while (ft_is_white_space(data->file->line[i]))
+		i++;
+	while (data->file->line[i + 1])
 	{
-		if (ft_is_white_space(data->file->line[i]))
-			i++;
-		else
-			tmp[j++] = data->file->line[i++];
+		tmp[j] = data->file->line[i];
+		j++;
+		i++;
 	}
 	tmp[j] = '\0';
 	return (tmp);
