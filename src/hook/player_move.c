@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 20:52:11 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/02 18:10:02 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:25:30 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int player_move_backward(t_data *data)
 
 int player_turn_left(t_data *data)
 {
+    #include <stdio.h>
+    printf("data->player->dir_x : %f\n", data->player->dir_x);
     double  old_dir_x;
     double  old_dir_y;
     double  rot_speed;
@@ -53,6 +55,7 @@ int player_turn_right(t_data *data)
     double  old_dir_y;
     double  rot_speed;
 
+    printf("data->player->dir_x : %f\n", data->player->dir_x);
     rot_speed = -0.08;
     old_dir_x = data->player->dir_x;
     old_dir_y = data->player->dir_y;

@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:48:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 20:12:48 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:14:24 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void	print_player(t_data *data)
 {
 #include <stdio.h>
-	printf("\npos_x: %d\n", data->player->pos_x);
-	printf("pos_y: %d\n", data->player->pos_y);
+	printf("\npos_x: %f\n", data->player->pos_x);
+	printf("pos_y: %f\n", data->player->pos_y);
 	printf("id: %c\n", data->player->id);
 }
 

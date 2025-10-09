@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 20:05:48 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:32:09 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,6 @@ int	render(t_data *data)
 	// init_cub2d(data);
 	// draw_cub2d(data);
 	// player_print(data, data->player);
-	init_player_dir(data);
 	draw_floor_ceiling(data);
 	raycasting(data);
 
