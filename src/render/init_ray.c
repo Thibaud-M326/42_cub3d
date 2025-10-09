@@ -6,13 +6,14 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:53:42 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 15:55:04 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:18:56 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int init_raycasting(t_data *data)
+int init_ray(t_data *data)
 {
+    (void)data;
     return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 15:44:08 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:16:59 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,38 +104,38 @@ int	first_side_ray_dist(t_data *data)
 	return (1);
 }
 
-int	draw_ray(t_data *data)
-{
-	t_ray		*ray;
-	t_player	*player;
-	int			steps;
-	int			i;
-	double		t;
-	int			px, py;
+// int	draw_ray(t_data *data)
+// {
+// 	t_ray		*ray;
+// 	t_player	*player;
+// 	int			steps;
+// 	int			i;
+// 	double		t;
+// 	int			px, py;
 
-	ray = &data->player->ray;
-	player = data->player;
-	steps = (int)(ray->distance * 100);
+// 	ray = &data->player->ray;
+// 	player = data->player;
+// 	steps = (int)(ray->distance * 100);
 	
 
-	printf("Drawing ray from (%.1f, %.1f) distance %.3f (%d steps)\n",
-		player->pos_x, player->pos_y, ray->distance, steps);
+// 	printf("Drawing ray from (%.1f, %.1f) distance %.3f (%d steps)\n",
+// 		player->pos_x, player->pos_y, ray->distance, steps);
 
-	i = 0;
-	while (i <= steps)
-	{
-		t = (double)i / steps;
+// 	i = 0;
+// 	while (i <= steps)
+// 	{
+// 		t = (double)i / steps;
 		
-		px = (int)((player->pos_x + ray->dir_x * ray->distance * t) * 100);
-		py = (int)((player->pos_y + ray->dir_y * ray->distance * t) * 100);
+// 		px = (int)((player->pos_x + ray->dir_x * ray->distance * t) * 100);
+// 		py = (int)((player->pos_y + ray->dir_y * ray->distance * t) * 100);
 		
-		if (px >= 0 && px < 1000 && py >= 0 && py < 1000)
-			put_one_pixel(data, px, py, 0x00FF00);
+// 		if (px >= 0 && px < 1000 && py >= 0 && py < 1000)
+// 			put_one_pixel(data, px, py, 0x00FF00);
 		
-		i++;
-	}
-	return (1);
-}
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
 int	compute_ray_distance(t_data *data)
 {
@@ -163,9 +163,6 @@ int	hit_wall(t_data *data)
 	map = data->map->map;
 	ray = &data->player->ray;
 
-	printf("map[%d][%d]\n",(int)ray->map_check_y,(int)ray->map_check_x);
-
-	// if (map[(int)ray->map_check_y + ray->step_y][(int)ray->map_check_x - ray->step_x] == 1)
 	if (map[(int)ray->map_check_y][(int)ray->map_check_x] == 1)
 		return (1);
 	else
@@ -209,7 +206,6 @@ int	raycasting(t_data *data)
 	double	plane_x;	
 	double	plane_y;
 
-
 	plane_x = -data->player->dir_y * 0.66;
 	plane_y = data->player->dir_x * 0.66;
 	x = 0;
@@ -218,16 +214,16 @@ int	raycasting(t_data *data)
 		camera_x = 2 * x / (double)1000 - 1;
 		data->player->ray.dir_x = data->player->dir_x + plane_x * camera_x;
 		data->player->ray.dir_y = data->player->dir_y + plane_y * camera_x;
-			
+
 		ray_step(data);
 		player_map_pos(data);
 		ray_unit_length(data);
 		player_offset_pos(data);
 		first_side_ray_dist(data);
 		hit_wall_ray_dist(data);
-		draw_ray(data);
+		// draw_ray(data);
 
-		// draw_vertical_line(data, x);
+		draw_vertical_line(data, x);
 		x++;
 	}
 	return (1);
@@ -235,8 +231,10 @@ int	raycasting(t_data *data)
 
 int	render(t_data *data)
 {
-	draw_cub2d(data);
-	player_print(data, data->player);
+	init_cub2d(data);
+	// draw_cub2d(data);
+	// player_print(data, data->player);
+	draw_floor_ceiling(data);
 	raycasting(data);
 
 	mlx_put_image_to_window(data->mlx_data->mlx_ptr,

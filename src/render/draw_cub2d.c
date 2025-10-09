@@ -6,63 +6,12 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:12:12 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 15:44:25 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:58:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include <stdlib.h>
-
-int	**create_map(void)
-{
-	int	**map;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	map = malloc(sizeof(int *) * 10);
-	if (!map)
-		return (NULL);
-	while (i < 10)
-	{
-		map[i] = malloc(sizeof(int) * 10);
-		if (!map[i])
-		{
-			while (--i >= 0)
-			{
-				free(map[i]);
-				return (NULL);
-			}
-		}
-		i++;
-	}
-	int temp_map[10][10] = {
-		{ 1 ,1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{ 1 ,0, 0, 0, 0, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 0, 0, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 1, 0, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 0, 1, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 0, 1, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 0, 1, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 0, 0, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 0, 0, 0, 0, 0, 0, 1 },
-		{ 1 ,1, 1, 1, 1, 1, 1, 1, 1, 1 },
-	};
-
-	i = 0;
-	while (i < 10)
-	{
-		j = 0;
-		while (j < 10)
-		{
-			map[i][j] = temp_map[i][j];
-			j++;
-		}
-		i++;
-	}
-	return (map);
-}
 
 int	render_box(t_data *data, int mapX, int mapY, int color)
 {
@@ -122,15 +71,10 @@ int draw_cub2d(t_data *data)
 
 	x = 0;
 	y = 0;
-	map = create_map();
 
-	data->map = malloc(sizeof(t_map));
-	if (!data->map)
-		return (0);
-
-	data->map->map = map;
 	data->map->map_w = 10;
 	data->map->map_h = 10;
+	map = data->map->map;
 	wall_color = mix_color(42, 44, 101);
 	floor_color = mix_color(5, 3, 2);
 	while (y < 10)

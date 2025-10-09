@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 19:15:04 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:06:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,9 @@ void			free_player(t_player *player);
 /* map_file_utils */
 void			check_identifier(char *line, t_data *data, char id);
 
+//src/render/draw_floor_ceiling.c
+int				draw_floor_ceiling(t_data *data);
+
 //src/render/draw_cub2d.c
 int				draw_cub2d(t_data *data);
 int				free_map(t_map *map);
@@ -231,6 +234,12 @@ int				render(t_data *data);
 
 //src/render/draw_vertical_line.c
 int				draw_vertical_line(t_data *data, int x);
+
+//src/render/init_cub2d.c
+int				init_cub2d(t_data *data);
+
+//src/render/init_raycasting.c
+int				init_ray(t_data *data);
 
 /* messages */
 char			*get_error_message(t_msg msg);

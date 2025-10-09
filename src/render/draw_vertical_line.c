@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:12:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 15:44:06 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:13:59 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int draw_vertical_line(t_data *data, int x)
     if (line_start < 0)
         line_start = 0;
     line_end = line_h / 2 + 1000 / 2;
-    if (line_end < 0)
+    if (line_end >= 1000)
         line_end = 1000 - 1;
 
     if (ray->side == 1)

@@ -23,8 +23,11 @@ SRC_FILES = main						\
 			parsing/map_file			\
 			parsing/map_file_utils		\
 			render/draw_cub2d			\
+			render/draw_floor_ceiling	\
 			render/draw_pixel			\
 			render/draw_vertical_line	\
+			render/init_cub2d			\
+			render/init_ray				\
 			render/render				\
 			structures/s_check			\
 			structures/s_data			\
