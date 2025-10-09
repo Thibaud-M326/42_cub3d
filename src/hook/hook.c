@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:31:37 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 18:51:50 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 19:05:08 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	handle_cross(t_data *data)
 int	handle_keyboard(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-		free_and_exit(data, msg_custom(""), 0);
+		free_and_exit(data, "", 0);
 	else if (keysym == XK_Up)
 		player_move_forward(data);
 	else if (keysym == XK_Down)
