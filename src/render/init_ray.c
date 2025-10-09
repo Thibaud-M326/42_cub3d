@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_player.c                                         :+:      :+:    :+:   */
+/*   init_raycasting.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/01 19:55:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 19:02:15 by jmagand          ###   ########.fr       */
+/*   Created: 2025/10/09 15:53:42 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/10/09 16:18:56 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "libft.h"
-#include "messages.h"
 
-t_player	*init_player_struct(t_data *data)
+int init_ray(t_data *data)
 {
-	t_player	*player;
-
-	player = ft_calloc(1, sizeof(t_player));
-	if (!player)
-		free_and_exit(data, MALLOC, 1);
-	return (player);
+    (void)data;
+    return (1);
 }
-

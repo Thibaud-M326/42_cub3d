@@ -16,24 +16,31 @@ MLX_FLAGS = -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 #------------------------------------------------#
 NAME = cub3D
 SRC_FILES = main						\
-			hook/hook					\
 			exit/free_exit				\
 			exit/utils					\
+			hook/hook					\
+			hook/player_move			\
 			parsing/check_map			\
 			parsing/color				\
 			parsing/file_utils			\
 			parsing/file				\
-			parsing/identifiers			\
 			parsing/identifiers_utils	\
+			parsing/identifiers			\
 			parsing/input				\
 			parsing/map					\
 			parsing/textures			\
 			parsing/utils				\
-			render/draw					\
+			render/dda_algorythm		\
+			render/draw_cub2d			\
+			render/draw_floor_ceiling	\
+			render/draw_pixel			\
+			render/draw_vertical_line	\
+			render/init_cub2d			\
+			render/init_ray				\
 			render/render				\
+			structures/s_check			\
 			structures/s_data			\
 			structures/s_file			\
-			structures/s_check			\
 			structures/s_map			\
 			structures/s_mlx			\
 			structures/s_player			\
@@ -75,7 +82,7 @@ all: makelibft $(NAME)
 $(NAME): $(LIBFT) $(MLX_NAME) $(OBJ)
 	@make -C $(MLX_DIR)
 	@echo "\n$(MAGENTA)$(BOLD)💻 Compiling executable...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJ) -L $(LIBFT_DIR) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -L $(LIBFT_DIR) $(LIBFT) $(MLX_FLAGS) -o $(NAME) -lm
 	@echo "$(GREEN)$(BOLD)\n✅ Compilation successfull!$(RESET)"
 	@echo "$(CYAN) └─ Ready to run: ./$(NAME)\n$(RESET)"
 

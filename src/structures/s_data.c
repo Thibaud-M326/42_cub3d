@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 22:05:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:52:52 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,4 @@ t_data	*init_data_struct(void)
 	data->player = NULL;
 	return (data);
 }
+
