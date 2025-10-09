@@ -15,23 +15,24 @@ MLX_FLAGS = -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 #					FILES						 #
 #------------------------------------------------#
 NAME = cub3D
-SRC_FILES = main					\
-			hook/hook				\
-			hook/player_move		\
-			messages/handle_message	\
-			parsing/input			\
-			parsing/map_file		\
-			parsing/map_file_utils	\
-			render/draw_cub2d		\
-			render/draw_pixel		\
-			render/render			\
-			structures/s_check		\
-			structures/s_data		\
-			structures/s_file		\
-			structures/s_mlx		\
-			structures/s_msg		\
-			structures/s_player		\
-			structures/s_textures	\
+SRC_FILES = main						\
+			hook/hook					\
+			hook/player_move			\
+			messages/handle_message		\
+			parsing/input				\
+			parsing/map_file			\
+			parsing/map_file_utils		\
+			render/draw_cub2d			\
+			render/draw_pixel			\
+			render/draw_vertical_line	\
+			render/render				\
+			structures/s_check			\
+			structures/s_data			\
+			structures/s_file			\
+			structures/s_mlx			\
+			structures/s_msg			\
+			structures/s_player			\
+			structures/s_textures		\
 
 #------------------------------------------------#
 #					DIRECTORY					 #

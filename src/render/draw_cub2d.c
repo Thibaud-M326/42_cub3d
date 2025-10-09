@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:12:12 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/06 18:21:36 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/09 15:44:25 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	**create_map(void)
 		{ 1 ,1, 1, 1, 1, 1, 1, 1, 1, 1 },
 		{ 1 ,0, 0, 0, 0, 0, 0, 0, 0, 1 },
 		{ 1 ,0, 0, 0, 0, 0, 0, 0, 0, 1 },
-		{ 1 ,0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1 ,0, 0, 1, 0, 0, 0, 0, 0, 1 },
 		{ 1 ,0, 0, 0, 1, 0, 0, 0, 0, 1 },
 		{ 1 ,0, 0, 0, 1, 0, 0, 0, 0, 1 },
 		{ 1 ,0, 0, 0, 1, 0, 0, 0, 0, 1 },
@@ -94,8 +94,6 @@ int	render_box(t_data *data, int mapX, int mapY, int color)
 	return (0);
 }
 
-//fonction temporaire pendant cub2d
-//a remplacer par le parsing
 int free_map(t_map *map)
 {
 	int	y;
@@ -148,6 +146,7 @@ int draw_cub2d(t_data *data)
 		}
 		y++;
 	}
-    // free_map(data->map);
+
+    // free_map(data->map); // faut pas free ? 
     return (1);
 }
