@@ -6,13 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 00:06:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 22:06:24 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:27:25 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include <stddef.h>
+#include "messages.h"
 
 t_file	*init_file_struct(t_data *data)
 {

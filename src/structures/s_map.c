@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:48:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/07 18:18:50 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:27:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
 
 t_map	*init_map_struct(t_data *data)
 {

@@ -6,12 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:37:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 21:58:32 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:24:08 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
+#include "parsing.h"
 #include <stdio.h>
 
 static void	handle_error(t_data *data, char c)

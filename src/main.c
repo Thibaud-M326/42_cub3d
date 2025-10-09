@@ -6,13 +6,16 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 20:05:11 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:30:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include "mlx.h"
+#include "parsing.h"
+#include "messages.h"
+#include "messages.h"
 
 // int	main(void)
 // {

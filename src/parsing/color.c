@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 21:56:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:24:47 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
 
 void	set_color(t_data *data, char id)
 {

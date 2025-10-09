@@ -6,12 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 20:35:58 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:26:32 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
+#include "parsing.h"
 
 static bool	is_empty_line(t_data *data)
 {

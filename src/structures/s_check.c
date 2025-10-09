@@ -6,13 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 22:05:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:27:39 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include <stddef.h>
+#include "messages.h"
 
 t_check	*init_check_struct(t_data *data)
 {

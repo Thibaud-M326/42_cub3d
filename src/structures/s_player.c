@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:01:48 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 18:11:53 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:28:12 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
 
 t_player	*init_player_struct(t_data *data)
 {

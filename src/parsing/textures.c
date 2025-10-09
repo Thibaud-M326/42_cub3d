@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:35:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 22:28:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:26:57 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
 
 void	check_texture_ext(t_data *data, char *path)
 {

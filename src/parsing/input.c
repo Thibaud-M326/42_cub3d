@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 21:05:01 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/08 20:04:14 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:26:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
 
 static void	get_filename(t_data *data, char *input, char *dot)
 {

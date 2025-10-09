@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:59:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/06 18:28:22 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:28:06 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "messages.h"
 
 t_textures	*init_textures_struct(t_data *data)
 {
