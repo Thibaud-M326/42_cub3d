@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:37:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:24:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 20:05:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	is_map_valid(t_data *data)
 		while (x < line_len)
 		{
 			c = m->map[y][x];
-			if (c == '0' || is_player_spawn(c))
+			if (c == '0' || is_player_spawn(data, c, y, x))
 				check_border(data, y, x, c);
 			x++;
 		}

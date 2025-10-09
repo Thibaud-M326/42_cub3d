@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 00:01:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:27:12 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 20:09:01 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,16 @@ void	is_spawn(t_data *data, char c)
 	}
 }
 
-bool	is_player_spawn(char c)
+bool	is_player_spawn(t_data *data, char c, int x, int y)
 {
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	{
+		data->player->pos_x = x;
+		data->player->pos_y = y;
+		data->player->id = c;
+		return (1);
+	}
+	return (0);
 }
 
 bool	are_all_identifiers_true(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:25:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/09 19:46:20 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_identifier(t_data *data, char id)
 	{
 		path = get_texture_path(data);
 		check_texture_ext(data, path);
-		// open_xpm(data, path);
+		open_xpm(data, path);
 	}
 	else if (id == 'F' || id == 'C')
 	{
