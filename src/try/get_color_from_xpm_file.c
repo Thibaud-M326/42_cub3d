@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:18:28 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/13 18:10:38 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:32:03 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,35 +47,11 @@ int	get_color_from_texture(t_mlx_img *tex, int x, int y)
 	return (tex_pixel_color);
 }
 
-/*
-
-//	256 ÷ (32 ÷ 8)
-//	size_line / (bits_per_pixel / (1 byte)) = width
-
-donc si je veut la couleur du byte en y = 5 et x = 3
-
-je dois faire me deplacer dans la string des donne en faisant le calcul de combien
-de pixel je dois avancer pour toucher le debut du bon premier pixel
-
-deja juste pour y = 0 et x = 3
-
-tex_y = size_line * y + 1;
-tex_x = tex_y + (bits_per_pixel / (1 bytes)) * x;
-
-les 32 bits per pixel suivant represente la couleur du pixel voulu
-
-comment je fait pour recuperer les couleurs
-
-j'avance de 1 je stock le bit dans un int, 
-
-*/
-
 int	get_color_from_xpm_file(t_data *data)
 {
 	char		*tex_path = "./assets/textures/walls/test_1.xpm";
 	t_mlx_img	tex;
 	int			tex_pix_color;
-
 
 	tex.img_ptr = mlx_xpm_file_to_image(
 			data->mlx_data->mlx_ptr,
