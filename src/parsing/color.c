@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/10 00:01:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 00:17:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ void	set_color(t_data *data, char id)
 	if (id == 'F')
 	{
 		data->textures->floor_color = mix_color(
-				ft_atoi(data->check->color),
-				ft_atoi(ft_strchr(data->check->color, ',') + 1),
-				ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+			ft_atoi(data->check->color),
+			ft_atoi(ft_strchr(data->check->color, ',') + 1),
+			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
 	}
 	else if (id == 'C')
 	{
 		data->textures->ceil_color = mix_color(
-				ft_atoi(data->check->color),
-				ft_atoi(ft_strchr(data->check->color, ',') + 1),
-				ft_atoi(ft_strrchr(data->check->color, ',') + 1));
+			ft_atoi(data->check->color),
+			ft_atoi(ft_strchr(data->check->color, ',') + 1),
+			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
 	}
 }
 
@@ -61,16 +61,19 @@ void	check_color_int(t_data *data)
 	int	nb;
 
 	i = 0;
+	while (ft_is_white_space(data->check->color[i]))
+		i++;
 	while (data->check->color[i])
 	{
 		if (ft_isdigit(data->check->color[i]))
 		{
 			nb = ft_atoi_rgb(data, data->check->color, &i);
-			while (ft_isdigit(data->check->color[i]))
+			while (ft_isdigit(data->check->color[i])
+				|| ft_is_white_space(data->check->color[i]))
 				i++;
 		}
 		else if (data->check->color[i] && data->check->color[i + 1]
-			&& data->check->color[i + 1] == ',')
+				&& data->check->color[i + 1] == ',')
 			free_and_exit(data, COLOR_FORMAT, 0);
 		else
 			i++;
@@ -90,7 +93,8 @@ void	check_color_format(t_data *data)
 		free_and_exit(data, MALLOC, 1);
 	while (data->check->color[i])
 	{
-		if (!ft_isdigit(data->check->color[i]) && data->check->color[i] != ',')
+		if (!ft_isdigit(data->check->color[i]) && data->check->color[i] != ','
+			&& !ft_is_white_space(data->check->color[i]))
 		{
 			free(color);
 			free_and_exit(data, COLOR_INVALID_CHAR, 0);

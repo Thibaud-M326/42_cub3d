@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:35:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 23:48:25 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/13 22:05:55 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static char	*trim_end(char *str)
 {
 	int	len;
 
-	len = ft_strlen(str);
+	len = ft_strlen(str) - 1;
 	while (len > 0 && ft_is_white_space(str[len]))
 	{
-		str[len - 1] = '\0';
+		str[len] = '\0';
 		len--;
 	}
 	return (str);
@@ -81,7 +81,7 @@ char	*get_texture_path(t_data *data)
 		free_and_exit(data, MALLOC, 1);
 	i += 2;
 	i = trim_start(data, i);
-	while (data->file->line[i + 1])
+	while (i < (int)len && data->file->line[i + 1])
 		tmp[j++] = data->file->line[i++];
 	tmp[j] = '\0';
 	return (tmp);
