@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 19:45:18 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:15:35 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,14 @@ int		render(t_data *data);
 //src/render/draw_vertical_line.c
 int		draw_vertical_line(t_data *data, int x);
 
-//src/render/init_raycasting.c
-int		init_ray(t_data *data);
+//src/render/raycasting_dda.c
+int		raycasting_dda(t_data *data);
+
+//src/render/raycasting_init.c
+int		raycasting_init(t_data *data);
+
+//src/render/raycasting.c
+int		raycasting(t_data *data);
 
 /* print */
 void	print_textures(t_data *data);

@@ -32,11 +32,12 @@ SRC_FILES = main						\
 			parsing/map					\
 			parsing/textures			\
 			parsing/utils				\
-			render/dda_algorythm		\
 			render/draw_floor_ceiling	\
 			render/draw_pixel			\
 			render/draw_vertical_line	\
-			render/init_ray				\
+			render/raycasting_dda		\
+			render/raycasting_init		\
+			render/raycasting			\
 			render/render				\
 			structures/s_check			\
 			structures/s_data			\

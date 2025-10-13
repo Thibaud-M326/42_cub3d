@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 20:33:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:06:30 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "messages.h"
 #include "mlx.h"
 #include "parsing.h"
-
-	#include <stdio.h>
 
 int	main(int ac, char **av)
 {

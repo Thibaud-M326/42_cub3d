@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:56:06 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/09 19:52:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:08:22 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int draw_floor(t_data *data)
 
     y = 0;
     x = 0;
-    floor_color = 0xC6B5E8;
+    floor_color = data->textures->floor_color;
     while (y < 1000 / 2 + 1000 / 2)
     {
         x = 0;
@@ -42,8 +42,7 @@ int draw_ceiling(t_data *data)
 
     y = 0;
     x = 0;
-    // ceil_color = data->textures->ceil_color;
-    ceil_color = 0x27A3F5;
+    ceil_color = data->textures->ceil_color;
     while (y < 1000 / 2)
     {
         x = 0;
