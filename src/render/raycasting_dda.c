@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:26:27 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/13 14:18:18 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:27:03 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int	hit_wall_ray_dist(t_data *data)
 	while (1)
 	{
 		if (ray->length_x < ray->length_y)
-		ray->map_check_x += ray->step_x;
+			ray->map_check_x += ray->step_x;
 		else
-		ray->map_check_y += ray->step_y;
+			ray->map_check_y += ray->step_y;
 		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
 			break ;
 		if (ray->length_x < ray->length_y)
@@ -69,12 +69,12 @@ int	hit_wall_ray_dist(t_data *data)
 			ray->length_y += ray->unit_length_y;
 	}
 	compute_ray_distance(data);
-	return(1);
+	return (1);
 }
 
-int raycasting_dda(t_data *data)
+int	raycasting_dda(t_data *data)
 {
-    first_side_ray_dist(data);
-    hit_wall_ray_dist(data);
-    return (1);
+	first_side_ray_dist(data);
+	hit_wall_ray_dist(data);
+	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_pixel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:51:35 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/01 21:11:45 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:25:24 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	put_one_pixel(t_data *data, int x, int y, int color)
 {
 	int	offset;
 
-	offset = (data->mlx_data->mlx_img->size_line * y) + (x * (data->mlx_data->mlx_img->bits_per_pixel / 8));
+	offset = (data->mlx_data->mlx_img->size_line * y)
+		+ (x * (data->mlx_data->mlx_img->bits_per_pixel / 8));
 	*((unsigned int *)(offset + data->mlx_data->mlx_img->img_data)) = color;
 }
 
