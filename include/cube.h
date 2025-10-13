@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 14:15:35 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:00:42 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,8 @@ int		raycasting(t_data *data);
 void	print_textures(t_data *data);
 void	print_map(t_data *data);
 void	print_free(t_data *data);
+
+//src/texture/load_texture.c
+int		load_textures(t_data *data);
 
 #endif

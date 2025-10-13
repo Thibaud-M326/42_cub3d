@@ -46,6 +46,7 @@ SRC_FILES = main						\
 			structures/s_mlx			\
 			structures/s_player			\
 			structures/s_textures		\
+			texture/load_textures		\
 
 #------------------------------------------------#
 #					DIRECTORY					 #

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 19:04:24 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/13 18:59:44 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_map
 	int					width;
 }						t_map;
 
+typedef struct s_mlx_img	t_mlx_img;
+
 typedef struct s_textures
 {
 	int					floor_color;
@@ -59,6 +61,10 @@ typedef struct s_textures
 	char				*path_w;
 	char				*path_s;
 	char				*extension;
+	t_mlx_img			*tex_n;
+	t_mlx_img			*tex_e;
+	t_mlx_img			*tex_w;
+	t_mlx_img			*tex_s;
 }						t_textures;
 
 typedef struct s_mlx_img
