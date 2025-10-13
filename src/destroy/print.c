@@ -6,16 +6,16 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:48:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 20:14:24 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:52:09 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+	#include <stdio.h>
 
 void	print_player(t_data *data)
 {
-#include <stdio.h>
 	printf("\npos_x: %f\n", data->player->pos_x);
 	printf("pos_y: %f\n", data->player->pos_y);
 	printf("id: %c\n", data->player->id);
@@ -23,7 +23,6 @@ void	print_player(t_data *data)
 
 void	print_textures(t_data *data)
 {
-#include <stdio.h>
 	printf("\nNORTH: %s\n", data->textures->path_n);
 	printf("SOUTH: %s\n", data->textures->path_s);
 	printf("WEST: %s\n", data->textures->path_w);
@@ -41,7 +40,7 @@ void	print_map(t_data *data)
 	if (data->map)
 	{
 		printf("\nmap.width = %d\nmap.height = %d\n\n", data->map->width,
-				data->map->height);
+			data->map->height);
 		data->map->map = data->check->map;
 		i = 0;
 		while (data->check->map[i])
