@@ -46,6 +46,7 @@ SRC_FILES = main						\
 			structures/s_mlx			\
 			structures/s_player			\
 			structures/s_textures		\
+			try/get_color_from_xpm_file \
 
 #------------------------------------------------#
 #					DIRECTORY					 #
