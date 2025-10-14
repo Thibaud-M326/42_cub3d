@@ -6,11 +6,13 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:12:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 19:38:32 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:00:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include <stdio.h>
+#include <math.h>
 
 int	draw_vert(t_data *data, int x, int line_start, int line_end, int color)
 {
@@ -22,10 +24,30 @@ int	draw_vert(t_data *data, int x, int line_start, int line_end, int color)
 	return (1);
 }
 
+//trouver le hit_point du rayon
+//
+// arrivee_x = player.pos_x + (direction_x * taille)
+// arrivee_y = player.pos_y + (direction_y * taille)
 int	ray_hit_point(t_data *data)
 {
-	
+	t_player	*p;
+
+	p = data->player;
+	p->ray.hit_pos_x = p->pos_x + (p->ray.dir_x * p->ray.distance);
+	p->ray.hit_pos_y = p->pos_y + (p->ray.dir_y * p->ray.distance);
 	return (1);
+}
+
+double	get_texture_x(double hit_pos)
+{
+	double		tex_x;
+	double		floor_pos;
+
+	printf("hit_pos %f\n", hit_pos);
+	floor_pos = floor(hit_pos);
+	printf("floor_pos %f\n", floor_pos);
+	tex_x = hit_pos - floor_pos;
+	return (tex_x);
 }
 
 //je veut trouver quel couleur je dois appliquer a chaque texture de mon mur
@@ -41,10 +63,20 @@ int	draw_vertical_line(t_data *data, int x)
 	int		line_start;
 	int		line_end;
 	int		color;
+	double	tex_x;
 
 	color = 0x3ED6D2;
 	ray = &data->player->ray;
-	
+	ray_hit_point(data);
+	printf("ray->hit_pos_x : %f\n", ray->hit_pos_x);
+	printf("ray->hit_pos_y : %f\n", ray->hit_pos_y);
+	if (ray->side == 0)
+		tex_x = get_texture_x(ray->hit_pos_y);
+	else
+		tex_x = get_texture_x(ray->hit_pos_x);
+
+	printf("tex_x %f\n", tex_x);
+
 	line_h = 1000 / ray->distance;
 	line_start = -line_h / 2 + 1000 / 2;
 	if (line_start < 0)
