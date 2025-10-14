@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:35:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:53:09 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 16:29:27 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
 		if (data->check)
 			free_check(data->check);
 		if (data->textures)
-			free_textures(data->textures);
+			free_textures(data, data->textures);
 		if (data->mlx_data)
 			free_mlx_data(data->mlx_data);
 		if (data->player)

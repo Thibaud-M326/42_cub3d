@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 19:04:24 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 19:37:50 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_map
 	int					width;
 }						t_map;
 
+typedef struct s_mlx_img	t_mlx_img;
+
 typedef struct s_textures
 {
 	int					floor_color;
@@ -59,6 +61,10 @@ typedef struct s_textures
 	char				*path_w;
 	char				*path_s;
 	char				*extension;
+	t_mlx_img			*tex_n;
+	t_mlx_img			*tex_e;
+	t_mlx_img			*tex_w;
+	t_mlx_img			*tex_s;
 }						t_textures;
 
 typedef struct s_mlx_img
@@ -94,6 +100,8 @@ typedef struct s_ray
 	int					step_y;
 	int					side;
 	double				distance;
+	double				hit_pos_x;
+	double				hit_pos_y;
 }						t_ray;
 
 typedef struct s_player
@@ -150,6 +158,6 @@ t_player				*init_player_struct(t_data *data);
 
 /* structures/s_textures */
 t_textures				*init_textures_struct(t_data *data);
-void					free_textures(t_textures *textures);
+void					free_textures(t_data *data, t_textures *textures);
 
 #endif

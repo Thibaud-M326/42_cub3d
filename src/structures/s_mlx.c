@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:33:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/01 19:11:53 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:47:49 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	mlx_start(t_mlx_data *mlx_data, t_mlx_img *mlx_img)
 	if (NULL == mlx_data->mlx_ptr)
 		return (0);
 	mlx_data->win_ptr = mlx_new_window(mlx_data->mlx_ptr, mlx_img->width,
-			mlx_img->height, "fractol");
+			mlx_img->height, "cub3D");
 	if (NULL == mlx_data->win_ptr)
 		return (0);
 	mlx_img->img_ptr = mlx_new_image(mlx_data->mlx_ptr, mlx_img->width,

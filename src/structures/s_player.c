@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:01:48 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 20:13:29 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:32:56 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ t_player	*init_player_struct(t_data *data)
 		free_and_exit(data, MALLOC, 1);
 	return (player);
 }
-

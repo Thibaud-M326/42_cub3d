@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   messages.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:56:13 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:46:31 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 15:13:53 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define WRONG_EXT_TXT "Texture: Extension is not \"xpm\""
 # define MISSING_FILENAME_TXT "Texture: Missing filename \".xpm\""
 # define WRONG_PATH_TXT "Texture: File not found"
+# define TEX_MALLOC_FAILED "Texture: memory allocation failed"
 
 /* MAP */
 # define PLACE_MAP "Map: Content found before all identifiers were set"
