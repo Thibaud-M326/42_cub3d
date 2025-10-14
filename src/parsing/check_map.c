@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:37:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 18:42:28 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 18:45:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void	check_border(t_data *data, int y, int x, char c)
 	if (y == 0 || y == m->height - 1)
 		handle_error(data, c);
 	if ((int)ft_strlen(m->map[y - 1]) <= x || ft_is_white_space(m->map[y
-			- 1][x]) || !m->map[y - 1][x])
+				- 1][x]) || !m->map[y - 1][x])
 		handle_error(data, c);
 	if ((int)ft_strlen(m->map[y + 1]) <= x || ft_is_white_space(m->map[y
-			+ 1][x]) || !m->map[y + 1][x])
+				+ 1][x]) || !m->map[y + 1][x])
 		handle_error(data, c);
 	if (x == 0 || ft_is_white_space(m->map[y][x - 1]) || !m->map[y][x - 1])
 		handle_error(data, c);

@@ -6,21 +6,21 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 18:42:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 18:45:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include "parsing.h"
 #include "messages.h"
+#include "parsing.h"
 
 static void	set_identifier(t_data *data, char id, char *path)
 {
 	if (id == 'N' || id == 'S' || id == 'W' || id == 'E')
 		is_identifier_texture(data, id, path);
 	else
-	set_color(data, id);
+		set_color(data, id);
 	if (id == 'F')
 		data->check->floor = true;
 	else if (id == 'C')

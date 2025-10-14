@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 00:01:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 20:18:09 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 18:45:58 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include <stdbool.h>
 #include "messages.h"
+#include <stdbool.h>
 
 void	is_spawn(t_data *data, char c)
 {
@@ -34,8 +34,8 @@ void	is_spawn(t_data *data, char c)
 
 bool	is_player_spawn(t_data *data, char c, int x, int y)
 {
-	double x_d;
-	double y_d;
+	double	x_d;
+	double	y_d;
 
 	x_d = x;
 	y_d = y;
