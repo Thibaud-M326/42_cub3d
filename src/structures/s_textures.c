@@ -6,13 +6,14 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:59:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 18:50:35 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:30:14 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include "messages.h"
+#include "mlx.h"
 
 t_textures	*init_textures_struct(t_data *data)
 {
@@ -38,7 +39,15 @@ t_textures	*init_textures_struct(t_data *data)
 	return (textures);
 }
 
-void	free_textures(t_textures *textures)
+void	free_texture_img(t_data *data, t_mlx_img *tex)
+{
+	if (tex->img_ptr)
+		mlx_destroy_image(data->mlx_data->mlx_ptr, tex->img_ptr);
+	free(tex);
+	return ;
+}
+
+void	free_textures(t_data *data, t_textures *textures)
 {
 	if (textures)
 	{
@@ -50,6 +59,14 @@ void	free_textures(t_textures *textures)
 			free(textures->path_e);
 		if (textures->path_w)
 			free(textures->path_w);
+		if (textures->tex_n)
+			free_texture_img(data, textures->tex_n);
+		if (textures->tex_e)
+			free_texture_img(data, textures->tex_e);
+		if (textures->tex_w)
+			free_texture_img(data, textures->tex_w);
+		if (textures->tex_s)
+			free_texture_img(data, textures->tex_s);
 		free(textures);
 	}
 }

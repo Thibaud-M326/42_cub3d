@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 14:52:19 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:29:44 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,6 @@ t_player				*init_player_struct(t_data *data);
 
 /* structures/s_textures */
 t_textures				*init_textures_struct(t_data *data);
-void					free_textures(t_textures *textures);
+void					free_textures(t_data *data, t_textures *textures);
 
 #endif
