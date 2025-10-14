@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 00:17:16 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 18:42:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,94 +16,61 @@
 
 void	set_color(t_data *data, char id)
 {
-	if (id == 'F')
-	{
-		data->textures->floor_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
-	}
-	else if (id == 'C')
-	{
-		data->textures->ceil_color = mix_color(
-			ft_atoi(data->check->color),
-			ft_atoi(ft_strchr(data->check->color, ',') + 1),
-			ft_atoi(ft_strrchr(data->check->color, ',') + 1));
-	}
-}
+	int	r;
+	int	g;
+	int	b;
 
-static int	ft_atoi_rgb(t_data *data, char *str, int *idx)
-{
-	int		nb;
-	int		i;
-	size_t	len;
-
-	nb = 0;
-	i = 0;
-	len = ft_strlen(data->check->color);
-	if (!len)
-		free_and_exit(data, COLOR_FORMAT, 0);
-	while ((str[*idx] >= '\t' && str[*idx] <= '\r') || str[*idx] == ' ')
-		(*idx)++;
-	while (str[*idx] >= '0' && str[*idx] <= '9')
-	{
-		nb = nb * 10 + (str[*idx] - '0');
-		(*idx)++;
-	}
-	if (nb < 0 || nb > 255)
+	r = ft_atoi(data->check->color);
+	g = ft_atoi(ft_strchr(data->check->color, ',') + 1);
+	b = ft_atoi(ft_strrchr(data->check->color, ',') + 1);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		free_and_exit(data, COLOR_VALUE_RANGE, 0);
-	return (nb);
+	if (id == 'F')
+		data->textures->floor_color = mix_color(r, g, b);
+	else
+		data->textures->ceil_color = mix_color(r, g, b);
 }
 
-void	check_color_int(t_data *data)
+static int	parse_color_number(char *s, int *i)
 {
-	int	i;
-	int	nb;
+	int	digit_count;
 
-	i = 0;
-	while (ft_is_white_space(data->check->color[i]))
-		i++;
-	while (data->check->color[i])
+	digit_count = 0;
+	while (ft_is_white_space(s[*i]))
+		(*i)++;
+	while (ft_isdigit(s[*i]))
 	{
-		if (ft_isdigit(data->check->color[i]))
-		{
-			nb = ft_atoi_rgb(data, data->check->color, &i);
-			while (ft_isdigit(data->check->color[i])
-				|| ft_is_white_space(data->check->color[i]))
-				i++;
-		}
-		else if (data->check->color[i] && data->check->color[i + 1]
-				&& data->check->color[i + 1] == ',')
-			free_and_exit(data, COLOR_FORMAT, 0);
-		else
-			i++;
+		digit_count++;
+		(*i)++;
 	}
+	if (digit_count == 0 || digit_count > 3)
+		return (0);
+	while (ft_is_white_space(s[*i]))
+		(*i)++;
+	return (1);
 }
 
 void	check_color_format(t_data *data)
 {
-	int		count;
 	int		i;
-	char	*color;
+	int		count;
+	char	*s;
 
 	i = 0;
 	count = 0;
-	color = ft_calloc(1, sizeof(char));
-	if (!color)
-		free_and_exit(data, MALLOC, 1);
-	while (data->check->color[i])
+	s = data->check->color;
+	while (s[i])
 	{
-		if (!ft_isdigit(data->check->color[i]) && data->check->color[i] != ','
-			&& !ft_is_white_space(data->check->color[i]))
+		if (!parse_color_number(s, &i))
+			free_and_exit(data, COLOR_FORMAT, 0);
+		if (s[i] == ',')
 		{
-			free(color);
-			free_and_exit(data, COLOR_INVALID_CHAR, 0);
-		}
-		if (data->check->color[i] == ',')
 			count++;
-		i++;
+			i++;
+		}
+		else if (s[i] && !ft_is_white_space(s[i]))
+			free_and_exit(data, COLOR_FORMAT, 0);
 	}
-	free(color);
 	if (count != 2)
 		free_and_exit(data, COLOR_COMA, 0);
 }
@@ -127,11 +94,7 @@ char	*get_color(t_data *data)
 	while (ft_is_white_space(data->file->line[i]))
 		i++;
 	while (data->file->line[i + 1])
-	{
-		tmp[j] = data->file->line[i];
-		j++;
-		i++;
-	}
+		tmp[j++] = data->file->line[i++];
 	tmp[j] = '\0';
 	return (tmp);
 }

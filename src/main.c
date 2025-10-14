@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 21:56:03 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 18:43:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "messages.h"
 #include "mlx.h"
 #include "parsing.h"
-
-	#include <stdio.h>
 
 int	main(int ac, char **av)
 {

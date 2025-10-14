@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 23:50:13 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/14 18:42:44 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 static void	set_identifier(t_data *data, char id, char *path)
 {
-	is_identifier_texture(data, id, path);
+	if (id == 'N' || id == 'S' || id == 'W' || id == 'E')
+		is_identifier_texture(data, id, path);
+	else
 	set_color(data, id);
 	if (id == 'F')
 		data->check->floor = true;
@@ -43,7 +45,6 @@ void	check_identifier(t_data *data, char id)
 			free(data->check->color);
 		data->check->color = get_color(data);
 		check_color_format(data);
-		check_color_int(data);
 	}
 	set_identifier(data, id, path);
 }
