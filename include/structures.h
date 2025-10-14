@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 16:29:44 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:37:50 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ typedef struct s_ray
 	int					step_y;
 	int					side;
 	double				distance;
+	double				hit_pos_x;
+	double				hit_pos_y;
 }						t_ray;
 
 typedef struct s_player

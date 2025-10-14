@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:12:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/13 14:26:11 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:38:32 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ int	draw_vert(t_data *data, int x, int line_start, int line_end, int color)
 	return (1);
 }
 
+int	ray_hit_point(t_data *data)
+{
+	
+	return (1);
+}
+
+//je veut trouver quel couleur je dois appliquer a chaque texture de mon mur
+//actuellement j'ai le rayon, sa direction, son point de depart et sa longueur
+//je dois trouver ou touche le rayon exactement
+//si je fait le cacul du vecteur je devrais trouver ou il arrive
+//une fois que je sais ou le rayon arrive je dois lui retirer la partie entiere
+//pour ne garder que la fraction.
 int	draw_vertical_line(t_data *data, int x)
 {
 	t_ray	*ray;
@@ -32,6 +44,7 @@ int	draw_vertical_line(t_data *data, int x)
 
 	color = 0x3ED6D2;
 	ray = &data->player->ray;
+	
 	line_h = 1000 / ray->distance;
 	line_start = -line_h / 2 + 1000 / 2;
 	if (line_start < 0)
