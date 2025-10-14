@@ -6,13 +6,13 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 00:01:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 14:52:29 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:55:03 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include <stdbool.h>
 #include "messages.h"
+#include <stdbool.h>
 
 void	is_spawn(t_data *data, char c)
 {

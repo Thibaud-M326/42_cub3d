@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:37:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 14:34:09 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:54:46 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 #include "messages.h"
 #include "parsing.h"
-#include <stdio.h>
 
 static void	handle_error(t_data *data, char c)
 {
@@ -31,16 +30,16 @@ static void	check_border(t_data *data, int y, int x, char c)
 	m = data->map;
 	if (y == 0 || y == m->height - 1)
 		handle_error(data, c);
-	if ((int)ft_strlen(m->map[y - 1]) <= x || m->map[y - 1][x] == ' '
-		|| !m->map[y - 1][x])
+	if ((int)ft_strlen(m->map[y - 1]) <= x || ft_is_white_space(m->map[y
+				- 1][x]) || !m->map[y - 1][x])
 		handle_error(data, c);
-	if ((int)ft_strlen(m->map[y + 1]) <= x || m->map[y + 1][x] == ' '
-		|| !m->map[y + 1][x])
+	if ((int)ft_strlen(m->map[y + 1]) <= x || ft_is_white_space(m->map[y
+				+ 1][x]) || !m->map[y + 1][x])
 		handle_error(data, c);
-	if (x == 0 || m->map[y][x - 1] == ' ' || !m->map[y][x - 1])
+	if (x == 0 || ft_is_white_space(m->map[y][x - 1]) || !m->map[y][x - 1])
 		handle_error(data, c);
-	if (x + 1 >= (int)ft_strlen(m->map[y]) || m->map[y][x + 1] == ' '
-		|| !m->map[y][x + 1])
+	if (x + 1 >= (int)ft_strlen(m->map[y]) || ft_is_white_space(m->map[y][x
+			+ 1]) || !m->map[y][x + 1])
 		handle_error(data, c);
 }
 

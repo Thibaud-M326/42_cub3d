@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:48:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 14:52:09 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:55:34 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	print_map(t_data *data)
 
 void	print_free(t_data *data)
 {
-	// print_textures(data);
+	print_textures(data);
 	// print_map(data);
 	print_player(data);
 	// free_and_exit(data, "Program is runnin\n", 42);

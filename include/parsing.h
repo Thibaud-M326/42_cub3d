@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:55:18 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 14:40:33 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:53:43 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		is_map_valid(t_data *data);
 
 /* parsing/color */
 void	set_color(t_data *data, char id);
-void	check_color_int(t_data *data);
 void	check_color_format(t_data *data);
 char	*get_color(t_data *data);
 
@@ -41,7 +40,7 @@ void	check_identifier(t_data *data, char id);
 void	search_identifier(t_data *data);
 
 /* parsing/init_player_dir */
-int     init_player_dir(t_data *data);
+int		init_player_dir(t_data *data);
 
 /* parsing/input */
 void	parse_input(int ac, char **av, t_data *data);
