@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:48:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 19:55:34 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 20:36:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	print_map(t_data *data)
 
 void	print_free(t_data *data)
 {
-	print_textures(data);
+	// print_textures(data);
 	// print_map(data);
 	print_player(data);
 	// free_and_exit(data, "Program is runnin\n", 42);

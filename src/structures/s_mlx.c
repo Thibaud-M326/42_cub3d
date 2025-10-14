@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_mlx.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:33:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 19:47:49 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:26:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 int	mlx_start(t_mlx_data *mlx_data, t_mlx_img *mlx_img)
 {
 	mlx_img->width = 1000;
-	mlx_img->height = 1000;
+	mlx_img->height = 1000;	
+	// mlx_img->width = WIDTH;
+	// mlx_img->height = HEIGHT;
 	mlx_data->mlx_img = mlx_img;
 	mlx_data->mlx_ptr = mlx_init();
 	if (NULL == mlx_data->mlx_ptr)

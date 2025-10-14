@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_vertical_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:12:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 19:38:32 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 20:59:12 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ int	draw_vert(t_data *data, int x, int line_start, int line_end, int color)
 	return (1);
 }
 
-int	ray_hit_point(t_data *data)
-{
-	
-	return (1);
-}
+// int	ray_hit_point(t_data *data)
+// {
+// 	return (1);
+// }
 
 //je veut trouver quel couleur je dois appliquer a chaque texture de mon mur
 //actuellement j'ai le rayon, sa direction, son point de depart et sa longueur
@@ -42,9 +41,8 @@ int	draw_vertical_line(t_data *data, int x)
 	int		line_end;
 	int		color;
 
-	color = 0x3ED6D2;
+	color = 0x0F0;
 	ray = &data->player->ray;
-	
 	line_h = 1000 / ray->distance;
 	line_start = -line_h / 2 + 1000 / 2;
 	if (line_start < 0)

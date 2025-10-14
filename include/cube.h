@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 19:00:42 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 23:19:46 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	free_strs(char **strs);
 
 //src/hook/hook.c
 int		deploy_mlx_hook(t_data *data);
+
+/* minimap/background_borders */
+void	draw_background_borders(t_data *data);
+
+/* minimap/minimap */
+void	render_minimap(t_data *data);
 
 //src/render/render.c
 int		render(t_data *data);

@@ -21,6 +21,8 @@ SRC_FILES = main						\
 			exit/utils					\
 			hook/hook					\
 			hook/player_move			\
+			minimap/background_borders	\
+			minimap/minimap				\
 			parsing/check_map			\
 			parsing/color				\
 			parsing/file_utils			\

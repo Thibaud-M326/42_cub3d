@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_map.c                                            :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 15:48:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/15 00:05:26 by jmagand          ###   ########.fr       */
+/*   Created: 2025/10/14 23:21:37 by jmagand           #+#    #+#             */
+/*   Updated: 2025/10/15 01:21:41 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
-#include "libft.h"
-#include "messages.h"
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-t_map	*init_map_struct(t_data *data)
-{
-	t_map	*map;
+# define WIDTH 1280
+# define HEIGHT 800
 
-	map = ft_calloc(1, sizeof(t_map));
-	if (!map)
-		free_and_exit(data, MALLOC, 1);
-	map->map = NULL;
-	map->height = 0;
-	map->width = 0;
-	map->tile_width = 0;
-	map->tile_height = 0;
-	return (map);
-}
+/* MINIMAP */
+// # define BACKGROUND_MMAP 0x434E58
+# define BACKGROUND_MMAP 0x6E6867
+
+/* BORDER */
+// #define BORDER_MMAP 0x0
+// # define BORDER_MMAP 0xFFFFFF
+# define BORDER_MMAP 0xFF0000
+
+/* WALLS */
+# define WALLS_MMAP 0x434E58
+
+#endif

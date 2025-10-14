@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 19:53:56 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/14 20:52:36 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	if (!init_mlx(data))
 		free_and_exit(data, MLX_FAIL, 1);
 	init_player_dir(data);
-	load_textures(data);
+	// load_textures(data);
 	deploy_mlx_hook(data);
 	return (0);
 }
