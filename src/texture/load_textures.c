@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:53:03 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 15:38:48 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:09:20 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	load_texture_img(t_data *data, t_mlx_img *tex, char card)
 		tex_path = data->textures->path_e;
 	if (card == 'w')
 		tex_path = data->textures->path_w;
-	if (card == 't')
+	if (card == 's')
 		tex_path = data->textures->path_s;
 	tex->img_ptr = mlx_xpm_file_to_image(
 			data->mlx_data->mlx_ptr,

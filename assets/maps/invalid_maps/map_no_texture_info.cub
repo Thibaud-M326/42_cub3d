@@ -1,4 +1,4 @@
-NO ./assets/textures/walls/glass.xpm
+NO ./assets/textures/walls/north.xpm
 SO 
 WE ./assets/textures/walls/iron.xpm
 EA ./assets/textures/walls/walkstone.xpm

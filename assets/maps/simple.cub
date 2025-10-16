@@ -1,7 +1,7 @@
-NO ./assets/textures/walls/glass.xpm
-    SO ./assets/textures/walls/glass.xpm
+NO ./assets/textures/walls/north.xpm
+    SO ./assets/textures/walls/north.xpm
            WE              ./assets/textures/walls/iron.xpm
-EA              ./assets/textures/walls/glass.xpm
+EA              ./assets/textures/walls/north.xpm
 
 
     F    220,	100, 0
