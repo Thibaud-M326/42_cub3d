@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 19:36:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:49:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static void	draw_map(t_data *data, int i, int map_line, int map_col)
 		color = handle_char(data, color, data->map->map[map_line][map_col]);
 		if (j == mmap->player_rel_x && i == mmap->player_rel_y)
 			color = PLAYER_MMAP;
-		draw_cell(mmap->img, j * CELL_SIZE, i * CELL_SIZE, color);
+		draw_cell(data, j * mmap->cell_size, i * mmap->cell_size, color);
 		j++;
 	}
 }

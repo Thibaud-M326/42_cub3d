@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:17:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 18:16:10 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:50:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,22 @@ void	clear_image(t_mlx_img *img, int color)
 	}
 }
 
-void	draw_cell(t_mlx_img *img, int x, int y, int color)
+void	draw_cell(t_data *data, int x, int y, int color)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
+	t_minimap	*mmap;
 
+	mmap = data->minimap;
 	i = 0;
-	while (i < CELL_SIZE)
+	while (i < mmap->cell_size)
 	{
 		j = 0;
-		while (j < CELL_SIZE)
+		while (j < mmap->cell_size)
 		{
-			put_one_pixel_img(img, x + j, y + i, color);
+			put_one_pixel_img(mmap->img, x + j, y + i, color);
 			j++;
 		}
 		i++;
 	}
 }
-
