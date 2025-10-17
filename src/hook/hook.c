@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:31:37 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 21:25:05 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/15 21:43:56 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	handle_cross(t_data *data)
 	return (0);
 }
 
+// TODO wsad move pov --- L/R arrow turn camera
 int	handle_keyboard(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)

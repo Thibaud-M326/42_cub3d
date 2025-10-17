@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:48:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/15 00:05:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/15 22:06:54 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,5 @@ t_map	*init_map_struct(t_data *data)
 	map->map = NULL;
 	map->height = 0;
 	map->width = 0;
-	map->tile_width = 0;
-	map->tile_height = 0;
 	return (map);
 }

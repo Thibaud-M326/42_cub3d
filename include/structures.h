@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/15 00:05:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/17 18:58:41 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,21 @@ typedef struct s_map
 	char					**map;
 	int						height;
 	int						width;
-	int						tile_width;
-	int						tile_height;
 }							t_map;
 
 typedef struct s_mlx_img	t_mlx_img;
+
+typedef struct s_minimap
+{
+	int						start_col;
+	int						start_row;
+	int						cols;
+	int						rows;
+	int						player_rel_x;
+	int						player_rel_y;
+	t_mlx_img				*img;
+	t_mlx_img				*img_borders;
+}							t_minimap;
 
 typedef struct s_textures
 {
@@ -75,7 +85,7 @@ typedef struct s_mlx_img
 	char					*img_data;
 	int						width;
 	int						height;
-	int						bits_per_pixel;
+	int						bpp;
 	int						size_line;
 	int						endian;
 }							t_mlx_img;
@@ -130,6 +140,7 @@ typedef struct s_data
 	t_file					*file;
 	t_textures				*textures;
 	t_map					*map;
+	t_minimap				*minimap;
 	t_check					*check;
 	t_mlx_data				*mlx_data;
 	t_player				*player;
@@ -147,9 +158,12 @@ t_data						*init_data_struct(void);
 t_file						*init_file_struct(t_data *data);
 void						free_file(t_file *file);
 
+/* structures/minimap */
+t_minimap					*init_minimap_struct(t_data *data);
+void						free_minimap(t_data *data);
+
 /* structures/s_map */
 t_map						*init_map_struct(t_data *data);
-void						free_map(t_map *map);
 
 //structures/s_mlx
 int							init_mlx(t_data *data);

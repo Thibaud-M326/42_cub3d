@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:33:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 21:26:35 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/15 23:50:37 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	mlx_start(t_mlx_data *mlx_data, t_mlx_img *mlx_img)
 		return (0);
 	mlx_img->endian = 1;
 	mlx_img->img_data = mlx_get_data_addr(mlx_img->img_ptr,
-			&mlx_img->bits_per_pixel, &mlx_img->size_line, &mlx_img->endian);
+			&mlx_img->bpp, &mlx_img->size_line, &mlx_img->endian);
 	if (NULL == mlx_img->img_data)
 		return (0);
 	return (1);

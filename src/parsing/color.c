@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 18:42:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/15 21:51:30 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,48 @@
 #include "libft.h"
 #include "messages.h"
 
+static int	ft_atoi_rgb(const char *nptr, int *err)
+{
+	int	nb;
+	int	i;
+	int	sign;
+
+	nb = 0;
+	i = 0;
+	sign = 1;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	while (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i + 1] == '-' || nptr[i + 1] == '+')
+			return (0);
+		else if (nptr[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	if (!ft_isdigit(nptr[i]))
+		*err = 1;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nb = nb * 10 + (nptr[i] - 48);
+		i++;
+	}
+	return (nb * sign);
+}
+
 void	set_color(t_data *data, char id)
 {
 	int	r;
 	int	g;
 	int	b;
+	int	err;
 
-	r = ft_atoi(data->check->color);
-	g = ft_atoi(ft_strchr(data->check->color, ',') + 1);
-	b = ft_atoi(ft_strrchr(data->check->color, ',') + 1);
+	err = 0;
+	r = ft_atoi_rgb(data->check->color, &err);
+	g = ft_atoi_rgb(ft_strchr(data->check->color, ',') + 1, &err);
+	b = ft_atoi_rgb(ft_strrchr(data->check->color, ',') + 1, &err);
+	if (err)
+		free_and_exit(data, COLOR_FORMAT, 0);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		free_and_exit(data, COLOR_VALUE_RANGE, 0);
 	if (id == 'F')

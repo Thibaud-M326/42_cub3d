@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 23:19:46 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/16 00:45:52 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,6 @@ void	free_strs(char **strs);
 //src/hook/hook.c
 int		deploy_mlx_hook(t_data *data);
 
-/* minimap/background_borders */
-void	draw_background_borders(t_data *data);
-
-/* minimap/minimap */
-void	render_minimap(t_data *data);
-
 //src/render/render.c
 int		render(t_data *data);
 
@@ -61,6 +55,7 @@ int		free_mlx_data(t_mlx_data *mlx_data);
 int		draw_floor_ceiling(t_data *data);
 
 //src/render/draw.c
+void	put_one_pixel_img(t_mlx_img *img, int x, int y, int color);
 void	put_one_pixel(t_data *data, int x, int y, int color);
 int		mix_color(int red, int green, int blue);
 

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 20:52:36 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/17 18:59:52 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "messages.h"
 #include "mlx.h"
 #include "parsing.h"
+#include "minimap.h"
 
 int	main(int ac, char **av)
 {
@@ -28,6 +29,7 @@ int	main(int ac, char **av)
 	if (!init_mlx(data))
 		free_and_exit(data, MLX_FAIL, 1);
 	init_player_dir(data);
+	data->minimap = init_minimap_struct(data);
 	// load_textures(data);
 	deploy_mlx_hook(data);
 	return (0);

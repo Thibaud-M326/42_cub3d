@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:53:03 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 15:38:48 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/15 23:50:37 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "cube.h"
-#include "mlx.h"
 #include "messages.h"
+#include "mlx.h"
+#include <stdlib.h>
 
 int	init_texture_img(t_data *data, t_mlx_img **tex)
 {
@@ -36,15 +36,15 @@ int	load_texture_img(t_data *data, t_mlx_img *tex, char card)
 	if (card == 't')
 		tex_path = data->textures->path_s;
 	tex->img_ptr = mlx_xpm_file_to_image(
-			data->mlx_data->mlx_ptr,
-			tex_path,
-			&tex->width,
-			&tex->height);
+		data->mlx_data->mlx_ptr,
+		tex_path,
+		&tex->width,
+		&tex->height);
 	tex->img_data = mlx_get_data_addr(
-			tex->img_ptr,
-			&tex->bits_per_pixel,
-			&tex->size_line,
-			&tex->endian);
+		tex->img_ptr,
+		&tex->bpp,
+		&tex->size_line,
+		&tex->endian);
 	return (1);
 }
 
