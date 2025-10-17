@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 17:19:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 17:54:00 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 		free_and_exit(data, MLX_FAIL, 1);
 	init_player_dir(data);
 	load_textures(data);
+	init_key_struct(data);
 	deploy_mlx_hook(data);
 	return (0);
 }

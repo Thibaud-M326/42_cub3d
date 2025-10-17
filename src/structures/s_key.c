@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   s_key.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 18:19:06 by thmaitre         ###   ########.fr       */
+/*   Created: 2025/10/17 17:48:07 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/10/17 18:02:21 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "mlx.h"
+#include "structures.h"
+#include "messages.h"
+#include "libft.h"
 
-int	render(t_data *data)
+void	init_key_struct(t_data *data)
 {
-	player_moove_KEYPRESS(data);
-	draw_floor_ceiling(data);
-	raycasting(data);
-	mlx_put_image_to_window(
-		data->mlx_data->mlx_ptr,
-		data->mlx_data->win_ptr,
-		data->mlx_data->mlx_img->img_ptr,
-		0, 0);
-	return (0);
+	t_key	*key;
+
+	key = ft_calloc(1, sizeof(t_key));
+	if (!key)
+		free_and_exit(data, MALLOC, 1);
+	data->key = key;
+	return ;
+}
+
+void	free_key(t_key *key)
+{
+	free(key);
+	return ;
 }

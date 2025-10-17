@@ -21,6 +21,7 @@ SRC_FILES = main						\
 			exit/utils					\
 			hook/hook					\
 			hook/player_move			\
+			hook/player_move_KEYPRESS	\
 			parsing/check_map			\
 			parsing/color				\
 			parsing/file_utils			\
@@ -45,6 +46,7 @@ SRC_FILES = main						\
 			structures/s_mlx			\
 			structures/s_player			\
 			structures/s_textures		\
+			structures/s_key			\
 			texture/draw_textures		\
 			texture/get_texture_color	\
 			texture/get_texture_x		\

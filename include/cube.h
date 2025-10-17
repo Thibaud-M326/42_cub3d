@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/16 20:33:25 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 18:17:33 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	free_strs(char **strs);
 # define free_and_exit(data, msg, err) \
 	free_and_exit_debug(data, msg, err, __FILE__, __LINE__, __func__)
 
-//src/hook/hook.c
-int		deploy_mlx_hook(t_data *data);
-
 //src/render/render.c
 int		render(t_data *data);
 
 //src/hook/hook.c
 int		deploy_mlx_hook(t_data *data);
+
+//src/hook/player_move_KEYPRESS.c
+int		player_moove_KEYPRESS(t_data *data);
 
 //src/hook/player_move.c
 int		player_move_forward(t_data *data);

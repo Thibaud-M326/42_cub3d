@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 15:51:12 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 18:01:53 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,13 @@ typedef struct s_player
 	char				id;
 }						t_player;
 
-typedef struct s_hook_args
+typedef struct s_key
 {
-	t_player			*player;
-}						t_hook_args;
+	int					up;
+	int					down;
+}	t_key;
 
-typedef struct s_data	t_data;
+typedef struct s_data		t_data;
 
 typedef struct s_data
 {
@@ -134,32 +135,37 @@ typedef struct s_data
 	t_check				*check;
 	t_mlx_data			*mlx_data;
 	t_player			*player;
+	t_key				*key;
 	int					(*render)(t_data *);
 }						t_data;
 
-/* structures/s_check */
+/* structures/s_check.c */
 t_check					*init_check_struct(t_data *data);
 void					free_check(t_check *check);
 
-/* structures/s_data */
+/* structures/s_data.c */
 t_data					*init_data_struct(void);
 
-/* structures/s_file */
+/* structures/s_file.c */
 t_file					*init_file_struct(t_data *data);
 void					free_file(t_file *file);
 
-/* structures/s_map */
+/* structures/s_key.c */
+void					init_key_struct(t_data *data);
+void					free_key(t_key *key);
+
+/* structures/s_map.c */
 t_map					*init_map_struct(t_data *data);
 void					free_map(t_map *map);
 
-//structures/s_mlx
+//structures/s_mlx.c
 int						init_mlx(t_data *data);
 int						free_mlx_data(t_mlx_data *mlx_data);
 
-/* structures/s_player */
+/* structures/s_player.c */
 t_player				*init_player_struct(t_data *data);
 
-/* structures/s_textures */
+/* structures/s_textures.c */
 t_textures				*init_textures_struct(t_data *data);
 void					free_textures(t_data *data, t_textures *textures);
 

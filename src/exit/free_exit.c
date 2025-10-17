@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:35:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 16:29:27 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 18:03:23 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
 			free(data->player);
 		if (data->map)
 			free(data->map);
+		if (data->key)
+			free(data->key);
 		free(data);
 		if (err)
 			exit(1);
