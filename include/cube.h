@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 18:17:33 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:17:29 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,8 @@ int		render(t_data *data);
 //src/hook/hook.c
 int		deploy_mlx_hook(t_data *data);
 
-//src/hook/player_move_KEYPRESS.c
-int		player_moove_KEYPRESS(t_data *data);
-
 //src/hook/player_move.c
-int		player_move_forward(t_data *data);
-int		player_move_backward(t_data *data);
-int		player_turn_left(t_data *data);
-int		player_turn_right(t_data *data);
+int		player_moove(t_data *data);
 
 //structures/s_mlx
 int		init_mlx(t_data *data);

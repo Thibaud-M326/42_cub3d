@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 18:19:06 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:17:21 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	render(t_data *data)
 {
-	player_moove_KEYPRESS(data);
+	player_moove(data);
 	draw_floor_ceiling(data);
 	raycasting(data);
 	mlx_put_image_to_window(

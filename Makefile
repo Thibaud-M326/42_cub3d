@@ -21,7 +21,6 @@ SRC_FILES = main						\
 			exit/utils					\
 			hook/hook					\
 			hook/player_move			\
-			hook/player_move_KEYPRESS	\
 			parsing/check_map			\
 			parsing/color				\
 			parsing/file_utils			\

@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 18:01:53 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:03:02 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ typedef struct s_key
 {
 	int					up;
 	int					down;
+	int					left;
+	int					right;
 }	t_key;
 
 typedef struct s_data		t_data;
