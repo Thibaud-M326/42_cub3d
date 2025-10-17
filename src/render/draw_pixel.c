@@ -6,11 +6,19 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:51:35 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 17:13:43 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:58:46 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+void	put_one_pixel_img(t_mlx_img *img, int x, int y, int color)
+{
+	char	*pxl;
+
+	pxl = img->img_data + (y * img->size_line + x * (img->bpp / 8));
+	*(unsigned int *)pxl = color;
+}
 
 void	put_one_pixel(t_data *data, int x, int y, int color)
 {
@@ -23,7 +31,7 @@ void	put_one_pixel(t_data *data, int x, int y, int color)
 	if ((y >= 0 && y < win_h) && (x >= 0 && x < win_w))
 	{
 		offset = (data->mlx_data->mlx_img->size_line * y)
-			+ (x * (data->mlx_data->mlx_img->bits_per_pixel / 8));
+			+ (x * (data->mlx_data->mlx_img->bpp / 8));
 		*((unsigned int *)(offset + data->mlx_data->mlx_img->img_data)) = color;
 	}
 }

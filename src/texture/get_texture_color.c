@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 18:57:19 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/16 19:13:40 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:58:47 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_tex_color(t_mlx_img *tex, int x, int y)
 	int	tex_pixel_color;
 
 	byte = 8;
-	pixel_index = (tex->size_line * y) + ((tex->bits_per_pixel / byte) * x);
+	pixel_index = (tex->size_line * y) + ((tex->bpp / byte) * x);
 	tex_pixel_color = *(int *)&(tex->img_data[pixel_index]);
 	return (tex_pixel_color);
 }

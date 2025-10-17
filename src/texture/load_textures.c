@@ -6,14 +6,14 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:53:03 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/16 17:09:20 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 20:02:21 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "cube.h"
-#include "mlx.h"
 #include "messages.h"
+#include "mlx.h"
+#include <stdlib.h>
 
 int	init_texture_img(t_data *data, t_mlx_img **tex)
 {
@@ -42,7 +42,7 @@ int	load_texture_img(t_data *data, t_mlx_img *tex, char card)
 			&tex->height);
 	tex->img_data = mlx_get_data_addr(
 			tex->img_ptr,
-			&tex->bits_per_pixel,
+			&tex->bpp,
 			&tex->size_line,
 			&tex->endian);
 	return (1);

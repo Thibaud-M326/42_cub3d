@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_dir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 19:58:39 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/14 19:54:57 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:49:01 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "parsing.h"
 
-int	dir_north(t_data *data)
+static int	dir_north(t_data *data)
 {
 	double	v_x;
 	double	v_y;
@@ -25,7 +25,7 @@ int	dir_north(t_data *data)
 	return (1);
 }
 
-int	dir_south(t_data *data)
+static int	dir_south(t_data *data)
 {
 	double	v_x;
 	double	v_y;
@@ -37,7 +37,7 @@ int	dir_south(t_data *data)
 	return (1);
 }
 
-int	dir_east(t_data *data)
+static int	dir_east(t_data *data)
 {
 	double	v_x;
 	double	v_y;
@@ -49,7 +49,7 @@ int	dir_east(t_data *data)
 	return (1);
 }
 
-int	dir_west(t_data *data)
+static int	dir_west(t_data *data)
 {
 	double	v_x;
 	double	v_y;

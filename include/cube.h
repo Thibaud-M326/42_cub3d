@@ -6,12 +6,15 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 19:17:29 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 20:00:20 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
+
+# define WIDTH 1000
+# define HEIGHT 1000
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -49,6 +52,7 @@ int		free_mlx_data(t_mlx_data *mlx_data);
 int		draw_floor_ceiling(t_data *data);
 
 //src/render/draw.c
+void	put_one_pixel_img(t_mlx_img *img, int x, int y, int color);
 void	put_one_pixel(t_data *data, int x, int y, int color);
 int		mix_color(int red, int green, int blue);
 

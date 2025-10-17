@@ -21,6 +21,9 @@ SRC_FILES = main						\
 			exit/utils					\
 			hook/hook					\
 			hook/player_move			\
+			minimap/draw				\
+			minimap/update				\
+			minimap/utils				\
 			parsing/check_map			\
 			parsing/color				\
 			parsing/file_utils			\
@@ -41,6 +44,7 @@ SRC_FILES = main						\
 			structures/s_check			\
 			structures/s_data			\
 			structures/s_file			\
+			structures/s_minimap		\
 			structures/s_map			\
 			structures/s_mlx			\
 			structures/s_player			\

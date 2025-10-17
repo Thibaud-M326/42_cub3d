@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 00:01:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 19:55:03 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/15 23:05:52 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	is_spawn(t_data *data, char c)
 	}
 }
 
-bool	is_player_spawn(t_data *data, char c, int x, int y)
+bool	is_player_spawn(t_data *data, char c, int y, int x)
 {
 	double	x_d;
 	double	y_d;
@@ -41,8 +41,8 @@ bool	is_player_spawn(t_data *data, char c, int x, int y)
 	y_d = y;
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
-		data->player->pos_x = x_d;
-		data->player->pos_y = y_d;
+		data->player->pos_x = x_d + 0.5;
+		data->player->pos_y = y_d + 0.5;
 		data->player->id = c;
 		return (1);
 	}

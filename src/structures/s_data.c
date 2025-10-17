@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 17:47:09 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 20:01:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_data	*init_data_struct(void)
 	data->file = NULL;
 	data->textures = NULL;
 	data->map = NULL;
+	data->minimap = NULL;
 	data->check = NULL;
 	data->mlx_data = NULL;
 	data->player = NULL;
