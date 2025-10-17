@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:51:35 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/16 21:18:51 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 17:13:43 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 void	put_one_pixel(t_data *data, int x, int y, int color)
 {
 	int	offset;
+	int	win_w;
+	int	win_h;
 
-	if (y >= 0 && y < 1000)
+	win_w = data->mlx_data->mlx_img->width;
+	win_h = data->mlx_data->mlx_img->height;
+	if ((y >= 0 && y < win_h) && (x >= 0 && x < win_w))
 	{
 		offset = (data->mlx_data->mlx_img->size_line * y)
 			+ (x * (data->mlx_data->mlx_img->bits_per_pixel / 8));
