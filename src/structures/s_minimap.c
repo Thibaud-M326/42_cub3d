@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:38:27 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 19:32:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:19:39 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,29 @@
 t_minimap	*init_minimap_struct(t_data *data)
 {
 	t_minimap	*mmap;
+	int			minimap_width_px;
+	int			minimap_height_px;
 
 	mmap = ft_calloc(1, sizeof(t_minimap));
 	if (!mmap)
 		free_and_exit(data, MALLOC, 1);
 	mmap->start_col = 0;
 	mmap->start_row = 0;
-	mmap->cols = data->map->height;
-	mmap->rows = data->map->width;
+	mmap->cols = (int)((WIDTH / 5) / CELL_SIZE);
+	mmap->rows = (int)((HEIGHT / 5) / CELL_SIZE);
 	mmap->player_rel_x = 0;
 	mmap->player_rel_y = 0;
 	mmap->img = ft_calloc(1, sizeof(t_mlx_img));
 	if (!mmap->img)
 		free_and_exit(data, MALLOC, 1);
-	mmap->img->img_ptr = mlx_new_image(data->mlx_data->mlx_ptr, (WIDTH / 5),
-			(HEIGHT / 5));
+	minimap_width_px = mmap->cols * CELL_SIZE;
+	minimap_height_px = mmap->rows * CELL_SIZE;
+	mmap->img->width = minimap_width_px;
+	mmap->img->height = minimap_height_px;
+	mmap->img->img_ptr = mlx_new_image(data->mlx_data->mlx_ptr,
+			minimap_width_px, minimap_height_px);
 	mmap->img->img_data = mlx_get_data_addr(mmap->img->img_ptr, &mmap->img->bpp,
 			&mmap->img->size_line, &mmap->img->endian);
-	mmap->img->width = (WIDTH / 5);
-	mmap->img->height = (HEIGHT / 5);
 	return (mmap);
 }
 

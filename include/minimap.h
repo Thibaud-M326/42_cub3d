@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:21:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 20:00:13 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 21:15:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define PLAYER_MMAP 0xFF0000
 
-# define CELL_SIZE 9
+# define CELL_SIZE 12
 # define DEAD_ZONE_RATIO 0.25
 
 /* minimap/draw */
