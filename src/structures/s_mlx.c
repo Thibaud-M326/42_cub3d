@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:33:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 19:44:00 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:47:54 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 int	mlx_start(t_mlx_data *mlx_data, t_mlx_img *mlx_img)
 {
-	mlx_img->width = 3840;
-	mlx_img->height = 2160;
+	mlx_img->width = 1000;
+	mlx_img->height = 1000;
 	mlx_data->mlx_img = mlx_img;
 	mlx_data->mlx_ptr = mlx_init();
 	if (NULL == mlx_data->mlx_ptr)
