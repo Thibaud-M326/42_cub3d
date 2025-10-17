@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/15 15:43:46 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:51:12 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_textures
 	t_mlx_img			*tex_w;
 	t_mlx_img			*tex_s;
 	char				face;
+	int					line_start;
+	int					line_end;
 }						t_textures;
 
 typedef struct s_mlx_img

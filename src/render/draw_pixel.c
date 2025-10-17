@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:51:35 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/13 14:25:24 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/16 21:18:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	put_one_pixel(t_data *data, int x, int y, int color)
 {
 	int	offset;
 
-	offset = (data->mlx_data->mlx_img->size_line * y)
-		+ (x * (data->mlx_data->mlx_img->bits_per_pixel / 8));
-	*((unsigned int *)(offset + data->mlx_data->mlx_img->img_data)) = color;
+	if (y >= 0 && y < 1000)
+	{
+		offset = (data->mlx_data->mlx_img->size_line * y)
+			+ (x * (data->mlx_data->mlx_img->bits_per_pixel / 8));
+		*((unsigned int *)(offset + data->mlx_data->mlx_img->img_data)) = color;
+	}
 }
 
 int	mix_color(int red, int green, int blue)

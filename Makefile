@@ -34,7 +34,6 @@ SRC_FILES = main						\
 			parsing/utils				\
 			render/draw_floor_ceiling	\
 			render/draw_pixel			\
-			render/draw_vertical_line	\
 			render/raycasting_dda		\
 			render/raycasting_init		\
 			render/raycasting			\
@@ -46,7 +45,11 @@ SRC_FILES = main						\
 			structures/s_mlx			\
 			structures/s_player			\
 			structures/s_textures		\
+			texture/draw_textures		\
+			texture/get_texture_color	\
+			texture/get_texture_x		\
 			texture/load_textures		\
+			texture/ray_hit_point		\
 
 #------------------------------------------------#
 #					DIRECTORY					 #

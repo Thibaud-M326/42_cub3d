@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:15:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/16 16:38:57 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:55:17 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	raycasting(t_data *data)
 		data->player->ray.dir_y = data->player->dir_y + plane_y * camera_x;
 		raycasting_init(data);
 		raycasting_dda(data);
-		draw_vertical_line(data, x);
+		draw_textures(data, x);
 		x++;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:59:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 16:30:14 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:53:42 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ t_textures	*init_textures_struct(t_data *data)
 		textures->tex_e = NULL;
 		textures->tex_w = NULL;
 		textures->tex_s = NULL;
+		textures->face = 0;
+		textures->line_start = 0;
+		textures->line_end = 0;
 	}
 	return (textures);
 }

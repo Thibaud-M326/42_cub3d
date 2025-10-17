@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 19:00:42 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:33:25 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ int		free_mlx_data(t_mlx_data *mlx_data);
 //src/render/render.c
 int		render(t_data *data);
 
-//src/render/draw_vertical_line.c
-int		draw_vertical_line(t_data *data, int x);
-
 //src/render/raycasting_dda.c
 int		raycasting_dda(t_data *data);
 
@@ -82,7 +79,19 @@ void	print_textures(t_data *data);
 void	print_map(t_data *data);
 void	print_free(t_data *data);
 
+//src/texture/draw_textures.c
+int		draw_textures(t_data *data, int x);
+
+//src/texture/get_texture_color.c
+double	get_texture_color(int y, int line_start, int line_end, int tex_x, t_mlx_img *tex);
+
+//src/texture/get_texture_x.c
+double	get_tex_x(t_data *data, t_mlx_img **tex);
+
 //src/texture/load_texture.c
 int		load_textures(t_data *data);
+
+//src/texture/ray_hit_point.c
+int		ray_hit_point(t_data *data);
 
 #endif
