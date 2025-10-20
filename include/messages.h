@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:56:13 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/14 15:13:53 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 20:23:37 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@
 # define MAP_NO_SPAWN "Map: No spawn found"
 # define MAP_BORDER "Map: '0' not directly surrounded by '1'"
 # define MAP_PLAYER "Map: Spawn is not closed"
+
+/* PLAYER */
+# define OUT_BOUNDS "Player: position out of bounds"
 
 #endif

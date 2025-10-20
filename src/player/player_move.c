@@ -6,12 +6,15 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/20 19:59:50 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 20:46:26 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include "messages.h"
 #include <math.h>
+
+	#include <stdio.h>
 
 int	player_moove_forward(t_data *data)
 {

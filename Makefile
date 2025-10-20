@@ -20,8 +20,6 @@ SRC_FILES = main						\
 			exit/free_exit				\
 			exit/utils					\
 			hook/hook					\
-			hook/player_move			\
-			hook/player_turn			\
 			minimap/draw				\
 			minimap/update				\
 			minimap/utils				\
@@ -36,6 +34,9 @@ SRC_FILES = main						\
 			parsing/map					\
 			parsing/textures			\
 			parsing/utils				\
+			player/player_collision		\
+			player/player_move			\
+			player/player_turn			\
 			render/draw_floor_ceiling	\
 			render/draw_pixel			\
 			render/init_render			\
