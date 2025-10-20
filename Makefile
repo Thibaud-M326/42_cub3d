@@ -38,6 +38,7 @@ SRC_FILES = main						\
 			parsing/utils				\
 			render/draw_floor_ceiling	\
 			render/draw_pixel			\
+			render/init_render			\
 			render/raycasting_dda		\
 			render/raycasting_init		\
 			render/raycasting			\
@@ -45,6 +46,7 @@ SRC_FILES = main						\
 			structures/s_check			\
 			structures/s_data			\
 			structures/s_file			\
+			structures/s_fps			\
 			structures/s_minimap		\
 			structures/s_map			\
 			structures/s_mlx			\
@@ -56,6 +58,7 @@ SRC_FILES = main						\
 			texture/get_texture_x		\
 			texture/load_textures		\
 			texture/ray_hit_point		\
+			time/fps_count				\
 			time/get_current_time_ms	\
 
 #------------------------------------------------#

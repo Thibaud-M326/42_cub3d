@@ -6,11 +6,12 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:39:07 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/20 17:47:08 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:52:53 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "structures.h"
 #include "messages.h"
 #include "cube.h"

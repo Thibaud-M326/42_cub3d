@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 17:29:47 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 18:20:46 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int		player_moove(t_data *data);
 int		player_turn_left(t_data *data);
 int		player_turn_right(t_data *data);
 
+//	src/render/init_render.c
+int		init_render(t_data *data);
+
 //	src/render/draw_floor_ceiling.c
 int		draw_floor_ceiling(t_data *data);
 
@@ -89,5 +92,6 @@ int		ray_hit_point(t_data *data);
 
 //src/time/get_current_time_ms.c
 int		get_current_time_ms(void);
+int		fps_count(t_data *data);
 
 #endif

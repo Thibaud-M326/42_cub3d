@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 21:32:58 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 18:09:36 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int	render(t_data *data)
 {
+	fps_count(data);
 	player_moove(data);
 	draw_floor_ceiling(data);
 	raycasting(data);
