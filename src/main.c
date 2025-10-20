@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 19:52:54 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:38:49 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int ac, char **av)
 	init_player_dir(data);
 	load_textures(data);
 	init_key_struct(data);
+	init_fps_struct(data);
 	data->minimap = init_minimap_struct(data);
 	deploy_mlx_hook(data);
 	return (0);

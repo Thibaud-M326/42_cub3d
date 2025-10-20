@@ -6,12 +6,13 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:35:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 19:53:30 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:49:09 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
+#include "structures.h"
 #include <stdio.h>
 #include <unistd.h>
 
@@ -39,6 +40,8 @@ void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
 			free(data->map);
 		if (data->key)
 			free(data->key);
+		if (data->fps)
+			free_fps(data->fps);
 		free(data);
 		if (err)
 			exit(1);

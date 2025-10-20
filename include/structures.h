@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 15:11:49 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:49:27 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,13 @@ typedef struct s_key
 	int					right;
 }	t_key;
 
+typedef struct s_fps
+{
+	int					old_time;
+	int					time;
+	double				fps_count;
+}	t_fps;
+
 typedef struct s_data		t_data;
 
 typedef struct s_data
@@ -153,6 +160,7 @@ typedef struct s_data
 	t_mlx_data			*mlx_data;
 	t_player			*player;
 	t_key				*key;
+	t_fps				*fps;
 	int					(*render)(t_data *);
 }						t_data;
 
@@ -166,6 +174,10 @@ t_data					*init_data_struct(void);
 /* structures/s_file.c */
 t_file					*init_file_struct(t_data *data);
 void					free_file(t_file *file);
+
+/* structures/s_fps.c */
+void					init_fps_struct(t_data *data);
+void					free_fps(t_fps *fps);
 
 /* structures/s_key.c */
 void					init_key_struct(t_data *data);

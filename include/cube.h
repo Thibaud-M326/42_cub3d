@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 15:55:04 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:29:47 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ int		load_textures(t_data *data);
 
 //src/texture/ray_hit_point.c
 int		ray_hit_point(t_data *data);
+
+//src/time/get_current_time_ms.c
+int		get_current_time_ms(void);
 
 #endif

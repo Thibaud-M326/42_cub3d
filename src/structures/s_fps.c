@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_data.c                                           :+:      :+:    :+:   */
+/*   s_fps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 17:38:35 by thmaitre         ###   ########.fr       */
+/*   Created: 2025/10/20 17:39:07 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/10/20 17:47:08 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include "structures.h"
+#include "messages.h"
 #include "cube.h"
-#include "libft.h"
-#include <stddef.h>
 
-t_data	*init_data_struct(void)
+void	init_fps_struct(t_data *data)
 {
-	t_data	*data;
+	data->fps = malloc(sizeof(t_fps));
+	if (!data->fps)
+		free_and_exit(data, MALLOC, 1);
+	data->fps->old_time = 0;
+	data->fps->time = 0;
+	data->fps->fps_count = 0;
+	return ;
+}
 
-	data = ft_calloc(1, sizeof(t_data));
-	if (!data)
-		free_and_exit(data, "Malloc failed", 1);
-	data->file = NULL;
-	data->textures = NULL;
-	data->map = NULL;
-	data->minimap = NULL;
-	data->check = NULL;
-	data->mlx_data = NULL;
-	data->player = NULL;
-	data->key = NULL;
-	data->fps = NULL;
-	return (data);
+void	free_fps(t_fps *fps)
+{
+	if (fps)
+	{
+		free(fps);
+		fps = NULL;
+	}
+	return ;
 }

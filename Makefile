@@ -56,6 +56,7 @@ SRC_FILES = main						\
 			texture/get_texture_x		\
 			texture/load_textures		\
 			texture/ray_hit_point		\
+			time/get_current_time_ms	\
 
 #------------------------------------------------#
 #					DIRECTORY					 #

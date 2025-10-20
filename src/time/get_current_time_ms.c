@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_data.c                                           :+:      :+:    :+:   */
+/*   get_time_ms.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 17:38:35 by thmaitre         ###   ########.fr       */
+/*   Created: 2025/10/20 17:16:02 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/10/20 17:28:24 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "libft.h"
-#include <stddef.h>
+#include <sys/time.h>
+#include <stdio.h>
 
-t_data	*init_data_struct(void)
+int	get_current_time_ms(void)
 {
-	t_data	*data;
+	int				ms;
+	struct timeval	tv;
 
-	data = ft_calloc(1, sizeof(t_data));
-	if (!data)
-		free_and_exit(data, "Malloc failed", 1);
-	data->file = NULL;
-	data->textures = NULL;
-	data->map = NULL;
-	data->minimap = NULL;
-	data->check = NULL;
-	data->mlx_data = NULL;
-	data->player = NULL;
-	data->key = NULL;
-	data->fps = NULL;
-	return (data);
+	gettimeofday(&tv, NULL);
+	ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	return (ms);
 }
