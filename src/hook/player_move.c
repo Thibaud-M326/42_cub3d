@@ -6,14 +6,14 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 19:17:03 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 16:25:52 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include <math.h>
 
-int	player_moove_up(t_data *data)
+int	player_moove_forward(t_data *data)
 {
 	t_player	*player;
 
@@ -23,7 +23,7 @@ int	player_moove_up(t_data *data)
 	return (1);
 }
 
-int	player_moove_down(t_data *data)
+int	player_moove_backward(t_data *data)
 {
 	t_player	*player;
 
@@ -33,43 +33,58 @@ int	player_moove_down(t_data *data)
 	return (1);
 }
 
-int	player_turn_left(t_data *data)
+int	player_moove_left(t_data *data)
 {
-	double	old_d_x;
-	double	old_dir_y;
-	double	rot_speed;
+	double		rad_angle;
+	double		rot_dir_x;
+	double		rot_dir_y;
+	double		old_dir_x;
+	double		old_dir_y;
 
-	rot_speed = -0.1;
-	old_d_x = data->player->dir_x;
+	rad_angle = 1.5708;
+	old_dir_x = data->player->dir_x;
 	old_dir_y = data->player->dir_y;
-	data->player->dir_x = old_d_x * cos(rot_speed) - old_dir_y * sin(rot_speed);
-	data->player->dir_y = old_d_x * sin(rot_speed) + old_dir_y * cos(rot_speed);
+	rot_dir_x = old_dir_x * cos(rad_angle) - old_dir_y * sin(rad_angle);
+	rot_dir_y = old_dir_x * sin(rad_angle) + old_dir_y * cos(rad_angle);
+	data->player->pos_x -= rot_dir_x * 0.1;
+	data->player->pos_y -= rot_dir_y * 0.1;
 	return (1);
 }
 
-int	player_turn_right(t_data *data)
+int	player_moove_right(t_data *data)
 {
-	double	old_d_x;
-	double	old_dir_y;
-	double	rot_speed;
+	double		rad_angle;
+	double		rot_dir_x;
+	double		rot_dir_y;
+	double		old_dir_x;
+	double		old_dir_y;
 
-	rot_speed = 0.1;
-	old_d_x = data->player->dir_x;
+	rad_angle = 1.5708;
+	old_dir_x = data->player->dir_x;
 	old_dir_y = data->player->dir_y;
-	data->player->dir_x = old_d_x * cos(rot_speed) - old_dir_y * sin(rot_speed);
-	data->player->dir_y = old_d_x * sin(rot_speed) + old_dir_y * cos(rot_speed);
+	rot_dir_x = old_dir_x * cos(rad_angle) - old_dir_y * sin(rad_angle);
+	rot_dir_y = old_dir_x * sin(rad_angle) + old_dir_y * cos(rad_angle);
+	data->player->pos_x += rot_dir_x * 0.1;
+	data->player->pos_y += rot_dir_y * 0.1;
 	return (1);
 }
 
 int	player_moove(t_data *data)
 {
-	if (data->key->up)
-		player_moove_up(data);
-	else if (data->key->down)
-		player_moove_down(data);
+	if (data->key->w)
+		player_moove_forward(data);
+	else if (data->key->s)
+		player_moove_backward(data);
+
+	if (data->key->a)
+		player_moove_left(data);
+	if (data->key->d)
+		player_moove_right(data);
+
 	if (data->key->left)
 		player_turn_left(data);
 	else if (data->key->right)
 		player_turn_right(data);
+
 	return (1);
 }

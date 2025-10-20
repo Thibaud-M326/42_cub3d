@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:31:37 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/20 15:03:05 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 16:26:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,15 @@ int	handle_key_press(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		free_and_exit(data, "", 0);
-	if (keysym == XK_Up)
-		data->key->up = 1;
-	else if (keysym == XK_Down)
-		data->key->down = 1;
+
+	if (keysym == XK_w)
+		data->key->w = 1;
+	else if (keysym == XK_s)
+		data->key->s = 1;
+	else if (keysym == XK_a)
+		data->key->a = 1;
+	else if (keysym == XK_d)
+		data->key->d = 1;
 	else if (keysym == XK_Left)
 		data->key->left = 1;
 	else if (keysym == XK_Right)
@@ -38,10 +43,14 @@ int	handle_key_press(int keysym, t_data *data)
 
 int	handle_key_release(int keysym, t_data *data)
 {
-	if (keysym == XK_Up)
-		data->key->up = 0;
-	else if (keysym == XK_Down)
-		data->key->down = 0;
+	if (keysym == XK_w)
+		data->key->w = 0;
+	else if (keysym == XK_s)
+		data->key->s = 0;
+	else if (keysym == XK_a)
+		data->key->a = 0;
+	else if (keysym == XK_d)
+		data->key->d = 0;
 	else if (keysym == XK_Left)
 		data->key->left = 0;
 	else if (keysym == XK_Right)

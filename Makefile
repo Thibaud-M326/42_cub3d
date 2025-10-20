@@ -21,6 +21,7 @@ SRC_FILES = main						\
 			exit/utils					\
 			hook/hook					\
 			hook/player_move			\
+			hook/player_turn			\
 			minimap/draw				\
 			minimap/update				\
 			minimap/utils				\

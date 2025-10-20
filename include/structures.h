@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 19:52:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 15:11:49 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,10 @@ typedef struct s_player
 
 typedef struct s_key
 {
-	int					up;
-	int					down;
+	int					w;
+	int					a;
+	int					s;
+	int					d;
 	int					left;
 	int					right;
 }	t_key;
