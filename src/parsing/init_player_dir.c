@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_dir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 19:58:39 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 16:49:01 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/20 14:31:07 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 static int	dir_north(t_data *data)
 {
-	double	v_x;
-	double	v_y;
-
-	v_x = 0;
-	v_y = -1;
 	data->player->dir_x = 0;
 	data->player->dir_y = -1;
 	return (1);
@@ -27,11 +22,6 @@ static int	dir_north(t_data *data)
 
 static int	dir_south(t_data *data)
 {
-	double	v_x;
-	double	v_y;
-
-	v_x = 0;
-	v_y = 1;
 	data->player->dir_x = 0;
 	data->player->dir_y = 1;
 	return (1);
@@ -39,11 +29,6 @@ static int	dir_south(t_data *data)
 
 static int	dir_east(t_data *data)
 {
-	double	v_x;
-	double	v_y;
-
-	v_x = 1;
-	v_y = 0;
 	data->player->dir_x = 1;
 	data->player->dir_y = 0;
 	return (1);
@@ -51,11 +36,6 @@ static int	dir_east(t_data *data)
 
 static int	dir_west(t_data *data)
 {
-	double	v_x;
-	double	v_y;
-
-	v_x = -1;
-	v_y = 0;
 	data->player->dir_x = -1;
 	data->player->dir_y = 0;
 	return (1);
