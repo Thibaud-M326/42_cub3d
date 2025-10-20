@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:59:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 15:53:42 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:15:35 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	free_texture_img(t_data *data, t_mlx_img *tex)
 	if (tex->img_ptr)
 		mlx_destroy_image(data->mlx_data->mlx_ptr, tex->img_ptr);
 	free(tex);
+	tex = NULL;
 	return ;
 }
 
