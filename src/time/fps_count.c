@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fps_count.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 18:09:46 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 20:50:37 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 22:19:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	fps_count(t_data *data)
 	data->fps->fps_count = 1 / data->fps->fps_count;
 	
 	//remove for submission
-	printf("data->fps->fps_count : %f\n", data->fps->fps_count);
+	// printf("data->fps->fps_count : %f\n", data->fps->fps_count);
 	
 	return (1);
 }
