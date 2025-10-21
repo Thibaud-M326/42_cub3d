@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 21:48:35 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/21 17:19:08 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ static void	center_minimap(t_data *data)
 	t_minimap	*mmap;
 
 	mmap = data->minimap;
-	mmap->cols = (WIDTH / 5) / mmap->cell_size;
-	mmap->rows = (HEIGHT / 5) / mmap->cell_size;
+	mmap->cols = (WIDTH / 6) / mmap->cell_size;
+	mmap->rows = (HEIGHT / 6) / mmap->cell_size;
 	mmap->start_col = (int)(data->player->pos_x) - mmap->cols / 2;
 	mmap->start_row = (int)(data->player->pos_y) - mmap->rows / 2;
 	if (mmap->start_col < 0)
