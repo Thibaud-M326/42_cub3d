@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/20 20:46:26 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 16:07:27 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ int	player_moove_forward(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-	if (data->map->map[(int)(player->pos_y + player->dir_y * 0.8)]
+	if (data->map->map[(int)player->pos_y]
 		[(int)(player->pos_x + player->dir_x * 0.8)] != '1')
 	{
 		player->pos_x += player->dir_x * 0.1;
+	}
+	if (data->map->map[(int)(player->pos_y + player->dir_y * 0.8)]
+		[(int)player->pos_x] != '1')
+	{
 		player->pos_y += player->dir_y * 0.1;
 	}
 	return (1);
@@ -35,10 +39,14 @@ int	player_moove_backward(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-	if (data->map->map[(int)(player->pos_y - player->dir_y * 0.8)]
-	[(int)(player->pos_x - player->dir_x * 0.8)] != '1')
+	if (data->map->map[(int)player->pos_y]
+		[(int)(player->pos_x - player->dir_x * 0.8)] != '1')
 	{
 		player->pos_x -= player->dir_x * 0.1;
+	}
+	if (data->map->map[(int)(player->pos_y - player->dir_y * 0.8)]
+		[(int)player->pos_x] != '1')
+	{
 		player->pos_y -= player->dir_y * 0.1;
 	}
 	return (1);
@@ -57,10 +65,14 @@ int	player_moove_left(t_data *data)
 	old_dir_y = data->player->dir_y;
 	rot_dir_x = old_dir_x * cos(rad_angle) - old_dir_y * sin(rad_angle);
 	rot_dir_y = old_dir_x * sin(rad_angle) + old_dir_y * cos(rad_angle);
-	if (data->map->map[(int)(data->player->pos_y - rot_dir_y * 0.8)]
-	[(int)(data->player->pos_x - rot_dir_x * 0.8)] != '1')
+	if (data->map->map[(int)data->player->pos_y]
+		[(int)(data->player->pos_x - rot_dir_x * 0.8)] != '1')
 	{
 		data->player->pos_x -= rot_dir_x * 0.1;
+	}
+	if (data->map->map[(int)(data->player->pos_y - rot_dir_y * 0.8)]
+		[(int)data->player->pos_x] != '1')
+	{
 		data->player->pos_y -= rot_dir_y * 0.1;
 	}
 	return (1);
@@ -79,10 +91,14 @@ int	player_moove_right(t_data *data)
 	old_dir_y = data->player->dir_y;
 	rot_dir_x = old_dir_x * cos(rad_angle) - old_dir_y * sin(rad_angle);
 	rot_dir_y = old_dir_x * sin(rad_angle) + old_dir_y * cos(rad_angle);
-	if (data->map->map[(int)(data->player->pos_y + rot_dir_y * 0.8)]
-	[(int)(data->player->pos_x + rot_dir_x * 0.8)] != '1')
+	if (data->map->map[(int)data->player->pos_y]
+		[(int)(data->player->pos_x + rot_dir_x * 0.8)] != '1')
 	{
 		data->player->pos_x += rot_dir_x * 0.1;
+	}
+	if (data->map->map[(int)(data->player->pos_y + rot_dir_y * 0.8)]
+		[(int)data->player->pos_x] != '1')
+	{
 		data->player->pos_y += rot_dir_y * 0.1;
 	}
 	return (1);
