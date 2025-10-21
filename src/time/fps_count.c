@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 18:09:46 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 19:39:02 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 20:50:37 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	fps_count(t_data *data)
 	
 	//remove for submission
 	printf("data->fps->fps_count : %f\n", data->fps->fps_count);
-	printf("data->fps->move_speed : %f\n", data->fps->move_speed);
-	printf("data->fps->rot_speed : %f\n", data->fps->rot_speed);
 	
 	return (1);
 }

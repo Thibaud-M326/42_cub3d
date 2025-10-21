@@ -6,15 +6,15 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 19:04:51 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 20:23:46 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 1920
+# define HEIGHT 1080
 
 /****************************************************************************/
 /*                                INCLUDE									*/
