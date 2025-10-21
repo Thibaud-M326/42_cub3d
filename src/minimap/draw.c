@@ -6,67 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/17 19:36:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/21 17:56:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "minimap.h"
 #include "mlx.h"
-
-// static void	draw_horizontal_borders(t_data *data)
-// {
-// 	int	x;
-// 	int	y;
-// 	int	end_x;
-// 	int	end_y;
-// 	int	start_x;
-
-// 	start_x = WIDTH / 30;
-// 	end_x = (WIDTH / 5) / CELL_SIZE;
-// 	end_y = (HEIGHT / 5) / CELL_SIZE;
-// 	y = HEIGHT / 30;
-// 	x = start_x;
-// 	while (x < end_x)
-// 	{
-// 		put_one_pixel_img(data->minimap->img, x, y, BORDER_MMAP);
-// 		x++;
-// 	}
-// 	x = start_x;
-// 	y = end_y - 1;
-// 	while (x < end_x)
-// 	{
-// 		put_one_pixel_img(data->minimap->img, x, y, BORDER_MMAP);
-// 		x++;
-// 	}
-// }
-
-// static void	draw_vertical_borders(t_data *data)
-// {
-// 	int	x;
-// 	int	y;
-// 	int	end_x;
-// 	int	end_y;
-// 	int	start_y;
-
-// 	start_y = HEIGHT / 30;
-// 	end_x = (WIDTH / 5) / CELL_SIZE;
-// 	end_y = (HEIGHT / 5) / CELL_SIZE;
-// 	x = WIDTH / 30;
-// 	y = start_y;
-// 	while (y < end_y)
-// 	{
-// 		put_one_pixel_img(data->minimap->img, x, y, BORDER_MMAP);
-// 		y++;
-// 	}
-// 	x = end_x - 1;
-// 	y = start_y;
-// 	while (y < end_y)
-// 	{
-// 		put_one_pixel_img(data->minimap->img, x, y, BORDER_MMAP);
-// 		y++;
-// 	}
-// }
 
 static int	handle_char(t_data *data, int color, char c)
 {
@@ -105,8 +51,26 @@ static void	draw_map(t_data *data, int i, int map_line, int map_col)
 		color = handle_char(data, color, data->map->map[map_line][map_col]);
 		if (j == mmap->player_rel_x && i == mmap->player_rel_y)
 			color = PLAYER_MMAP;
-		draw_cell(mmap->img, j * CELL_SIZE, i * CELL_SIZE, color);
+		draw_cell(data, j * mmap->cell_size, i * mmap->cell_size, color);
 		j++;
+	}
+}
+
+static void	draw_background(t_data *data)
+{
+	int	col;
+	int	row;
+
+	row = 0;
+	while (row < data->minimap->background->height)
+	{
+		col = 0;
+		while (col < data->minimap->background->width)
+		{
+			put_one_pixel_img(data->minimap->background, col, row, BORDER_MMAP);
+			col++;
+		}
+		row++;
 	}
 }
 
@@ -118,6 +82,7 @@ void	draw_minimap(t_data *data)
 	int			map_col;
 
 	mmap = data->minimap;
+	draw_background(data);
 	clear_image(mmap->img, VOID_MMAP);
 	update_map(data);
 	i = 0;
