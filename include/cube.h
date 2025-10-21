@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 18:20:46 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:04:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ int		player_turn_right(t_data *data);
 
 //	src/render/init_render.c
 int		init_render(t_data *data);
-
-//	src/render/draw_floor_ceiling.c
-int		draw_floor_ceiling(t_data *data);
 
 //	src/render/draw_pixel.c
 void	put_one_pixel_img(t_mlx_img *img, int x, int y, int color);

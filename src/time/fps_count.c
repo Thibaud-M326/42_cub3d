@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 18:09:46 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 16:45:07 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:39:02 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ int	fps_count(t_data *data)
 	data->fps->old_time = data->fps->time;
 	data->fps->time = get_current_time_ms();
 	data->fps->fps_count = (data->fps->time - data->fps->old_time) / 1000.0;
+	data->fps->move_speed = data->fps->fps_count * 3.0;
+	data->fps->rot_speed = data->fps->fps_count * 2.0;
 	data->fps->fps_count = 1 / data->fps->fps_count;
 	
 	//remove for submission
-	// printf("data->fps->fps_count : %f\n", data->fps->fps_count);
+	printf("data->fps->fps_count : %f\n", data->fps->fps_count);
+	printf("data->fps->move_speed : %f\n", data->fps->move_speed);
+	printf("data->fps->rot_speed : %f\n", data->fps->rot_speed);
 	
 	return (1);
 }

@@ -6,15 +6,13 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 17:44:50 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:13:03 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "messages.h"
 #include <math.h>
-
-	#include <stdio.h>
 
 int	player_moove_forward(t_data *data)
 {
@@ -24,12 +22,12 @@ int	player_moove_forward(t_data *data)
 	if (data->map->map[(int)player->pos_y]
 		[(int)(player->pos_x + player->dir_x * 0.2)] != '1')
 	{
-		player->pos_x += player->dir_x * 0.1;
+		player->pos_x += player->dir_x * data->fps->move_speed;
 	}
 	if (data->map->map[(int)(player->pos_y + player->dir_y * 0.2)]
 		[(int)player->pos_x] != '1')
 	{
-		player->pos_y += player->dir_y * 0.1;
+		player->pos_y += player->dir_y * data->fps->move_speed;
 	}
 	return (1);
 }
@@ -42,12 +40,12 @@ int	player_moove_backward(t_data *data)
 	if (data->map->map[(int)player->pos_y]
 		[(int)(player->pos_x - player->dir_x * 0.2)] != '1')
 	{
-		player->pos_x -= player->dir_x * 0.1;
+		player->pos_x -= player->dir_x * data->fps->move_speed;
 	}
 	if (data->map->map[(int)(player->pos_y - player->dir_y * 0.2)]
 		[(int)player->pos_x] != '1')
 	{
-		player->pos_y -= player->dir_y * 0.1;
+		player->pos_y -= player->dir_y * data->fps->move_speed;
 	}
 	return (1);
 }
@@ -68,12 +66,12 @@ int	player_moove_left(t_data *data)
 	if (data->map->map[(int)data->player->pos_y]
 		[(int)(data->player->pos_x - rot_dir_x * 0.2)] != '1')
 	{
-		data->player->pos_x -= rot_dir_x * 0.1;
+		data->player->pos_x -= rot_dir_x * data->fps->move_speed;
 	}
 	if (data->map->map[(int)(data->player->pos_y - rot_dir_y * 0.2)]
 		[(int)data->player->pos_x] != '1')
 	{
-		data->player->pos_y -= rot_dir_y * 0.1;
+		data->player->pos_y -= rot_dir_y * data->fps->move_speed;
 	}
 	return (1);
 }
@@ -94,12 +92,12 @@ int	player_moove_right(t_data *data)
 	if (data->map->map[(int)data->player->pos_y]
 		[(int)(data->player->pos_x + rot_dir_x * 0.2)] != '1')
 	{
-		data->player->pos_x += rot_dir_x * 0.1;
+		data->player->pos_x += rot_dir_x * data->fps->move_speed;
 	}
 	if (data->map->map[(int)(data->player->pos_y + rot_dir_y * 0.2)]
 		[(int)data->player->pos_x] != '1')
 	{
-		data->player->pos_y += rot_dir_y * 0.1;
+		data->player->pos_y += rot_dir_y * data->fps->move_speed;
 	}
 	return (1);
 }
@@ -118,6 +116,5 @@ int	player_moove(t_data *data)
 		player_turn_left(data);
 	else if (data->key->right)
 		player_turn_right(data);
-
 	return (1);
 }

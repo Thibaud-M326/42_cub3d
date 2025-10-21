@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:26:27 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/13 19:18:46 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:51:01 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ int	hit_wall_ray_dist(t_data *data)
 			ray->map_check_x += ray->step_x;
 		else
 			ray->map_check_y += ray->step_y;
-		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
-			break ;
+		if (((int)ray->map_check_y >= 0 && (int)ray->map_check_y < data->map->height) 
+			&& ((int)ray->map_check_x >= 0 && (int)ray->map_check_x < data->map->width))
+		{
+			if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
+				break ;
+		}
 		if (ray->length_x < ray->length_y)
 			ray->length_x += ray->unit_length_x;
 		else

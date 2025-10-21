@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/20 18:09:36 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:05:01 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	render(t_data *data)
 {
 	fps_count(data);
 	player_moove(data);
-	draw_floor_ceiling(data);
 	raycasting(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx_data->mlx_ptr, data->mlx_data->win_ptr,

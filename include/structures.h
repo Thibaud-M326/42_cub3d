@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 17:49:27 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:48:58 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ typedef struct s_fps
 	int					old_time;
 	int					time;
 	double				fps_count;
+	double				move_speed;
+	double				rot_speed;
 }	t_fps;
 
 typedef struct s_data		t_data;

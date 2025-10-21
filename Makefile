@@ -37,7 +37,6 @@ SRC_FILES = main						\
 			player/player_collision		\
 			player/player_move			\
 			player/player_turn			\
-			render/draw_floor_ceiling	\
 			render/draw_pixel			\
 			render/init_render			\
 			render/raycasting_dda		\
