@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 23:03:02 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/22 19:15:40 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	render(t_data *data)
 {
 	fps_count(data);
 	player_move(data);
-	printf(" X = %.2f Y = %.2f\n", data->player->pos_x, data->player->pos_y);
 	raycasting(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx_data->mlx_ptr, data->mlx_data->win_ptr,

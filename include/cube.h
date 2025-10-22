@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 23:01:05 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/22 18:51:06 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define HITBOX_RADIUS 0.2
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -43,6 +44,9 @@ void	free_strs(char **strs);
 
 //	src/hook/hook.c
 int		deploy_mlx_hook(t_data *data);
+
+// src/player/player_collision
+int		hitbox_clear(t_data *data, double x, double y);
 
 //	src/hook/player_move.c
 int		player_move(t_data *data);

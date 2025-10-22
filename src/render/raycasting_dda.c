@@ -6,11 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:26:27 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 22:24:54 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/22 19:21:36 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include "messages.h"
+#include "minimap.h"
 
 int	first_side_ray_dist(t_data *data)
 {
@@ -61,10 +63,10 @@ int	hit_wall_ray_dist(t_data *data)
 			ray->map_check_x += ray->step_x;
 		else
 			ray->map_check_y += ray->step_y;
-		// if (((int)ray->map_check_y >= 0 && (int)ray->map_check_y < data->map->height) 
-		// 	&& ((int)ray->map_check_x >= 0 && (int)ray->map_check_x < data->map->width))
-		// {
-		// }
+		if (!(ray->map_check_x >= 0
+				&& ray->map_check_x < get_map_line_len(map[(int)data->player->pos_y]))
+			|| !(ray->map_check_y >= 0 && ray->map_check_y < data->map->height))
+			free_and_exit(data, RAY_OUT_BOUNDS, 1);
 		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
 			break ;
 		if (ray->length_x < ray->length_y)
