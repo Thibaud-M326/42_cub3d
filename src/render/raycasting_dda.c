@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:26:27 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/22 19:21:36 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/22 20:40:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,50 @@ int	compute_ray_distance(t_data *data)
 	return (1);
 }
 
+static int	is_ray_y_ok(t_data *data, double next_y)
+{
+	t_map	*map;
+	t_ray	*ray;
+
+	map = data->map;
+	ray = &data->player->ray;
+	next_y += ray->step_y;
+	if (!(next_y >= 0 && next_y < map->height))
+		free_and_exit(data, RAY_Y_BOUNDS, 1);
+	return (1);
+}
+
+static int	is_ray_x_ok(t_data *data, double next_x)
+{
+	t_map	*map;
+	t_ray	*ray;
+
+	map = data->map;
+	ray = &data->player->ray;
+	next_x += ray->step_x;
+	if (!(next_x >= 0
+			&& next_x < get_map_line_len(map->map[(int)data->player->pos_y])))
+		free_and_exit(data, RAY_X_BOUNDS, 1);
+	return (1);
+}
+
 int	hit_wall_ray_dist(t_data *data)
 {
 	t_ray	*ray;
 	char	**map;
+	double	next_x;
+	double	next_y;
 
 	ray = &data->player->ray;
 	map = data->map->map;
+	next_x = ray->map_check_x;
+	next_y = ray->map_check_y;
 	while (1)
 	{
-		if (ray->length_x < ray->length_y)
+		if (ray->length_x < ray->length_y && is_ray_x_ok(data, next_x))
 			ray->map_check_x += ray->step_x;
-		else
+		else if (ray->length_x > ray->length_y && is_ray_y_ok(data, next_y))
 			ray->map_check_y += ray->step_y;
-		if (!(ray->map_check_x >= 0
-				&& ray->map_check_x < get_map_line_len(map[(int)data->player->pos_y]))
-			|| !(ray->map_check_y >= 0 && ray->map_check_y < data->map->height))
-			free_and_exit(data, RAY_OUT_BOUNDS, 1);
 		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
 			break ;
 		if (ray->length_x < ray->length_y)

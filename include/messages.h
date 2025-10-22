@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:56:13 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/22 19:17:30 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/22 20:40:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@
 
 /* RAY */
 # define RAY_OUT_BOUNDS "Ray: position out of bounds"
+# define RAY_X_BOUNDS "Ray: position X out of bounds"
+# define RAY_Y_BOUNDS "Ray: position Y out of bounds"
 
 #endif
