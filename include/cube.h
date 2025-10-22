@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 20:53:07 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/22 16:22:18 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,13 @@ void	free_strs(char **strs);
 //	src/hook/hook.c
 int		deploy_mlx_hook(t_data *data);
 
-//	src/hook/player_move.c
+//	src/player/player_collision.c
+int		collision(char **map, int x, int y);
+
+//	src/player/player_move.c
 int		player_moove(t_data *data);
 
-//	src/hook/player_turn.c
+//	src/player/player_turn.c
 int		player_turn_left(t_data *data);
 int		player_turn_right(t_data *data);
 
