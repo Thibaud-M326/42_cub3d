@@ -1,11 +1,10 @@
-       NO     ./path_to_the_north_texture                    
-
-SO                       ./path_to_the_south_texture
-WE ./path_to_the_west_texture
+NO ./assets/textures/walls/glass.xpm
+EA ./assets/textures/walls/walkstone.xpm
+SO ./assets/textures/walls/leavests.xpm
+WE ./assets/textures/walls/iron.xpm  
 F             220,100,0
-EA ./path_to_the_east_texture
+
 C 225,30,0
-111111
-111111
-1000W1
-111111
+111
+1N1
+111
