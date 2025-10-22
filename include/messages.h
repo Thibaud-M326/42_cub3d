@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   messages.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:56:13 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 20:23:37 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/22 20:40:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,10 @@
 
 /* PLAYER */
 # define OUT_BOUNDS "Player: position out of bounds"
+
+/* RAY */
+# define RAY_OUT_BOUNDS "Ray: position out of bounds"
+# define RAY_X_BOUNDS "Ray: position X out of bounds"
+# define RAY_Y_BOUNDS "Ray: position Y out of bounds"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 17:56:14 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/21 21:22:56 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,44 @@ static void	draw_map(t_data *data, int i, int map_line, int map_col)
 	}
 }
 
-static void	draw_background(t_data *data)
+static void	draw_border(t_data *data)
 {
-	int	col;
-	int	row;
+	t_minimap	*mmap;
+	int			x_start;
+	int			y_start;
+	int			width;
+	int			height;
+	int			x;
+	int			y;
 
-	row = 0;
-	while (row < data->minimap->background->height)
+	mmap = data->minimap;
+	x = 0;
+	y = 0;
+	x_start = 0;
+	y_start = 0;
+	width = mmap->cols * mmap->cell_size;
+	height = mmap->rows * mmap->cell_size;
+	while (x < x_start + width)
 	{
-		col = 0;
-		while (col < data->minimap->background->width)
-		{
-			put_one_pixel_img(data->minimap->background, col, row, BORDER_MMAP);
-			col++;
-		}
-		row++;
+		put_one_pixel_img(mmap->img, x, y_start, BORDER_MMAP);
+		put_one_pixel_img(mmap->img, x++, y_start + 1, BORDER_MMAP);
+	}
+	x = 0;
+	while (x < x_start + width)
+	{
+		put_one_pixel_img(mmap->img, x, y_start + height - 1, BORDER_MMAP);
+		put_one_pixel_img(mmap->img, x++, y_start + height - 2, BORDER_MMAP);
+	}
+	while (y < y_start + height)
+	{	
+		put_one_pixel_img(mmap->img, x_start, y, BORDER_MMAP);
+		put_one_pixel_img(mmap->img, x_start + 1, y++, BORDER_MMAP);
+	}
+	y = 0;
+	while (y < y_start + height)
+	{
+		put_one_pixel_img(mmap->img, x_start + width - 1, y, BORDER_MMAP);
+		put_one_pixel_img(mmap->img, x_start + width - 2, y++, BORDER_MMAP);
 	}
 }
 
@@ -82,7 +105,6 @@ void	draw_minimap(t_data *data)
 	int			map_col;
 
 	mmap = data->minimap;
-	draw_background(data);
 	clear_image(mmap->img, VOID_MMAP);
 	update_map(data);
 	i = 0;
@@ -95,4 +117,5 @@ void	draw_minimap(t_data *data)
 		draw_map(data, i, map_line, map_col);
 		i++;
 	}
+	draw_border(data);
 }

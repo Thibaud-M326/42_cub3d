@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/22 16:22:18 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:00:57 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define HITBOX_RADIUS 0.2
 
 /****************************************************************************/
 /*                                INCLUDE									*/
@@ -44,11 +45,11 @@ void	free_strs(char **strs);
 //	src/hook/hook.c
 int		deploy_mlx_hook(t_data *data);
 
-//	src/player/player_collision.c
-int		collision(char **map, int x, int y);
+// src/player/player_collision
+int		hitbox_clear(t_data *data, double x, double y);
 
-//	src/player/player_move.c
-int		player_moove(t_data *data);
+//	src/hook/player_move.c
+int		player_move(t_data *data);
 
 //	src/player/player_turn.c
 int		player_turn_left(t_data *data);
@@ -78,8 +79,8 @@ int		render(t_data *data);
 int		draw_textures(t_data *data, int x);
 
 //src/texture/get_texture_color.c
-double	get_texture_color(int y, int line_start, int line_end,
-			int tex_x, t_mlx_img *tex);
+double	get_texture_color(int y, int line_start, int line_end, int tex_x,
+			t_mlx_img *tex);
 
 //src/texture/get_texture_x.c
 double	get_tex_x(t_data *data, t_mlx_img **tex);

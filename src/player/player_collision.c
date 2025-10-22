@@ -6,49 +6,36 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 20:09:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/22 16:41:36 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:00:56 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include "messages.h"
+#include "minimap.h"
+#include <math.h>
 
-	#include <stdio.h>
-
-//si collsion return 1 sinon 0
-int	collision(char **map, int x, int y)
+int	hitbox_clear(t_data *data, double x, double y)
 {
-	int	i;
-	int col_dir_y;
-	int col_dir_x;
-	double	radius;
-	int	collision_dir[8][2] = {
-	{y - 1, x - 1},
-	{y - 1, x},
-	{y - 1, x + 1},
-	{y, x - 1},
-	{y, x + 1},
-	{y + 1, x - 1},
-	{y + 1, x},
-	{y + 1, x + 1}
-	};
+	double	angle;
+	double	px;
+	double	py;
+	int		i;
+	t_map	*map;
 
-	printf("x %d\n", x);
-	printf("y %d\n", y);
+	map = data->map;
 	i = 0;
-	radius = 0.25;
 	while (i < 8)
 	{
-		col_dir_y = (int)(y + collision_dir[i][0] * radius);
-		col_dir_x = (int)(x + collision_dir[i][1] * radius);
-
-		printf("collision_dir_y %d\n", collision_dir[i][0]);
-		printf("collision_dir_x %d\n\n", collision_dir[i][1]);
-
-		// printf("col_dir_x %d\n", col_dir_x);
-		// printf("col_dir_y %d\n", col_dir_y);
-		if (map[col_dir_y][col_dir_x] == '1')
-			return (1);
+		angle = (3.14 / 4.0) * i;
+		px = x + HITBOX_RADIUS * cos(angle);
+		py = y + HITBOX_RADIUS * sin(angle);
+		if (!(py > 0 && py < map->height) || !(px > 0
+				&& px < get_map_line_len(map->map[(int)py])))
+			free_and_exit(data, OUT_BOUNDS, 1);
+		if (map->map[(int)py][(int)px] == '1')
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
