@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:12:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 19:04:34 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:49:56 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,24 @@ int	draw_vert_floor(t_data *data, int line_end, int x)
 int	draw_vert_texture(t_data *data, int x, int tex_x, t_mlx_img *tex)
 {
 	int	color;
-	int	current_y;
+	int	cur_y;
 	int	line_start;
 	int	line_end;
+	int	line_height;
 
-	current_y = data->textures->line_start;
+	cur_y = data->textures->line_start;
 	line_start = data->textures->line_start;
 	line_end = data->textures->line_end;
+	line_height = line_end - line_start;
 	draw_vert_ceiling(data, line_start, x);
-	while (current_y < line_end)
+	while (cur_y < line_end)
 	{
-		if (current_y >= 0 && current_y < data->mlx_data->mlx_img->height)
+		if (cur_y >= 0 && cur_y < data->mlx_data->mlx_img->height)
 		{
-			color = get_texture_color(current_y, line_start, line_end, tex_x, tex);
-			put_one_pixel(data, x, current_y, color);
+			color = get_texture_color(data, tex, cur_y, tex_x);
+			put_one_pixel(data, x, cur_y, color);
 		}
-		current_y++;
+		cur_y++;
 	}
 	draw_vert_floor(data, line_end, x);
 	return (1);
