@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:26:32 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 18:49:46 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static char	*copy_line(t_data *data, int len)
 	}
 	if (!tmp)
 		free_and_exit(data, MALLOC, 1);
+	if (data->file->line[len - 1] == '\n')
+		len--;
 	if (len > data->check->width)
 		data->check->width = len;
 	return (tmp);

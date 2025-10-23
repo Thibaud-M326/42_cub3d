@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:35:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 22:05:55 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 18:34:18 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,13 @@ char	*get_texture_path(t_data *data)
 	j = 0;
 	len = ft_strlen(data->file->line);
 	i = trim_start(data, i);
+	i += 2;
+	if (!ft_is_white_space(data->file->line[i]))
+		free_and_exit(data, ID_INVALID, 0);
+	i = trim_start(data, i);
 	tmp = ft_calloc(len, sizeof(char));
 	if (!tmp)
 		free_and_exit(data, MALLOC, 1);
-	i += 2;
-	i = trim_start(data, i);
 	while (i < (int)len && data->file->line[i + 1])
 		tmp[j++] = data->file->line[i++];
 	tmp[j] = '\0';

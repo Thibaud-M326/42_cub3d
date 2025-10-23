@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 17:19:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 18:58:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,55 +20,37 @@
 static void	update_scroll_row(t_data *data)
 {
 	t_minimap	*mmap;
-	int			deadzone_pxl;
-	int			deadzone_half;
-	int			player_y;
+	int			player_row;
+	int			rows_half;
+	int			map_max;
 
 	mmap = data->minimap;
-	deadzone_pxl = (int)(mmap->rows * mmap->cell_size * DEAD_ZONE_RATIO);
-	deadzone_half = deadzone_pxl / 2;
-	player_y = (int)((data->player->pos_y - mmap->start_row) * mmap->cell_size);
-	if (player_y < deadzone_half)
-	{
-		mmap->start_row = (int)(data->player->pos_y) - deadzone_pxl / (2
-				* mmap->cell_size);
-		if (mmap->start_row < 0)
-			mmap->start_row = 0;
-	}
-	else if (player_y > (mmap->rows * mmap->cell_size - deadzone_half))
-	{
-		mmap->start_row = (int)(data->player->pos_y) - mmap->rows + deadzone_pxl
-			/ (2 * mmap->cell_size);
-		if (mmap->start_row < 0)
-			mmap->start_row = 0;
-	}
+	player_row = (int)data->player->pos_y;
+	rows_half = mmap->rows / 2;
+	map_max = data->map->height - mmap->rows;
+	mmap->start_row = player_row - rows_half;
+	if (mmap->start_row < 0)
+		mmap->start_row = 0;
+	else if (mmap->start_row > map_max)
+		mmap->start_row = map_max;
 }
 
 static void	update_scroll_col(t_data *data)
 {
 	t_minimap	*mmap;
-	int			deadzone_pxl;
-	int			deadzone_half;
-	int			player_x;
+	int			player_col;
+	int			cols_half;
+	int			map_max;
 
 	mmap = data->minimap;
-	deadzone_pxl = (int)(mmap->cols * mmap->cell_size * DEAD_ZONE_RATIO);
-	deadzone_half = deadzone_pxl / 2;
-	player_x = (int)((data->player->pos_x - mmap->start_col) * mmap->cell_size);
-	if (player_x < deadzone_half)
-	{
-		mmap->start_col = (int)(data->player->pos_x) - deadzone_pxl / (2
-				* mmap->cell_size);
-		if (mmap->start_col < 0)
-			mmap->start_col = 0;
-	}
-	else if (player_x > (mmap->cols * mmap->cell_size - deadzone_half))
-	{
-		mmap->start_col = (int)(data->player->pos_x) - mmap->cols + deadzone_pxl
-			/ (2 * mmap->cell_size);
-		if (mmap->start_col < 0)
-			mmap->start_col = 0;
-	}
+	player_col = (int)data->player->pos_x;
+	cols_half = mmap->cols / 2;
+	map_max = data->map->width - mmap->cols;
+	mmap->start_col = player_col - cols_half;
+	if (mmap->start_col < 0)
+		mmap->start_col = 0;
+	else if (mmap->start_col > map_max)
+		mmap->start_col = map_max;
 }
 
 static void	center_minimap(t_data *data)

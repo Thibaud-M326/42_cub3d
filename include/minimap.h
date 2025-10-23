@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:21:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 22:13:54 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 18:58:57 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@
 
 # define VOID_MMAP 0x303030
 # define GROUND_MMAP 0xc7d0cc
-// # define BORDER_MMAP 0x303030
 # define BORDER_MMAP 0xFFFFFF
 # define WALLS_MMAP 0x808080
 # define PLAYER_MMAP 0xFF0000
 # define CELL_SIZE_MIN 10
 # define CELL_SIZE_MAX 30
-# define DEAD_ZONE_RATIO 0.25
 
 /****************************************************************************/
 /*                                FUNCTIONS									*/
