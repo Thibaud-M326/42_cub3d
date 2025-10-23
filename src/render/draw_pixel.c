@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_pixel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:51:35 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/21 16:44:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 14:12:24 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ int	mix_color(int red, int green, int blue)
 	color = (red << 16) | (green << 8) | blue;
 	return (color);
 }
-

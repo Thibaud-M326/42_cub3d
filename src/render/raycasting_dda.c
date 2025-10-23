@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:26:27 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/22 21:01:53 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:15:26 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	first_side_ray_dist(t_data *data)
 	return (1);
 }
 
-int	compute_ray_distance(t_data *data)
+int	get_ray_distance(t_data *data)
 {
 	t_ray	*ray;
 
@@ -50,33 +50,6 @@ int	compute_ray_distance(t_data *data)
 	return (1);
 }
 
-static int	is_ray_y_ok(t_data *data, double next_y)
-{
-	t_map	*map;
-	t_ray	*ray;
-
-	map = data->map;
-	ray = &data->player->ray;
-	next_y += ray->step_y;
-	if (!(next_y >= 0 && next_y < map->height))
-		free_and_exit(data, RAY_Y_BOUNDS, 1);
-	return (1);
-}
-
-static int	is_ray_x_ok(t_data *data, double next_x)
-{
-	t_map	*map;
-	t_ray	*ray;
-
-	map = data->map;
-	ray = &data->player->ray;
-	next_x += ray->step_x;
-	if (!(next_x >= 0
-			&& next_x < get_map_line_len(map->map[(int)data->player->pos_y])))
-		free_and_exit(data, RAY_X_BOUNDS, 1);
-	return (1);
-}
-
 int	hit_wall_ray_dist(t_data *data)
 {
 	t_ray	*ray;
@@ -90,9 +63,9 @@ int	hit_wall_ray_dist(t_data *data)
 	next_y = ray->map_check_y;
 	while (1)
 	{
-		if (ray->length_x < ray->length_y && is_ray_x_ok(data, next_x))
+		if (ray->length_x < ray->length_y && check_ray_x(data, next_x))
 			ray->map_check_x += ray->step_x;
-		else if (ray->length_x > ray->length_y && is_ray_y_ok(data, next_y))
+		else if (ray->length_x > ray->length_y && check_ray_y(data, next_y))
 			ray->map_check_y += ray->step_y;
 		if (map[(int)ray->map_check_y][(int)ray->map_check_x] == '1')
 			break ;
@@ -101,7 +74,7 @@ int	hit_wall_ray_dist(t_data *data)
 		else
 			ray->length_y += ray->unit_length_y;
 	}
-	compute_ray_distance(data);
+	get_ray_distance(data);
 	return (1);
 }
 

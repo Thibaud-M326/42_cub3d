@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_collision.c                                 :+:      :+:    :+:   */
+/*   check_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 20:09:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 14:10:41 by thmaitre         ###   ########.fr       */
+/*   Created: 2025/10/23 14:14:54 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/10/23 14:30:32 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "messages.h"
 #include "minimap.h"
-#include <math.h>
 
-int	hitbox_clear(t_data *data, double x, double y)
+int	check_ray_y(t_data *data, double next_y)
 {
-	double	angle;
-	double	px;
-	double	py;
-	int		i;
 	t_map	*map;
+	t_ray	*ray;
 
 	map = data->map;
-	i = 0;
-	while (i < 8)
-	{
-		angle = (3.14 / 4.0) * i;
-		px = x + HITBOX_RADIUS * cos(angle);
-		py = y + HITBOX_RADIUS * sin(angle);
-		if (!(py > 0 && py < map->height) || !(px > 0
-				&& px < get_map_line_len(map->map[(int)py])))
-			free_and_exit(data, OUT_BOUNDS, 1);
-		if (map->map[(int)py][(int)px] == '1')
-			return (0);
-		i++;
-	}
+	ray = &data->player->ray;
+	next_y += ray->step_y;
+	if (!(next_y >= 0 && next_y < map->height))
+		free_and_exit(data, RAY_Y_BOUNDS, 1);
+	return (1);
+}
+
+int	check_ray_x(t_data *data, double next_x)
+{
+	t_map	*map;
+	t_ray	*ray;
+
+	map = data->map;
+	ray = &data->player->ray;
+	next_x += ray->step_x;
+	if (!(next_x >= 0
+			&& next_x < get_map_line_len(map->map[(int)data->player->pos_y])))
+		free_and_exit(data, RAY_X_BOUNDS, 1);
 	return (1);
 }

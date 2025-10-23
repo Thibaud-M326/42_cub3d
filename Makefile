@@ -34,9 +34,11 @@ SRC_FILES = main						\
 			parsing/map					\
 			parsing/textures			\
 			parsing/utils				\
+			player/get_rot_dirs			\
 			player/player_collision		\
 			player/player_move			\
 			player/player_turn			\
+			render/check_rays			\
 			render/draw_pixel			\
 			render/init_render			\
 			render/raycasting_dda		\

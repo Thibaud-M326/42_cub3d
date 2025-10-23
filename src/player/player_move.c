@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/22 21:01:31 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:34:26 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,15 @@ int	player_move_backward(t_data *data)
 
 int	player_move_left(t_data *data)
 {
-	double		rad_angle;
 	double		rot_dir_x;
 	double		rot_dir_y;
-	double		old_dir_x;
-	double		old_dir_y;
 	double		next_x;
 	double		next_y;
 	t_player	*player;
 
 	player = data->player;
-	rad_angle = 1.5708;
-	old_dir_x = data->player->dir_x;
-	old_dir_y = data->player->dir_y;
-	rot_dir_x = old_dir_x * cos(rad_angle) - old_dir_y * sin(rad_angle);
-	rot_dir_y = old_dir_x * sin(rad_angle) + old_dir_y * cos(rad_angle);
+	rot_dir_x = get_rot_dir_x(player->ray.dir_x, player->ray.dir_y);
+	rot_dir_y = get_rot_dir_y(player->ray.dir_x, player->ray.dir_y);
 	next_x = data->player->pos_x - rot_dir_x * data->fps->move_speed;
 	next_y = data->player->pos_y - rot_dir_y * data->fps->move_speed;
 	if (hitbox_clear(data, next_x, player->pos_y))
@@ -77,21 +71,15 @@ int	player_move_left(t_data *data)
 
 int	player_move_right(t_data *data)
 {
-	double		rad_angle;
 	double		rot_dir_x;
 	double		rot_dir_y;
-	double		old_dir_x;
-	double		old_dir_y;
 	double		next_x;
 	double		next_y;
 	t_player	*player;
 
 	player = data->player;
-	rad_angle = 1.5708;
-	old_dir_x = data->player->dir_x;
-	old_dir_y = data->player->dir_y;
-	rot_dir_x = old_dir_x * cos(rad_angle) - old_dir_y * sin(rad_angle);
-	rot_dir_y = old_dir_x * sin(rad_angle) + old_dir_y * cos(rad_angle);
+	rot_dir_x = get_rot_dir_x(player->ray.dir_x, player->ray.dir_y);
+	rot_dir_y = get_rot_dir_y(player->ray.dir_x, player->ray.dir_y);
 	next_x = data->player->pos_x + rot_dir_x * data->fps->move_speed;
 	next_y = data->player->pos_y + rot_dir_y * data->fps->move_speed;
 	if (hitbox_clear(data, next_x, player->pos_y))
