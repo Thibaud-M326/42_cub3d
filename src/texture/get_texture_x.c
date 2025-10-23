@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture_x.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 18:59:26 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/17 16:37:33 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/23 17:59:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 double	get_texture_x(double hit_pos, t_mlx_img *tex)
 {
-	double		tex_x;
-	double		floor_pos;
+	double	tex_x;
+	double	floor_pos;
 
 	floor_pos = floor(hit_pos);
 	tex_x = hit_pos - floor_pos;
@@ -26,8 +26,8 @@ double	get_texture_x(double hit_pos, t_mlx_img *tex)
 
 double	get_texture_x_revert(double hit_pos, t_mlx_img *tex)
 {
-	double		tex_x;
-	double		floor_pos;
+	double	tex_x;
+	double	floor_pos;
 
 	floor_pos = ceil(hit_pos);
 	tex_x = floor_pos - hit_pos;
