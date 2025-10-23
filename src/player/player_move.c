@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 16:53:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/23 17:13:10 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	player_move_left(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-	rot_dir_x = get_rot_dir_x(player->dir_x, player->dir_y);
-	rot_dir_y = get_rot_dir_y(player->dir_x, player->dir_y);
+	rot_dir_x = -player->dir_y;
+	rot_dir_y = player->dir_x;
 	next_x = player->pos_x - rot_dir_x * data->fps->move_speed;
 	next_y = player->pos_y - rot_dir_y * data->fps->move_speed;
 	if (hitbox_clear(data, next_x, player->pos_y))
@@ -78,8 +78,8 @@ int	player_move_right(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-	rot_dir_x = get_rot_dir_x(player->dir_x, player->dir_y);
-	rot_dir_y = get_rot_dir_y(player->dir_x, player->dir_y);
+	rot_dir_x = -player->dir_y;
+	rot_dir_y = player->dir_x;
 	next_x = player->pos_x + rot_dir_x * data->fps->move_speed;
 	next_y = player->pos_y + rot_dir_y * data->fps->move_speed;
 	if (hitbox_clear(data, next_x, player->pos_y))

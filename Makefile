@@ -34,7 +34,6 @@ SRC_FILES = main						\
 			parsing/map					\
 			parsing/textures			\
 			parsing/utils				\
-			player/get_rot_dirs			\
 			player/player_collision		\
 			player/player_move			\
 			player/player_turn			\
