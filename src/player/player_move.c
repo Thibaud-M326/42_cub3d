@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 14:34:26 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:53:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	player_move_left(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-	rot_dir_x = get_rot_dir_x(player->ray.dir_x, player->ray.dir_y);
-	rot_dir_y = get_rot_dir_y(player->ray.dir_x, player->ray.dir_y);
-	next_x = data->player->pos_x - rot_dir_x * data->fps->move_speed;
-	next_y = data->player->pos_y - rot_dir_y * data->fps->move_speed;
+	rot_dir_x = get_rot_dir_x(player->dir_x, player->dir_y);
+	rot_dir_y = get_rot_dir_y(player->dir_x, player->dir_y);
+	next_x = player->pos_x - rot_dir_x * data->fps->move_speed;
+	next_y = player->pos_y - rot_dir_y * data->fps->move_speed;
 	if (hitbox_clear(data, next_x, player->pos_y))
 		player->pos_x = next_x;
 	if (hitbox_clear(data, player->pos_x, next_y))
@@ -78,10 +78,10 @@ int	player_move_right(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-	rot_dir_x = get_rot_dir_x(player->ray.dir_x, player->ray.dir_y);
-	rot_dir_y = get_rot_dir_y(player->ray.dir_x, player->ray.dir_y);
-	next_x = data->player->pos_x + rot_dir_x * data->fps->move_speed;
-	next_y = data->player->pos_y + rot_dir_y * data->fps->move_speed;
+	rot_dir_x = get_rot_dir_x(player->dir_x, player->dir_y);
+	rot_dir_y = get_rot_dir_y(player->dir_x, player->dir_y);
+	next_x = player->pos_x + rot_dir_x * data->fps->move_speed;
+	next_y = player->pos_y + rot_dir_y * data->fps->move_speed;
 	if (hitbox_clear(data, next_x, player->pos_y))
 		player->pos_x = next_x;
 	if (hitbox_clear(data, player->pos_x, next_y))

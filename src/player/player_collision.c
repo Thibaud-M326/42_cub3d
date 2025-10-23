@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 20:09:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 14:10:41 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:07:30 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 int	hitbox_clear(t_data *data, double x, double y)
 {
 	double	angle;
-	double	px;
-	double	py;
+	double	pos_x;
+	double	pos_y;
 	int		i;
 	t_map	*map;
 
@@ -28,12 +28,12 @@ int	hitbox_clear(t_data *data, double x, double y)
 	while (i < 8)
 	{
 		angle = (3.14 / 4.0) * i;
-		px = x + HITBOX_RADIUS * cos(angle);
-		py = y + HITBOX_RADIUS * sin(angle);
-		if (!(py > 0 && py < map->height) || !(px > 0
-				&& px < get_map_line_len(map->map[(int)py])))
+		pos_x = x + HITBOX_RADIUS * cos(angle);
+		pos_y = y + HITBOX_RADIUS * sin(angle);
+		if (!(pos_y > 0 && pos_y < map->height) || !(pos_x > 0
+				&& pos_x < get_map_line_len(map->map[(int)pos_y])))
 			free_and_exit(data, OUT_BOUNDS, 1);
-		if (map->map[(int)py][(int)px] == '1')
+		if (map->map[(int)pos_y][(int)pos_x] == '1')
 			return (0);
 		i++;
 	}
