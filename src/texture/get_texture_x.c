@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 18:59:26 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/22 21:58:15 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 17:59:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	get_tex_x_side_x(t_data *data, t_mlx_img **tex)
 	ray = &data->player->ray;
 	if (ray->dir_x >= 0)
 	{
-		*tex = data->textures->tex_e;
+		*tex = data->textures->tex_w;
 		tex_x = get_texture_x(ray->hit_pos_y, *tex);
 	}
 	else
 	{
-		*tex = data->textures->tex_w;
+		*tex = data->textures->tex_e;
 		tex_x = get_texture_x_revert(ray->hit_pos_y, *tex);
 	}
 	return (tex_x);
@@ -62,12 +62,12 @@ int	get_tex_x_side_y(t_data *data, t_mlx_img **tex)
 	ray = &data->player->ray;
 	if (ray->dir_y >= 0)
 	{
-		*tex = data->textures->tex_s;
+		*tex = data->textures->tex_n;
 		tex_x = get_texture_x_revert(ray->hit_pos_x, *tex);
 	}
 	else
 	{
-		*tex = data->textures->tex_n;
+		*tex = data->textures->tex_s;
 		tex_x = get_texture_x(ray->hit_pos_x, *tex);
 	}
 	return (tex_x);
