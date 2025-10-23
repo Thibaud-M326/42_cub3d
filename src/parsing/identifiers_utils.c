@@ -6,12 +6,12 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 22:46:43 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 23:53:18 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 20:49:42 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "fcntl.h"
+#include <fcntl.h>
 #include "libft.h"
 #include "messages.h"
 #include "parsing.h"

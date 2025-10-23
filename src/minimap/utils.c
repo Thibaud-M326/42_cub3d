@@ -6,12 +6,11 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:17:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 17:19:55 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 20:47:53 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "minimap.h"
 
 int	get_map_line_len(char *line)
 {

@@ -6,13 +6,12 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/22 21:29:32 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/23 20:47:27 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "minimap.h"
-#include "mlx.h"
 
 static int	handle_char(t_data *data, int color, char c)
 {
