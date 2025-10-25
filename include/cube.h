@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/22 20:31:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/25 16:49:07 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@
 /****************************************************************************/
 /*                                FUNCTIONS									*/
 /****************************************************************************/
-
-//	src/destroy/print.c
-void	print_textures(t_data *data);
-void	print_map(t_data *data);
-void	print_free(t_data *data);
 
 //	src/exit/free_exit.c
 void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
