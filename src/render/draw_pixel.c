@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:51:35 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 14:12:24 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 14:50:57 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	put_one_pixel_img(t_mlx_img *img, int x, int y, int color)
 	*(unsigned int *)pxl = color;
 }
 
-void	put_one_pixel(t_data *data, int x, int y, int color)
+void	put_one_pixel(t_data *data, int win_x, int win_y, int color)
 {
 	int	offset;
 	int	win_w;
@@ -28,10 +28,10 @@ void	put_one_pixel(t_data *data, int x, int y, int color)
 
 	win_w = data->mlx_data->mlx_img->width;
 	win_h = data->mlx_data->mlx_img->height;
-	if ((y >= 0 && y < win_h) && (x >= 0 && x < win_w))
+	if ((win_y >= 0 && win_y < win_h) && (win_x >= 0 && win_x < win_w))
 	{
-		offset = (data->mlx_data->mlx_img->size_line * y)
-			+ (x * (data->mlx_data->mlx_img->bpp / 8));
+		offset = (data->mlx_data->mlx_img->size_line * win_y)
+			+ (win_x * (data->mlx_data->mlx_img->bpp / 8));
 		*((unsigned int *)(offset + data->mlx_data->mlx_img->img_data)) = color;
 	}
 }

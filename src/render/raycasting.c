@@ -6,13 +6,11 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:15:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 18:27:06 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 13:34:26 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-	#include <stdio.h>
 
 int	raycasting(t_data *data)
 {
@@ -26,8 +24,6 @@ int	raycasting(t_data *data)
 	plane_x = -data->player->dir_y * 0.66;
 	plane_y = data->player->dir_x * 0.66;
 	x = 0;
-	printf("player->dir_x :%f plane_x :%f \n", data->player->dir_x, plane_x);
-	printf("player->dir_y :%f plane_y :%f \n", data->player->dir_y, plane_y);
 	while (x < win_w)
 	{
 		camera_x = 2 * (x / (double)win_w) - 1;

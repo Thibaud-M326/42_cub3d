@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/23 17:20:03 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 15:14:16 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		render(t_data *data);
 int		draw_textures(t_data *data, int x);
 
 //src/texture/get_texture_color.c
-double	get_texture_color(t_data *data, t_mlx_img *tex, int y, int tex_x);
+int		get_texture_color(t_data *data, t_mlx_img *tex, int y, int tex_x);
 
 //src/texture/get_texture_x.c
 double	get_tex_x(t_data *data, t_mlx_img **tex);

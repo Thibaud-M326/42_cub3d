@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 21:25:01 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/25 15:40:14 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ typedef struct s_textures
 	t_mlx_img			*tex_w;
 	t_mlx_img			*tex_s;
 	char				face;
-	int					line_start;
-	int					line_end;
+	int					wall_start;
+	int					wall_end;
 }						t_textures;
 
 typedef struct s_mlx_img
