@@ -6,15 +6,13 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:49:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 14:41:39 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:31:57 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "minimap.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	render(t_data *data)
 {

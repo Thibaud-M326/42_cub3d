@@ -6,13 +6,11 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:26:27 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/25 13:30:16 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:31:24 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "messages.h"
-#include "minimap.h"
 
 int	first_side_ray_dist(t_data *data)
 {

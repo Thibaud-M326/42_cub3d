@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:35:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/13 22:05:55 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/25 17:38:08 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include "messages.h"
+#include <stdlib.h>
 
 static char	*trim_end(char *str)
 {

@@ -6,13 +6,12 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:18:11 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 17:38:35 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:32:32 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include <stddef.h>
 
 t_data	*init_data_struct(void)
 {

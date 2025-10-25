@@ -6,15 +6,44 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:35:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/20 17:49:09 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:37:03 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include "structures.h"
-#include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
+
+	#include <stdio.h>
+
+void	free_and_exit_no_error(t_data *data)
+{
+	ft_putendl_fd("Exit cub3d", STDOUT_FILENO);
+	if (data)
+	{
+		if (data->file)
+			free_file(data->file);
+		if (data->check)
+			free_check(data->check);
+		if (data->textures)
+			free_textures(data, data->textures);
+		if (data->minimap)
+			free_minimap(data);
+		if (data->mlx_data)
+			free_mlx_data(data->mlx_data);
+		if (data->player)
+			free(data->player);
+		if (data->map)
+			free(data->map);
+		if (data->key)
+			free(data->key);
+		if (data->fps)
+			free_fps(data->fps);
+		free(data);
+	}
+	exit(0);
+}
 
 void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
 		int line, const char *func)
@@ -43,8 +72,6 @@ void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
 		if (data->fps)
 			free_fps(data->fps);
 		free(data);
-		if (err)
-			exit(1);
 	}
-	exit(0);
+	exit(err);
 }

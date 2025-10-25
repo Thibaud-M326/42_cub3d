@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_string_to_strings.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:56:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/07/18 22:29:19 by vscode           ###   ########.fr       */
+/*   Updated: 2025/10/25 17:34:27 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char	**ft_add_string_to_strings(char **strings, char *string)
 {

@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:59:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 15:40:14 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:39:06 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "messages.h"
 #include "mlx.h"
+#include <stdlib.h>
 
 t_textures	*init_textures_struct(t_data *data)
 {

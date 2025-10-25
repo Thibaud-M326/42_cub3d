@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          #+#  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-12 12:05:35 by thmaitre          #+#    #+#             */
-/*   Updated: 2024-11-12 12:05:35 by thmaitre         ###   ########.fr       */
+/*   Created: 2024/11/12 12:05:35 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/10/25 17:35:06 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 int	ft_itoa_len(int n)
 {

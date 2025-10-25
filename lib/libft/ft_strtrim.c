@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          #+#  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-12 07:56:44 by thmaitre          #+#    #+#             */
-/*   Updated: 2024-11-12 07:56:44 by thmaitre         ###   ########.fr       */
+/*   Created: 2024/11/12 07:56:44 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/10/25 17:36:05 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static int	ft_in_set(char c, char const *set)
 {

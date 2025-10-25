@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 15:14:16 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:32:43 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,14 @@
 /*                                FUNCTIONS									*/
 /****************************************************************************/
 
-//	src/destroy/print.c
-void	print_textures(t_data *data);
-void	print_map(t_data *data);
-void	print_free(t_data *data);
-
 //	src/exit/free_exit.c
 void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
 			int line, const char *func);
 
 # define free_and_exit(data, msg, err) \
 	free_and_exit_debug(data, msg, err, __FILE__, __LINE__, __func__)
+
+void	free_and_exit_no_error(t_data *data);
 
 //	src/exit/utils.c
 void	free_strs(char **strs);

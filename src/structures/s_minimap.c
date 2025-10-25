@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_minimap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:38:27 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/21 21:25:12 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/25 17:38:34 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "messages.h"
 #include "minimap.h"
 #include "mlx.h"
+#include <stdlib.h>
 
 static t_mlx_img	*init_minimap_img(t_data *data)
 {

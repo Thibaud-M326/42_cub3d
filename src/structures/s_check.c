@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   s_check.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/09 18:27:39 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/25 17:38:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include <stddef.h>
 #include "messages.h"
+#include <stdlib.h>
 
 t_check	*init_check_struct(t_data *data)
 {
