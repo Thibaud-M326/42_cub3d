@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 20:54:12 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 21:32:18 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,7 @@
 /****************************************************************************/
 
 //	src/exit/free_exit.c
-void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
-			int line, const char *func);
-
-# define free_and_exit(data, msg, err) \
-	free_and_exit_debug(data, msg, err, __FILE__, __LINE__, __func__)
-
+void	free_and_exit(t_data *data, char *msg, int err);
 void	free_and_exit_no_error(t_data *data);
 
 //	src/exit/utils.c

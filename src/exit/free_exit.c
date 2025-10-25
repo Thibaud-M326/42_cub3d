@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:35:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 17:37:03 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 21:32:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "structures.h"
 #include <stdlib.h>
 
-	#include <stdio.h>
+#include <stdio.h>
 
 void	free_and_exit_no_error(t_data *data)
 {
@@ -45,12 +45,10 @@ void	free_and_exit_no_error(t_data *data)
 	exit(0);
 }
 
-void	free_and_exit_debug(t_data *data, char *msg, int err, const char *file,
-		int line, const char *func)
+void	free_and_exit(t_data *data, char *msg, int err)
 {
 	ft_putendl_fd("Error :", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
-	fprintf(stderr, "Exit in %s (%s:%d): \n", func, file, line);
 	if (data)
 	{
 		if (data->file)
