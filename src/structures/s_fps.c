@@ -6,13 +6,12 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:39:07 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/25 18:19:19 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 18:21:23 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "messages.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 void	init_fps_struct(t_data *data)
