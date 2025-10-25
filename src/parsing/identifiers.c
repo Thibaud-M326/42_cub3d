@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 17:37:56 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 18:16:38 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ void	search_identifier(t_data *data)
 		&& data->check->are_identifiers_valid)
 		if (is_available_char_map(f->line[i]))
 			free_and_exit(data, PLACE_MAP, 0);
-	if (f->line[i] == 'N' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
+	if (!ft_strncmp(&f->line[i], "NO", 2))
 		check_identifier(data, 'N');
-	else if (f->line[i] == 'S' && (f->line[i + 1]) && (f->line[i + 1]) == 'O')
+	else if (!ft_strncmp(&f->line[i], "SO", 2))
 		check_identifier(data, 'S');
-	else if (f->line[i] == 'E' && (f->line[i + 1]) && (f->line[i + 1]) == 'A')
+	else if (!ft_strncmp(&f->line[i], "EA", 2))
 		check_identifier(data, 'E');
-	else if (f->line[i] == 'W' && (f->line[i + 1]) && (f->line[i + 1]) == 'E')
+	else if (!ft_strncmp(&f->line[i], "WE", 2))
 		check_identifier(data, 'W');
 	else if (f->line[i] == 'F' || f->line[i] == 'C')
 		check_color_identifiers(data, &i);
