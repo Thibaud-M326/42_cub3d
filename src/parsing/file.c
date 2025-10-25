@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 18:16:12 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 19:02:40 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 static void	get_map_gnl(t_data *data)
 {
 	int	err;
-	int	line;
 
 	err = 0;
-	line = 0;
 	while (data->file->line)
 	{
 		check_map_line(data);
@@ -30,7 +28,6 @@ static void	get_map_gnl(t_data *data)
 		data->file->line = get_next_line(data->file->fd, &err);
 		if (err)
 			free_and_exit(data, GNL, 1);
-		line++;
 	}
 	if (!data->check->spawn)
 		free_and_exit(data, MAP_NO_SPAWN, 0);

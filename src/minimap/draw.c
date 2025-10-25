@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/23 21:00:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/25 19:25:39 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ static void	draw_map(t_data *data, int i, int map_line, int map_col)
 	{
 		map_col = mmap->start_col + j;
 		if (map_col >= line_len)
-		{
-			j++;
-			continue ;
-		}
+			break ;
 		color = handle_char(data, color, data->map->map[map_line][map_col]);
 		if (j == mmap->player_rel_x && i == mmap->player_rel_y)
 			color = PLAYER_MMAP;
