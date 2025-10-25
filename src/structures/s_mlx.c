@@ -6,14 +6,14 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:33:22 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/20 14:09:37 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:48:29 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
 #include "mlx.h"
-#include "mlx_int.h"
+#include <stdlib.h>
 
 int	mlx_start(t_mlx_data *mlx_data, t_mlx_img *mlx_img)
 {

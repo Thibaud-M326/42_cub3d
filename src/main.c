@@ -6,16 +6,13 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/22 15:22:49 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:51:54 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "libft.h"
 #include "messages.h"
-#include "mlx.h"
 #include "parsing.h"
-#include "minimap.h"
 
 int	main(int ac, char **av)
 {

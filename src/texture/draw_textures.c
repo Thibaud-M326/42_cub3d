@@ -6,13 +6,11 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:12:01 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/25 16:57:27 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:50:27 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include <stdio.h>
-#include <math.h>
 
 int	draw_vert_ceiling(t_data *data, int wall_start, int x)
 {
