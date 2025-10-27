@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   s_key.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:07 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:15:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
-#include "messages.h"
+#include "structures.h"
+#include "free_exit.h"
 #include "libft.h"
 #include <stdlib.h>
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:37:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:06:18 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
+#include "structures.h"
 #include "libft.h"
-#include "messages.h"
+#include "free_exit.h"
 #include "parsing.h"
 
 static void	handle_error(t_data *data, char c)

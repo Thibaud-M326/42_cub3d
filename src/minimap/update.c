@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 18:58:24 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+#include "structures.h"
 
 static void	update_scroll_row(t_data *data)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   s_textures.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:59:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:16:36 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
+#include "structures.h"
 #include "libft.h"
-#include "messages.h"
+#include "free_exit.h"
 #include "mlx.h"
 #include <stdlib.h>
 

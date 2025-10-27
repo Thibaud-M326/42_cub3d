@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   identifiers_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 22:46:43 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:06:39 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
 #include "libft.h"
-#include "messages.h"
+#include "structures.h"
+#include "free_exit.h"
 #include "parsing.h"
 #include <fcntl.h>
 #include <stdlib.h>

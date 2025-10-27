@@ -1,17 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   messages.h                                         :+:      :+:    :+:   */
+/*   free_exit.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 17:56:13 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/22 20:40:16 by jmagand          ###   ########.fr       */
+/*   Created: 2025/10/27 18:59:50 by jmagand           #+#    #+#             */
+/*   Updated: 2025/10/27 19:03:29 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MESSAGES_H
-# define MESSAGES_H
+#ifndef FREE_EXIT_H
+# define FREE_EXIT_H
+
+/****************************************************************************/
+/*                                FUNCTIONS									*/
+/****************************************************************************/
+typedef struct s_data		t_data;
+typedef struct s_mlx_img	t_mlx_img;
+
+//	src/exit/free_exit.c
+void						free_and_exit(t_data *data, char *msg, int err);
+void						free_and_exit_no_error(t_data *data);
 
 /* GLOBAL */
 # define GNL "A problem occured with GNL"

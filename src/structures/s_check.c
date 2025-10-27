@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   s_check.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:07:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:13:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
+#include "free_exit.h"
 #include "libft.h"
-#include "messages.h"
+#include "structures.h"
 #include <stdlib.h>
 
 t_check	*init_check_struct(t_data *data)
@@ -40,6 +40,21 @@ t_check	*init_check_struct(t_data *data)
 		check->spawn = '\0';
 	}
 	return (check);
+}
+
+static void	free_strs(char **strs)
+{
+	int	i;
+
+	i = 0;
+	if (!strs)
+		return ;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
 }
 
 void	free_check(t_check *check)

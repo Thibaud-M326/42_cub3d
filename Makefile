@@ -17,7 +17,6 @@ MLX_FLAGS = -L $(MLX_DIR) -lXext -lX11 -lmlx_Linux $(MLX_NAME)
 NAME = cub3D
 SRC_FILES = main						\
 			exit/free_exit				\
-			exit/utils					\
 			hook/hook					\
 			minimap/draw				\
 			minimap/update				\
