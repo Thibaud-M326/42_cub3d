@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 18:13:11 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "render.h"
 
 static void	update_scroll_row(t_data *data)
 {

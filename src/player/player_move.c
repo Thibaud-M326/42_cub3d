@@ -6,11 +6,11 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/27 16:05:32 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "render.h"
 
 int	player_move_forward(t_data *data)
 {

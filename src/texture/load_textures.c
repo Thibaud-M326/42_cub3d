@@ -6,11 +6,11 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:53:03 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/20 14:34:25 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "render.h"
 #include "messages.h"
 #include "mlx.h"
 #include <stdlib.h>

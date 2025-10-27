@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_dir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 19:58:39 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/23 20:50:23 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/27 18:35:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "render.h"
 
 static int	dir_north(t_data *data)
 {

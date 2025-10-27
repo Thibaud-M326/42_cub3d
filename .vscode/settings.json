@@ -2,7 +2,7 @@
 <<<<<<< HEAD
     "files.associations": {
         "*.tidal": "haskell",
-        "cube.h": "c",
+        "render.h": "c",
         "mlx_opengl.h": "c",
         "libft.h": "c"
     }
@@ -67,7 +67,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "stdio.h": "c",
-    "cube.h": "c",
+    "render.h": "c",
     "libft.h": "c",
     "fcntl.h": "c",
     "stdbool.h": "c"
