@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 15:12:02 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:26:43 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int		player_turn_right(t_data *data);
 int		check_ray_y(t_data *data, double next_y);
 int		check_ray_x(t_data *data, double next_x);
 
-//	src/render/init_render.c
-int		init_render(t_data *data);
-
 //	src/render/draw_pixel.c
 void	put_one_pixel_img(t_mlx_img *img, int x, int y, int color);
 void	put_one_pixel(t_data *data, int x, int y, int color);
 int		mix_color(int red, int green, int blue);
+
+//	src/render/init_render.c
+int		init_render(t_data *data);
 
 //	src/render/raycasting_dda.c
 int		raycasting_dda(t_data *data);
@@ -74,20 +74,22 @@ int		render(t_data *data);
 //	src/texture/draw_textures.c
 int		draw_textures(t_data *data, int x);
 
-//src/texture/get_texture_color.c
+//	src/texture/get_texture_color.c
 int		get_texture_color(t_data *data, t_mlx_img *tex, int y, int tex_x);
 
-//src/texture/get_texture_x.c
+//	src/texture/get_texture_x.c
 double	get_tex_x(t_data *data, t_mlx_img **tex);
 
-//src/texture/load_texture.c
+//	src/texture/load_texture.c
 int		load_textures(t_data *data);
 
-//src/texture/ray_hit_point.c
+//	src/texture/ray_hit_point.c
 int		ray_hit_point(t_data *data);
 
-//src/time/get_current_time_ms.c
-int		get_current_time_ms(void);
+//	src/time/fps_count.c.c
 int		fps_count(t_data *data);
+
+//	src/time/get_current_time_ms.c
+int		get_current_time_ms(void);
 
 #endif
