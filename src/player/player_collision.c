@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 20:09:13 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/27 15:21:12 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:05:06 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	hitbox_check(t_data *data, int points[4][2])
 	return (1);
 }
 
-int	hitbox_clear(t_data *data, double x, double y)
+int	hitbox(t_data *data, double x, double y)
 {
 	int	points[4][2];
 	int	hitbox;

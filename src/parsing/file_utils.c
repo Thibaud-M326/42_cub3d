@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:01:24 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/23 23:21:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/27 15:51:08 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 #include "libft.h"
-#include <fcntl.h>
 #include "messages.h"
+#include <fcntl.h>
 
 int	count_lines(t_data *data)
 {

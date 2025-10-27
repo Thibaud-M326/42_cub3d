@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 18:57:19 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/25 16:02:11 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 18:15:15 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_tex_color(t_mlx_img *tex, int x, int y)
 	return (tex_pixel_color);
 }
 
-int	get_texture_color(t_data *data, t_mlx_img *tex, int win_y, int tex_x)
+int	get_texture_color(t_data *data, t_mlx_img *tex, int tex_x, int win_y)
 {
 	int		tex_y;
 	double	tex_step_y;

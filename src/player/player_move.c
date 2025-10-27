@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:06:40 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/25 17:30:08 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:05:32 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	player_move_forward(t_data *data)
 	move_speed = data->fps->move_speed;
 	next_x = player->pos_x + player->dir_x * move_speed;
 	next_y = player->pos_y + player->dir_y * move_speed;
-	if (hitbox_clear(data, next_x, player->pos_y))
+	if (hitbox(data, next_x, player->pos_y))
 		player->pos_x = next_x;
-	if (hitbox_clear(data, player->pos_x, next_y))
+	if (hitbox(data, player->pos_x, next_y))
 		player->pos_y = next_y;
 	return (1);
 }
@@ -41,9 +41,9 @@ int	player_move_backward(t_data *data)
 	move_speed = data->fps->move_speed;
 	next_x = player->pos_x - player->dir_x * move_speed;
 	next_y = player->pos_y - player->dir_y * move_speed;
-	if (hitbox_clear(data, next_x, player->pos_y))
+	if (hitbox(data, next_x, player->pos_y))
 		player->pos_x = next_x;
-	if (hitbox_clear(data, player->pos_x, next_y))
+	if (hitbox(data, player->pos_x, next_y))
 		player->pos_y = next_y;
 	return (1);
 }
@@ -61,9 +61,9 @@ int	player_move_left(t_data *data)
 	rot_dir_y = player->dir_x;
 	next_x = player->pos_x - rot_dir_x * data->fps->move_speed;
 	next_y = player->pos_y - rot_dir_y * data->fps->move_speed;
-	if (hitbox_clear(data, next_x, player->pos_y))
+	if (hitbox(data, next_x, player->pos_y))
 		player->pos_x = next_x;
-	if (hitbox_clear(data, player->pos_x, next_y))
+	if (hitbox(data, player->pos_x, next_y))
 		player->pos_y = next_y;
 	return (1);
 }
@@ -81,9 +81,9 @@ int	player_move_right(t_data *data)
 	rot_dir_y = player->dir_x;
 	next_x = player->pos_x + rot_dir_x * data->fps->move_speed;
 	next_y = player->pos_y + rot_dir_y * data->fps->move_speed;
-	if (hitbox_clear(data, next_x, player->pos_y))
+	if (hitbox(data, next_x, player->pos_y))
 		player->pos_x = next_x;
-	if (hitbox_clear(data, player->pos_x, next_y))
+	if (hitbox(data, player->pos_x, next_y))
 		player->pos_y = next_y;
 	return (1);
 }

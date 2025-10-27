@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:35:39 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/25 21:32:14 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/27 15:49:09 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
 #include "libft.h"
 #include "structures.h"
 #include <stdlib.h>
 
-#include <stdio.h>
-
 void	free_and_exit_no_error(t_data *data)
 {
-	ft_putendl_fd("Exit cub3d", STDOUT_FILENO);
+	ft_putendl_fd("Exit: cub3D", STDOUT_FILENO);
 	if (data)
 	{
 		if (data->file)

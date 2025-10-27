@@ -53,9 +53,11 @@ SRC_FILES = main						\
 			structures/s_player			\
 			structures/s_textures		\
 			structures/s_key			\
+			texture/draw_texture		\
 			texture/draw_textures		\
 			texture/get_texture_color	\
 			texture/get_texture_x		\
+			texture/get_texture			\
 			texture/load_textures		\
 			texture/ray_hit_point		\
 			time/fps_count				\
