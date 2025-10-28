@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 18:58:13 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 22:07:47 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ static void	draw_borders(t_data *data)
 	}
 }
 
+#include "libft.h"
 void	draw_minimap(t_data *data)
 {
 	t_minimap	*mmap;
@@ -104,13 +105,13 @@ void	draw_minimap(t_data *data)
 	int			map_col;
 
 	mmap = data->minimap;
-	clear_image(mmap->img, VOID_MMAP);
+	ft_memcpy(mmap->img->img_data, mmap->bg_img->img_data, sizeof(char **));
 	update_map(data);
 	i = 0;
 	map_col = 0;
 	while (i < mmap->rows)
 	{
-		map_line = (unsigned int)mmap->start_row + i;
+		map_line = (unsigned int)mmap->start_row + i; // TODO: CHECK
 		if (map_line >= data->map->height)
 			break ;
 		draw_map(data, i, map_line, map_col);
