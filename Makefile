@@ -93,7 +93,7 @@ endef
 #------------------------------------------------#
 #					RULES						 #
 #------------------------------------------------#
-all: makelibft $(NAME)
+all: makeminilibx makelibft $(NAME)
 
 $(NAME): $(LIBFT) $(MLX_NAME) $(OBJ)
 	@make -C $(MLX_DIR)
@@ -109,6 +109,9 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
 
 makelibft:
 	@$(MAKE) -C lib/libft
+
+makeminilibx:
+	@$(MAKE) -C lib/minilibx-linux
 
 -include $(DEP)
 
