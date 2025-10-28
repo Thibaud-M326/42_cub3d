@@ -6,13 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:35:59 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/28 19:24:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:34:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 static char	*ft_strndup_set(char *str, int n)
 {
@@ -32,7 +32,7 @@ static char	*ft_strndup_set(char *str, int n)
 	return (dup);
 }
 
-static bool assign_split_set(char *str, char *set, char **split)
+static bool	assign_split_set(char *str, char *set, char **split)
 {
 	int	end;
 	int	beg;

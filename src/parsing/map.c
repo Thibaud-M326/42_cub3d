@@ -6,12 +6,12 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 19:06:57 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:34:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "free_exit.h"
+#include "libft.h"
 #include "parsing.h"
 #include "structures.h"
 #include <stdlib.h>
@@ -35,7 +35,7 @@ static char	*copy_line(t_data *data, int len)
 {
 	char	*map_str;
 	char	*tmp;
-	
+
 	map_str = data->check->map_str;
 	if (!map_str)
 		tmp = ft_strdup(data->file->line);
