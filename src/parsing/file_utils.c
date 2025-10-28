@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:01:24 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 19:12:16 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:46:53 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	err_handler(t_data *data)
 
 	c = data->check;
 	if (c->north || c->south || c->east || c->west || c->ceil || c->floor)
-		free_and_exit(data, ID_MISSING, 0);
+		free_and_exit(data, ID_MISSING, 2);
 	else
-		free_and_exit(data, FILE_EMPTY_FILE, 0);
+		free_and_exit(data, FILE_EMPTY_FILE, 2);
 }
 
 void	get_path_file(char *input, t_data *data)
@@ -48,5 +48,5 @@ void	get_path_file(char *input, t_data *data)
 		free_and_exit(data, MALLOC, 1);
 	file->fd = open(file->map, O_RDONLY);
 	if (file->fd < 0)
-		free_and_exit(data, FILE_NOT_FOUND, 0);
+		free_and_exit(data, FILE_NOT_FOUND, 2);
 }

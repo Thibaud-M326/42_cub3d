@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:35:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:07:24 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:48:58 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ void	check_texture_ext(t_data *data, char *path)
 	{
 		free(path);
 		if (!dot)
-			free_and_exit(data, MISSING_EXT_TXT, 0);
+			free_and_exit(data, MISSING_EXT_TXT, 2);
 	}
 	if (ft_strncmp(dot, ".xpm", 5))
 	{
 		free(path);
-		free_and_exit(data, WRONG_EXT_TXT, 0);
+		free_and_exit(data, WRONG_EXT_TXT, 2);
 	}
 	if (ft_strlen(path) < 5)
 	{
 		free(path);
-		free_and_exit(data, MISSING_FILENAME_TXT, 0);
+		free_and_exit(data, MISSING_FILENAME_TXT, 2);
 	}
 }
 
@@ -79,7 +79,7 @@ char	*get_texture_path(t_data *data)
 	i = trim_start(data, i);
 	i += 2;
 	if (!ft_is_white_space(data->file->line[i]))
-		free_and_exit(data, ID_INVALID, 0);
+		free_and_exit(data, ID_INVALID, 2);
 	i = trim_start(data, i);
 	tmp = ft_calloc(len, sizeof(char));
 	if (!tmp)

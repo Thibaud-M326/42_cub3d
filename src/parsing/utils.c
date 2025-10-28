@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 00:01:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:07:37 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:49:08 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	is_spawn(t_data *data, char c)
 {
 	if (data->player)
-		free_and_exit(data, MAP_DOUBLE_SPAWN, 0);
+		free_and_exit(data, MAP_DOUBLE_SPAWN, 2);
 	else
 	{
 		data->player = init_player_struct(data);

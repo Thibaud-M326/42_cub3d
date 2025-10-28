@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:09 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 19:25:02 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:47:30 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	get_map_gnl(t_data *data)
 			free_and_exit(data, GNL, 1);
 	}
 	if (!data->check->spawn)
-		free_and_exit(data, MAP_NO_SPAWN, 0);
+		free_and_exit(data, MAP_NO_SPAWN, 2);
 	data->check->map = ft_split_set(data->check->map_str, "\n");
 	if (!data->check->map)
 		free_and_exit(data, MALLOC, 1);

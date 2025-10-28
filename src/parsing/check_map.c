@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:37:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:06:18 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:45:29 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 static void	handle_error(t_data *data, char c)
 {
 	if (c == '0')
-		free_and_exit(data, MAP_BORDER, 0);
+		free_and_exit(data, MAP_BORDER, 2);
 	else
-		free_and_exit(data, MAP_PLAYER, 0);
+		free_and_exit(data, MAP_PLAYER, 2);
 }
 
 static void	check_border(t_data *data, int y, int x, char c)

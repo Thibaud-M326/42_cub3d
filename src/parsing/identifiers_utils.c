@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 22:46:43 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:06:39 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:47:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	open_xpm(t_data *data, char *path)
 	if (fd < 0)
 	{
 		free(path);
-		free_and_exit(data, WRONG_PATH_TXT, 0);
+		free_and_exit(data, WRONG_PATH_TXT, 2);
 	}
 	else
 		close(fd);
@@ -62,9 +62,9 @@ void	check_duplicate(t_data *data, char id)
 	c = data->check;
 	if ((id == 'N' && c->north) || (id == 'S' && c->south) || (id == 'E'
 			&& c->east) || (id == 'W' && c->west))
-		free_and_exit(data, ID_TXT_DOUBLE, 0);
+		free_and_exit(data, ID_TXT_DOUBLE, 2);
 	if ((id == 'F' && c->floor) || (id == 'C' && c->ceil))
-		free_and_exit(data, ID_COLOR_DOUBLE, 0);
+		free_and_exit(data, ID_COLOR_DOUBLE, 2);
 }
 
 void	check_color_identifiers(t_data *data, int *i)

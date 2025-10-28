@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:59:50 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:03:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:46:06 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void						free_and_exit_no_error(t_data *data);
 # define COLOR_FORMAT "Color: Format must be [0-255],[0-255],[0-255]"
 # define COLOR_VALUE_RANGE "Color: Values must be between [0-255]"
 # define COLOR_INVALID_CHAR "Color: Characters must be [0-9] ','"
-# define COLOR_COMA "Color: Invalid coma number: \"R,G,B\""
 
 /* TEXTURES */
 # define MISSING_EXT_TXT "Texture: Missing extension \".xpm\""

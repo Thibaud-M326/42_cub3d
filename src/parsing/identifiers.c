@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:27:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 19:29:13 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:47:49 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	search_identifier(t_data *data)
 	if (!is_available_char_identifier(f->line[i + 1])
 		&& data->check->are_identifiers_valid)
 		if (is_available_char_map(f->line[i]))
-			free_and_exit(data, PLACE_MAP, 0);
+			free_and_exit(data, PLACE_MAP, 2);
 	if (!ft_strncmp(&f->line[i], "NO", 2))
 		check_identifier(data, 'N');
 	else if (!ft_strncmp(&f->line[i], "SO", 2))

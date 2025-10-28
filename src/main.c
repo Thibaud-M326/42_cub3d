@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:03:32 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 18:53:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:43:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int ac, char **av)
 
 	if (WIDTH < 100 || HEIGHT < 100)
 	{
-		ft_putendl_fd("Error:\nUnvalid window size", 0);
-		return (0);
+		ft_putendl_fd("Error:\nInvalid window size", 1);
+		return (1);
 	}
 	data = init_data_struct();
 	parse_input(ac, av, data);

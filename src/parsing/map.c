@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 19:34:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:48:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	check_map_line(t_data *data)
 			is_spawn(data, f->line[i]);
 		if (!is_available_char_map(f->line[i])
 			&& !ft_is_white_space(f->line[i]))
-			free_and_exit(data, MAP_WRONG_CHAR, 0);
+			free_and_exit(data, MAP_WRONG_CHAR, 2);
 		else if (data->check->got_nl && is_available_char_map(f->line[i]))
-			free_and_exit(data, MAP_EMPTY_LINE, 0);
+			free_and_exit(data, MAP_EMPTY_LINE, 2);
 		i++;
 	}
 	if (!is_empty_line(data))
@@ -96,11 +96,11 @@ void	check_map_order(int i, t_data *data)
 			while (data->file->line[j] && data->file->line[j] != '\n')
 			{
 				if (!is_available_char_map(data->file->line[j++]))
-					free_and_exit(data, ID_INVALID, 0);
+					free_and_exit(data, ID_INVALID, 2);
 			}
-			free_and_exit(data, PLACE_MAP, 0);
+			free_and_exit(data, PLACE_MAP, 2);
 		}
 	}
 	else
-		free_and_exit(data, ID_INVALID, 0);
+		free_and_exit(data, ID_INVALID, 2);
 }

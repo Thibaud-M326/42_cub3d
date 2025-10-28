@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:08:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:07:57 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:46:11 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	set_color(t_data *data, char id)
 	g = ft_atoi_rgb(ft_strchr(data->check->color, ',') + 1, &err);
 	b = ft_atoi_rgb(ft_strrchr(data->check->color, ',') + 1, &err);
 	if (err)
-		free_and_exit(data, COLOR_FORMAT, 0);
+		free_and_exit(data, COLOR_FORMAT, 2);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		free_and_exit(data, COLOR_VALUE_RANGE, 0);
+		free_and_exit(data, COLOR_VALUE_RANGE, 2);
 	if (id == 'F')
 		data->textures->floor_color = mix_color(r, g, b);
 	else
@@ -96,17 +96,17 @@ void	check_color_format(t_data *data)
 	while (s[i])
 	{
 		if (!parse_color_number(s, &i))
-			free_and_exit(data, COLOR_FORMAT, 0);
+			free_and_exit(data, COLOR_FORMAT, 2);
 		if (s[i] == ',')
 		{
 			count++;
 			i++;
 		}
 		else if (s[i] && !ft_is_white_space(s[i]))
-			free_and_exit(data, COLOR_FORMAT, 0);
+			free_and_exit(data, COLOR_FORMAT, 2);
 	}
 	if (count != 2)
-		free_and_exit(data, COLOR_COMA, 0);
+		free_and_exit(data, COLOR_FORMAT, 2);
 }
 
 char	*get_color(t_data *data)
