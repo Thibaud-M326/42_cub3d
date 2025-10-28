@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_set.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:35:59 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/25 17:35:33 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/28 19:24:29 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
 static char	*ft_strndup_set(char *str, int n)
 {
@@ -31,7 +32,7 @@ static char	*ft_strndup_set(char *str, int n)
 	return (dup);
 }
 
-static void	assign_split_set(char *str, char *set, char **split)
+static bool assign_split_set(char *str, char *set, char **split)
 {
 	int	end;
 	int	beg;
@@ -50,14 +51,12 @@ static void	assign_split_set(char *str, char *set, char **split)
 		{
 			split[word] = ft_strndup_set(&str[beg], end - beg);
 			if (!split[word])
-			{
-				free_char_tab(split, word - 1);
-				return ;
-			}
+				return (free_char_tab(split, word));
 			word++;
 		}
 		beg = end;
 	}
+	return (true);
 }
 
 char	**ft_split_set(char *str, char *set)
@@ -71,7 +70,8 @@ char	**ft_split_set(char *str, char *set)
 	split = malloc(sizeof(char *) * (count_words + 1));
 	if (!split)
 		return (NULL);
-	assign_split_set(str, set, split);
+	if (!assign_split_set(str, set, split))
+		return (NULL);
 	split[count_words] = NULL;
 	return (split);
 }

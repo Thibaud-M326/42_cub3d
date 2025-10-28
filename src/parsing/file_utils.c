@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:01:24 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:06:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:12:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 int	count_lines(t_data *data)
 {
-	int	height;
+	int	rows;
 
-	height = 0;
-	while (data->map->map[height])
-		height++;
-	return (height);
+	rows = 0;
+	while (data->map->map[rows])
+		rows++;
+	return (rows);
 }
 
 void	err_handler(t_data *data)

@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:35:59 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/25 17:35:39 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/28 19:22:44 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
-void	*free_char_tab(char **split, int k)
+bool	free_char_tab(char **split, int k)
 {
 	while (k >= 0)
 	{
@@ -21,7 +22,7 @@ void	*free_char_tab(char **split, int k)
 		k--;
 	}
 	free(split);
-	return (NULL);
+	return (false);
 }
 
 int	ft_count_words(char *str)

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:56:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 19:07:16 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 19:06:57 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ static char	*copy_line(t_data *data, int len)
 {
 	char	*map_str;
 	char	*tmp;
-
+	
 	map_str = data->check->map_str;
 	if (!map_str)
 		tmp = ft_strdup(data->file->line);
 	else
 	{
 		tmp = ft_strjoin(map_str, data->file->line);
+		if (!tmp)
+			free_and_exit(data, MALLOC, 1);
 		free(data->check->map_str);
 	}
 	if (!tmp)

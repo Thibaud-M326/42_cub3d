@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/27 18:58:24 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/28 18:47:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	update_scroll_row(t_data *data)
 	player_row = (int)data->player->pos_y;
 	map_max_row = data->map->height - mmap->rows;
 	mmap->start_row = player_row - mmap->rows / 2;
+	if (map_max_row < 0)
+		map_max_row = 0;
 	if (mmap->start_row < 0)
 		mmap->start_row = 0;
 	else if (mmap->start_row > map_max_row)
@@ -39,6 +41,8 @@ static void	update_scroll_col(t_data *data)
 	player_col = (int)data->player->pos_x;
 	map_max_col = data->map->width - mmap->cols;
 	mmap->start_col = player_col - mmap->cols / 2;
+	if (map_max_col < 0)
+		map_max_col = 0;
 	if (mmap->start_col < 0)
 		mmap->start_col = 0;
 	else if (mmap->start_col > map_max_col)
