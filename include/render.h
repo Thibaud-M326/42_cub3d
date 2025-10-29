@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:36:02 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/27 19:13:25 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/29 15:35:51 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int							ray_hit_point(t_data *data);
 
 //	src/time/fps_count.c.c
 int							fps_count(t_data *data);
+int							print_fps(t_data *data, double fps_count);
 
 //	src/time/get_current_time_ms.c
 int							get_current_time_ms(void);
