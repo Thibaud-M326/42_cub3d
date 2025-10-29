@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:57:10 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 20:50:13 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/29 17:23:35 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ typedef struct s_fps
 	double				fps_count;
 	double				move_speed;
 	double				rot_speed;
+	char				*fps_framerate;
 }	t_fps;
 
 typedef struct s_data		t_data;
