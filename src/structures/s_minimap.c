@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:38:27 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/28 22:08:04 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/10/29 18:38:37 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,6 @@ static t_mlx_img	*init_minimap_img(t_data *data)
 	img->img_data = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
 			&img->endian);
 	return (img);
-}
-
-static t_mlx_img	*init_minimap_img_bg(t_data *data)
-{
-	t_minimap	*mmap;
-	t_mlx_img	*bg_img;
-	int			minimap_w_pxl;
-	int			minimap_h_pxl;
-
-	mmap = data->minimap;
-	bg_img = ft_calloc(1, sizeof(t_mlx_img));
-	if (!bg_img)
-		free_and_exit(data, MALLOC, 1);
-	minimap_w_pxl = mmap->cols * mmap->cell_size;
-	minimap_h_pxl = mmap->rows * mmap->cell_size;
-	bg_img->width = minimap_w_pxl;
-	bg_img->height = minimap_h_pxl;
-	bg_img->img_ptr = mlx_new_image(data->mlx_data->mlx_ptr, minimap_w_pxl,
-			minimap_h_pxl);
-	bg_img->img_data = mlx_get_data_addr(bg_img->img_ptr, &bg_img->bpp, &bg_img->size_line,
-			&bg_img->endian);
-	return (bg_img);
 }
 
 static int	choose_cell_size(t_data *data)
@@ -105,7 +83,6 @@ t_minimap	*init_minimap_struct(t_data *data)
 	mmap->cols = (WIDTH / 6) / mmap->cell_size;
 	mmap->rows = (HEIGHT / 6) / mmap->cell_size;
 	mmap->img = init_minimap_img(data);
-	mmap->bg_img = init_minimap_img_bg(data);
 	return (mmap);
 }
 
@@ -120,16 +97,9 @@ void	free_minimap(t_data *data)
 				mlx_destroy_image(data->mlx_data->mlx_ptr,
 					data->minimap->img->img_ptr);
 			}
-			if (data->minimap && data->minimap->bg_img)
-			{
-				mlx_destroy_image(data->mlx_data->mlx_ptr,
-					data->minimap->bg_img->img_ptr);
-			}
 		}
 		if (data->minimap->img)
 			free(data->minimap->img);
-		if (data->minimap->bg_img)
-			free(data->minimap->bg_img);
 		free(data->minimap);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/29 17:13:58 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:38:11 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ static void	draw_borders(t_data *data)
 	}
 }
 
-#include "libft.h"
 void	draw_minimap(t_data *data)
 {
 	t_minimap	*mmap;
@@ -105,7 +104,7 @@ void	draw_minimap(t_data *data)
 	int			map_col;
 
 	mmap = data->minimap;
-	ft_memcpy(mmap->img->img_data, mmap->bg_img->img_data, sizeof(char **));
+	clear_image(data->minimap->img, VOID_MMAP);
 	update_map(data);
 	i = 0;
 	map_col = 0;
