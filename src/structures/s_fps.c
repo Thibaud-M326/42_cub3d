@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:39:07 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/29 17:43:14 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:50:13 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	free_fps(t_fps *fps)
 {
 	if (fps)
 	{
-		if (fps->fps_framerate)
-			free(fps->fps_framerate);
 		free(fps);
 		fps = NULL;
 	}
