@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:09:54 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/29 15:13:28 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/29 15:51:17 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	draw_ceiling(t_data *data, int wall_start, int x)
 	y = 0;
 	while (y < wall_start)
 	{
-		put_one_pixel(data, x, y, data->textures->ceil_color);
+		put_two_pixel(data, x, y, data->textures->ceil_color);
 		y++;
 	}
 	return (1);
@@ -43,7 +43,7 @@ int	draw_wall(t_data *data, t_mlx_img *tex, int tex_x, int win_x)
 		if (wall_start >= 0 && wall_start < win_height)
 		{
 			color = get_texture_color(data, tex, tex_x, wall_start);
-			put_one_pixel(data, win_x, wall_start, color);
+			put_two_pixel(data, win_x, wall_start, color);
 		}
 		wall_start++;
 	}
@@ -54,7 +54,7 @@ int	draw_floor(t_data *data, int wall_end, int x)
 {
 	while (wall_end < data->mlx_data->mlx_img->height)
 	{
-		put_one_pixel(data, x, wall_end, data->textures->floor_color);
+		put_two_pixel(data, x, wall_end, data->textures->floor_color);
 		wall_end++;
 	}
 	return (1);

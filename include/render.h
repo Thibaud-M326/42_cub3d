@@ -6,7 +6,7 @@
 /*   By: thmaitre <thmaitre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:36:02 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/10/29 15:35:51 by thmaitre         ###   ########.fr       */
+/*   Updated: 2025/10/29 15:51:53 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int							check_ray_x(t_data *data, double next_x);
 //	src/render/draw_pixel.c
 void						put_one_pixel_img(t_mlx_img *img, int x, int y,
 								int color);
-void						put_one_pixel(t_data *data, int x, int y,
+void						put_two_pixel(t_data *data, int x, int y,
 								int color);
 int							mix_color(int red, int green, int blue);
 
