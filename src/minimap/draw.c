@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:16:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/10/29 18:38:11 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/11/06 16:40:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	draw_minimap(t_data *data)
 	map_col = 0;
 	while (i < mmap->rows)
 	{
-		map_line = (unsigned int)mmap->start_row + i; // TODO: CHECK
+		map_line = (unsigned int)mmap->start_row + i;
 		if (map_line >= data->map->height)
 			break ;
 		draw_map(data, i, map_line, map_col);
